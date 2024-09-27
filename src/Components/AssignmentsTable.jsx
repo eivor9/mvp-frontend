@@ -1,7 +1,7 @@
-import React from 'react'
+// Components/AssignmentsTable.jsx
+
+import React from 'react';
 
 export const AssignmentsTable = () => {
-  return (
-    <div>AssignmentsTable</div>
-  )
-}
+  return <div>AssignmentsTable</div>;
+};

@@ -1,7 +1,7 @@
-import React from 'react'
+// Components/DashboardMetrics.jsx
+
+import React from 'react';
 
 export const DashboardMetrics = () => {
-  return (
-    <div>DashboardMetrics</div>
-  )
-}
+  return <div>DashboardMetrics</div>;
+};

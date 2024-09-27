@@ -1,7 +1,7 @@
-import React from 'react'
+// Components/CategoriesCarousel.jsx
+
+import React from 'react';
 
 export const CategoriesCarousel = () => {
-  return (
-    <div>CategoriesCarousel</div>
-  )
-}
+  return <div>CategoriesCarousel</div>;
+};

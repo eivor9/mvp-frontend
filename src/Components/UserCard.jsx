@@ -1,7 +1,7 @@
-import React from 'react'
+// Components/UserCard.jsx
+
+import React from 'react';
 
 export const UserCard = () => {
-  return (
-    <div>UserCard</div>
-  )
-}
+  return <div>UserCard</div>;
+};

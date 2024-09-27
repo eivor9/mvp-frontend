@@ -1,7 +1,7 @@
-import React from 'react'
+// Components/ProgressTrackingMetrics.jsx
+
+import React from 'react';
 
 export const ProgressTrackingMetrics = () => {
-  return (
-    <div>ProgressTrackingMetrics</div>
-  )
-}
+  return <div>ProgressTrackingMetrics</div>;
+};

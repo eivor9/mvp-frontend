@@ -1,7 +1,7 @@
-import React from 'react'
+// Pages/Login.jsx
+
+import React from 'react';
 
 export const Login = () => {
-  return (
-    <div>Login</div>
-  )
-}
+  return <div>Login</div>;
+};

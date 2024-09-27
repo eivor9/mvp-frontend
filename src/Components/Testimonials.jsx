@@ -1,7 +1,7 @@
-import React from 'react'
+// Components/Testimonials.jsx
+
+import React from 'react';
 
 export const Testimonials = () => {
-  return (
-    <div>Testimonials</div>
-  )
-}
+  return <div>Testimonials</div>;
+};
