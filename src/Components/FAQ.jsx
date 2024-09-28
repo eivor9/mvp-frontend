@@ -2,6 +2,12 @@
 
 import React from 'react';
 
-export const FAQ = () => {
-  return <div>FAQ</div>;
+const FAQ = () => {
+  return (
+    <div>
+      
+    </div>
+  );
 };
+
+export default FAQ;

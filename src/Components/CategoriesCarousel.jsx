@@ -2,6 +2,12 @@
 
 import React from 'react';
 
-export const CategoriesCarousel = () => {
-  return <div>CategoriesCarousel</div>;
+const CategoriesCarousel = () => {
+  return (
+    <div>
+      
+    </div>
+  );
 };
+
+export default CategoriesCarousel;

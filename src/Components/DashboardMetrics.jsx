@@ -2,6 +2,12 @@
 
 import React from 'react';
 
-export const DashboardMetrics = () => {
-  return <div>DashboardMetrics</div>;
+const DashboardMetrics = () => {
+  return (
+    <div>
+      
+    </div>
+  );
 };
+
+export default DashboardMetrics;

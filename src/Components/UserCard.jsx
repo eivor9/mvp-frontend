@@ -2,6 +2,12 @@
 
 import React from 'react';
 
-export const UserCard = () => {
-  return <div>UserCard</div>;
+const UserCard = () => {
+  return (
+    <div>
+      
+    </div>
+  );
 };
+
+export default UserCard;;

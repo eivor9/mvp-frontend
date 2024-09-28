@@ -1,8 +1,12 @@
 // Components/AssignmentCard.jsx
-import React from 'react'
+import React from 'react';
 
-export const AssignmentCard = () => {
+const AssignmentCard = () => {
   return (
-    <div>AssignmentCard</div>
-  )
-}
+    <div>
+      
+    </div>
+  );
+};
+
+export default AssignmentCard;

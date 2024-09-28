@@ -1,8 +1,12 @@
 // Pages/Category.jsx
-import React from 'react'
+import React from 'react';
 
-export const Category = () => {
+const Category = () => {
   return (
-    <div>Category</div>
-  )
-}
+    <div>
+      
+    </div>
+  );
+};
+
+export default Category;

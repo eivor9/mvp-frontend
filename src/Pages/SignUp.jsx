@@ -2,6 +2,12 @@
 
 import React from 'react';
 
-export const SignUp = () => {
-  return <div>SignUp</div>;
+const SignUp = () => {
+  return (
+    <div>
+      
+    </div>
+  );
 };
+
+export default SignUp;

@@ -2,6 +2,12 @@
 
 import React from 'react';
 
-export const FourOFour = () => {
-  return <div>FourOFour</div>;
+const FourOFour = () => {
+  return (
+    <div>
+      
+    </div>
+  );
 };
+
+export default FourOFour;

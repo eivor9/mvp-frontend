@@ -2,6 +2,12 @@
 
 import React from 'react';
 
-export const ProgressTrackingMetrics = () => {
-  return <div>ProgressTrackingMetrics</div>;
+const ProgressTrackingMetrics = () => {
+  return (
+    <div>
+      
+    </div>
+  );
 };
+
+export default ProgressTrackingMetrics;

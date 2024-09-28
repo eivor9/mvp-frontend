@@ -2,6 +2,12 @@
 
 import React from 'react';
 
-export const AssignmentsTable = () => {
-  return <div>AssignmentsTable</div>;
+const AssignmentsTable = () => {
+  return (
+    <div>
+      
+    </div>
+  );
 };
+
+export default AssignmentsTable;
