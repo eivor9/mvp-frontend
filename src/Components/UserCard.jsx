@@ -2,7 +2,10 @@
 
 import React from 'react';
 
-const UserCard = () => {
+const UserCard = (props) => {
+
+  const{ name, id, job_title, category } = props;
+
   return (
     <div>
       
