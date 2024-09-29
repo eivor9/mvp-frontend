@@ -1,0 +1,26 @@
+.footer {
+  background-color: #EBFCFF;
+  padding: .5em;
+  font-family: 'Roboto', sans-serif;
+  color: #222E50;
+}
+
+.footer-nav {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.footer-link {
+    color: #222E50;
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+
+.footer-copyright {
+  margin-top: 20px;
+  font-size: 0.9em;
+  color: #DFC853;
+  text-align: center;
+}
