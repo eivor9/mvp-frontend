@@ -30,8 +30,8 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/about" element={<About />} />
-            <Route path="/categories/:category_id" element={<Category />} />
-          {/* Categories Routes */}
+            {/* Categories Routes */}
+          <Route path="/categories/:category_id" element={<Category />} />
             <Route path="/user-dashboard/:id" element={<UserDashboard />} />
           <Route path="*" element={<FourOFour />} />
           </Routes>

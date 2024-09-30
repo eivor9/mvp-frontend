@@ -9,7 +9,7 @@ const Category = () => {
 
   const { category_id } = useParams();
   const API = import.meta.env.VITE_BASE_URL;
-  const [categoryUsers, setCategoryUsers] = useState([]);
+  const [categoryName, setCategoryName] = useState("");
   const [mentors, setMentors] = useState([]);
   const [mentees, setMentees] = useState([]);
   const [showMentors, setShowMentors] = useState(true);
@@ -20,7 +20,7 @@ const Category = () => {
     .then(res => res.json())
     .then(res => {
       console.log(res)
-      setCategoryUsers(res.categoryUsers)
+      setCategoryName(res.name)
 
       //filter for mentors/mentees
       const filterMentors = res.categoryUsers.filter(user => user.is_mentor === true);
@@ -53,12 +53,14 @@ const Category = () => {
                 key={mentor.id}
                 name={`${mentor.first_name} ${mentor.last_name}`}
                 job_title={`${mentor.job_title}`}
+                categoryName={categoryName}
                 />
       })) : (mentees.map(mentee => {
         return <UserCard
         key={mentee.id}
         name={`${mentee.first_name} ${mentee.last_name}`}
         job_title={`${mentee.job_title}`}
+        categoryName={categoryName}
         />
       }))}
       </div>

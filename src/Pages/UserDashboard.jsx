@@ -97,7 +97,7 @@ const UserDashboard = () => {
                             return  <UserCard 
                                         key={user.id} 
                                         name={`${user.first_name} ${user.last_name}`} 
-                                        category={category}
+                                        categoryName={category}
                                         className="dashboard-card"
                                     />
                     })
