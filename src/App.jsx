@@ -16,6 +16,7 @@ import About from "./Pages/About";
 // COMPONENTS
 import NavBar from "./Components/NavBar";
 import Footer from "./Components/Footer";
+import UserDashboard from "./Pages/UserDashboard";
 
 function App() {
   return (
@@ -29,8 +30,10 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/about" element={<About />} />
-            {/* Categories Routes */}
-            <Route path="*" element={<FourOFour />} />
+            <Route path="/categories/:category_id" element={<Category />} />
+          {/* Categories Routes */}
+            <Route path="/user-dashboard/:id" element={<UserDashboard />} />
+          <Route path="*" element={<FourOFour />} />
           </Routes>
         </main>
         <Footer />
