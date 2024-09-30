@@ -1,0 +1,78 @@
+.dashboard-metrics {
+  padding: 20px;
+  font-family: 'Roboto', sans-serif;
+  color: #222E50;
+  background-color: #EBFCFF;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(34, 46, 80, 0.1);
+}
+
+.metrics-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.pie-chart {
+  width: 40%;
+}
+
+.metrics-grid {
+  width: 55%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.metric-card {
+  background-color: #FFFFFF;
+  border-radius: 8px;
+  padding: 15px;
+  box-shadow: 0 2px 4px rgba(34, 46, 80, 0.1);
+}
+
+.progress-bar-container {
+  width: 100%;
+  background-color: #E0E0E0;
+  border-radius: 4px;
+  height: 8px; /* Reduced height */
+  overflow: hidden;
+  margin-top: 10px;
+  position: relative; /* Added for absolute positioning of progress bar */
+}
+
+.progress-bar {
+  position: absolute; /* Changed to absolute positioning */
+  top: 0;
+  left: 0;
+  height: 100%; /* This will now be 100% of the 8px container */
+  background-color: #DFC853;
+  transition: width 0.3s ease-in-out;
+}
+
+.progress-text {
+  margin-top: 5px;
+  font-weight: bold;
+  color: #222E50;
+}
+
+.connection-id {
+  margin-top: 5px;
+  font-size: 0.9em;
+  color: #222E50;
+}
+
+h2, h3 {
+  color: #222E50;
+}
+
+@media (max-width: 768px) {
+  .metrics-container {
+    flex-direction: column;
+  }
+
+  .pie-chart, .metrics-grid {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+}
