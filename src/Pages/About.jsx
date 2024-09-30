@@ -1,9 +1,11 @@
 import React from "react";
 import "../Styles/About.css";
+import Hero from "../Components/Hero";
 const About = () => {
   return (
     <div>
       <h1>About</h1>
+      <Hero />
       <div className="text-box">
         <h3>Our Mission</h3>
         <strong>
