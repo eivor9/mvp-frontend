@@ -94,12 +94,14 @@ const UserDashboard = () => {
                 <div className='dashboard-mentor-list'>
                     {mentors.length > 0 ? (
                         mentors.map(({ user, category }) => {
-                            return  <UserCard 
-                                        key={user.id} 
-                                        name={`${user.first_name} ${user.last_name}`} 
-                                        categoryName={category}
-                                        className="dashboard-card"
-                                    />
+                            return  <Link>
+                                        <UserCard 
+                                            key={user.id} 
+                                            name={`${user.first_name} ${user.last_name}`} 
+                                            categoryName={category}
+                                            className="dashboard-card"
+                                        />
+                                    </Link>
                     })
                     ) : (
                     <p>You are currently not connected to any mentors.</p>
@@ -113,12 +115,14 @@ const UserDashboard = () => {
                 <div className='dashboard-mentee-list'>
                     {mentees.length > 0 ? (
                         mentees.map(({ user, category}) => {
-                            return  <UserCard 
-                                        key={user.id} 
-                                        name={`${user.first_name} ${user.last_name}`} 
-                                        category={category}
-                                        className="dashboard-card"
-                                    />
+                            return  <Link>
+                                        <UserCard 
+                                            key={user.id} 
+                                            name={`${user.first_name} ${user.last_name}`} 
+                                            category={category}
+                                            className="dashboard-card"
+                                        />
+                                    </Link>
                     })
                     ) : (
                     <p>You are currently not connected to any mentees.</p>

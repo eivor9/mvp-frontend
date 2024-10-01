@@ -49,19 +49,24 @@ const Category = () => {
 
       <div className="category-user-list">
       {showMentors ? (mentors.map(mentor => {
-        return <UserCard
-                key={mentor.id}
-                name={`${mentor.first_name} ${mentor.last_name}`}
-                job_title={`${mentor.job_title}`}
-                categoryName={categoryName}
-                />
+        return  <Link>
+                  <UserCard
+                    key={mentor.id}
+                    name={`${mentor.first_name} ${mentor.last_name}`}
+                    job_title={`${mentor.job_title}`}
+                    categoryName={categoryName}
+                  />
+                </Link>        
       })) : (mentees.map(mentee => {
-        return <UserCard
-        key={mentee.id}
-        name={`${mentee.first_name} ${mentee.last_name}`}
-        job_title={`${mentee.job_title}`}
-        categoryName={categoryName}
-        />
+        return  <Link>
+                  <UserCard
+                    key={mentee.id}
+                    name={`${mentee.first_name} ${mentee.last_name}`}
+                    job_title={`${mentee.job_title}`}
+                    categoryName={categoryName}
+                  />
+                </Link>
+        
       }))}
       </div>
     </div>
