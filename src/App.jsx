@@ -12,6 +12,7 @@ import Profile from "./Pages/Profile";
 import Category from "./Pages/Category";
 import FourOFour from "./Pages/FourOFour";
 import About from "./Pages/About";
+import Subcategory from "./Pages/Subcategory";
 
 // COMPONENTS
 import NavBar from "./Components/NavBar";
@@ -31,9 +32,10 @@ function App() {
             <Route path="/profile" element={<Profile />} />
             <Route path="/about" element={<About />} />
             {/* Categories Routes */}
-          <Route path="/categories/:category_id" element={<Category />} />
+            <Route path="/categories/:category_id" element={<Category />} />
+            <Route path="/categories/:category_id/subcategories/:subcategory_id" element={<Subcategory />} />
             <Route path="/user-dashboard/:id" element={<UserDashboard />} />
-          <Route path="*" element={<FourOFour />} />
+            <Route path="*" element={<FourOFour />} />
           </Routes>
         </main>
         <Footer />

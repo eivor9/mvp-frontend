@@ -2,6 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    text-decoration: none;
 }
 
 .dashboard-user-list {
@@ -15,11 +16,12 @@
     border-radius: 5px;
     margin: 10px;
     box-sizing: border-box;
-    gap: 0;
+    gap: 5px;
+    text-decoration: none;
+}
 
-    &:hover .links-container{
-        visibility: visible;
-    }
+.dashboard-card h4, p {
+    text-decoration: none;
 }
 
 .image-container img {
@@ -70,7 +72,4 @@
 .dashboard-card:hover .links-container {
     visibility: visible;
     opacity: 1;
-}
-.dashboard-card {
-    gap: 10px;
 }

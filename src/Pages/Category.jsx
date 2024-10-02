@@ -55,6 +55,7 @@ const Category = () => {
                     name={`${mentor.first_name} ${mentor.last_name}`}
                     job_title={`${mentor.job_title}`}
                     categoryName={categoryName}
+                    className="category-card"
                   />
                 </Link>        
       })) : (mentees.map(mentee => {
@@ -63,6 +64,7 @@ const Category = () => {
                     name={`${mentee.first_name} ${mentee.last_name}`}
                     job_title={`${mentee.job_title}`}
                     categoryName={categoryName}
+                    className="category-card"
                   />
                 </Link>
         

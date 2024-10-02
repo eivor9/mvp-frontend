@@ -1,0 +1,14 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.category-card {
+    display: flex;
+    flex-direction: column;
+}
+
+.category-user-list {
+    display: flex;
+}
