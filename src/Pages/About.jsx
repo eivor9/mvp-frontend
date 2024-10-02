@@ -5,8 +5,8 @@ const About = () => {
   return (
     <div>
       <h1>About</h1>
-      <Hero />
       <div className="text-box">
+        <Hero />
         <h3>Our Mission</h3>
         <strong>
           {" "}

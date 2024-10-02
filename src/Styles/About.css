@@ -1,30 +1,66 @@
+/* General body styles */
 body {
   font-family: sans-serif;
   display: flex;
-  justify-content: center; /* Horizontally centers the content */
-  align-items: center; /* Vertically centers the content */
-  height: 100vh; /* Full viewport height */
+  justify-content: center; /* Horizontally centers content */
+  align-items: center; /* Vertically centers content */
+  flex-direction: column; /* Stack elements vertically */
+  min-height: 100vh; /* Full viewport height */
+  margin: 0;
+  text-align: center; /* Center text inside */
+  padding: 20px; /* Adds padding to the body to prevent content from hitting the edges */
 }
 
+/* Text box styling */
 .text-box {
-  margin-top: 100px;
-  width: 300px;
-  border: 1px solid grey;
+  width: 100%;
+  max-width: 900px; /* Increased for larger screens */
+  margin: 20px auto;
+  padding: 40px; /* Adds more padding for desktop */
+  background-color: #f9f9f9; /* Optional background for the text box */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Add shadow for better desktop appearance */
 }
 
+/* Paragraphs inside the text box */
+.text-box p {
+  margin-top: 20px;
+  width: 100%; /* Responsive width */
+}
+
+/* Developer pictures */
 .dev-pic {
-  width: 100px;
-  height: 100px;
+  width: 120px; /* Larger images for desktop */
+  height: 120px;
   border: 2px solid grey;
-  border-radius: 100px;
-  margin: 10px;
+  border-radius: 50%; /* Circular images */
+  margin: 15px;
+  object-fit: cover; /* Maintain aspect ratio */
 }
 
-/* .pic-container {
-  margin-left: 180px;
-} */
+/* Container for developer pictures */
+.pic-container {
+  display: flex;
+  justify-content: center; /* Center images horizontally */
+  flex-wrap: wrap; /* Wrap images to new rows if necessary */
+  margin-top: 30px; /* Add more spacing between text and images */
+}
 
+/* Headings */
 h3,
 h5 {
   color: grey;
+  margin: 20px 0; /* Adds spacing between headings */
+}
+
+/* Media query for larger screens (desktops) */
+@media (min-width: 1024px) {
+  .text-box {
+    max-width: 1100px; /* Increase the max width on larger screens */
+    padding: 60px; /* Increase padding for better spacing */
+  }
+
+  .dev-pic {
+    width: 150px; /* Larger images for desktop */
+    height: 150px;
+  }
 }

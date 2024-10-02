@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import {Link} from 'react-router-dom';
+import "../Styles/NavBar.css";
 
 const NavBar = () => {
 
@@ -31,7 +32,7 @@ const NavBar = () => {
 
   return(
     <div className='NavBar'>
-      <div className="menu-button">MENU BUTTON</div>
+      <div className="menu-button">HB</div>
       <Link to='/' className="nav-logo">LOGO</Link>
 
       <div className='nav-categories' onMouseEnter={() => toggleCategories(true)} onMouseLeave={() => toggleCategories(false)}>
@@ -39,73 +40,123 @@ const NavBar = () => {
         {showingCategories ? 
           <div className="nav-categories-list">
 
-            <div className='nav-category' onMouseEnter={() => toggleDevelopemnt(true)} onMouseLeave={() => toggleDevelopemnt(false)}>
+            <div className='nav-category' style={showingDeveleopment ? {color: '#DFC853'}:null} onMouseEnter={() => toggleDevelopemnt(true)} onMouseLeave={() => toggleDevelopemnt(false)}>
                 <div className="nav-category-label">Development</div>
                 <div className='nav-subcategories'>
-                  {showingDeveleopment ? categoriesList["Development"].map(subcategory => <div className='nav-subcategory' key={subcategory}>{subcategory}</div>) : null}
+                  {showingDeveleopment ? 
+                  <>
+                    {categoriesList["Development"].map(subcategory => <div className='nav-subcategory' key={subcategory}>{subcategory}</div>)}
+          
+                  </>
+                  : null}
                 </div>
             </div>
 
-            <div className='nav-category' onMouseEnter={() => toggleBusiness(true)} onMouseLeave={() => toggleBusiness(false)}>
+            <div className='nav-category' style={showingBusiness ? {color: '#DFC853'}:null} onMouseEnter={() => toggleBusiness(true)} onMouseLeave={() => toggleBusiness(false)}>
                 <div className="nav-category-label">Business</div>
                 <div className='nav-subcategories'>
-                  {showingBusiness ? categoriesList["Business"].map(subcategory => <div className='nav-subcategory' key={subcategory}>{subcategory}</div>) : null}
+                  {showingBusiness ? 
+                  <>
+                    {categoriesList["Business"].map(subcategory => <div className='nav-subcategory' key={subcategory}>{subcategory}</div>)}
+                    
+                  </>
+                  : null}
                 </div>
             </div>
             
-            <div className='nav-category' onMouseEnter={() => toggleFinance(true)} onMouseLeave={() => toggleFinance(false)}>
+            <div className='nav-category' style={showingFinance ? {color: '#DFC853'}:null} onMouseEnter={() => toggleFinance(true)} onMouseLeave={() => toggleFinance(false)}>
                 <div className="nav-category-label">Finance & Accounting</div>
                 <div className='nav-subcategories'>
-                  {showingFinance ? categoriesList["Finance & Accounting"].map(subcategory => <div className='nav-subcategory' key={subcategory}>{subcategory}</div>) : null}
+                  {showingFinance ? 
+                  <>
+                    {categoriesList["Finance & Accounting"].map(subcategory => <div className='nav-subcategory' key={subcategory}>{subcategory}</div>)}
+                    
+                  </>
+                    : null}
                 </div>
             </div>
             
-            <div className='nav-category' onMouseEnter={() => toggleIT(true)} onMouseLeave={() => toggleIT(false)}>
+            <div className='nav-category' style={showingIT ? {color: '#DFC853'}:null} onMouseEnter={() => toggleIT(true)} onMouseLeave={() => toggleIT(false)}>
                 <div className="nav-category-label">IT & Software</div>
                 <div className='nav-subcategories'>
-                  {showingIT ? categoriesList["IT & Software"].map(subcategory => <div className='nav-subcategory' key={subcategory}>{subcategory}</div>) : null}
+                  {showingIT ? 
+                  <>
+                    {categoriesList["IT & Software"].map(subcategory => <div className='nav-subcategory' key={subcategory}>{subcategory}</div>)} 
+                    
+                    </>
+                    : null}
                 </div>
             </div>
             
-            <div className='nav-category' onMouseEnter={() => toggleOffice(true)} onMouseLeave={() => toggleOffice(false)}>
+            <div className='nav-category' style={showingOffice ? {color: '#DFC853'}:null} onMouseEnter={() => toggleOffice(true)} onMouseLeave={() => toggleOffice(false)}>
                 <div className="nav-category-label">Office Productivity</div>
                 <div className='nav-subcategories'>
-                  {showingOffice ? categoriesList["Office Productivity"].map(subcategory => <div className='nav-subcategory' key={subcategory}>{subcategory}</div>) : null}
+                  {showingOffice ? 
+                  <>
+                    {categoriesList["Office Productivity"].map(subcategory => <div className='nav-subcategory' key={subcategory}>{subcategory}</div>)}
+                    
+                  </>
+                  : null}
                 </div>
             </div>
             
-            <div className='nav-category' onMouseEnter={() => togglePersonal(true)} onMouseLeave={() => togglePersonal(false)}>
+            <div className='nav-category' style={showingPersonal ? {color: '#DFC853'}:null} onMouseEnter={() => togglePersonal(true)} onMouseLeave={() => togglePersonal(false)}>
                 <div className="nav-category-label">Personal Development</div>
                 <div className='nav-subcategories'>
-                  {showingPersonal ? categoriesList["Personal Development"].map(subcategory => <div className='nav-subcategory' key={subcategory}>{subcategory}</div>) : null}
+                  {showingPersonal ? 
+                  <>
+                    {categoriesList["Personal Development"].map(subcategory => <div className='nav-subcategory' key={subcategory}>{subcategory}</div>)}
+                    
+                  </>
+                  : null}
                 </div>
             </div>
             
-            <div className='nav-category' onMouseEnter={() => toggleDesign(true)} onMouseLeave={() => toggleDesign(false)}>
+            <div className='nav-category' style={showingDesign ? {color: '#DFC853'}:null} onMouseEnter={() => toggleDesign(true)} onMouseLeave={() => toggleDesign(false)}>
                 <div className="nav-category-label">Design</div>
                 <div className='nav-subcategories'>
-                  {showingDesign ? categoriesList["Design"].map(subcategory => <div className='nav-subcategory' key={subcategory}>{subcategory}</div>) : null}
+                  {showingDesign ? 
+                  <>
+                    {categoriesList["Design"].map(subcategory => <div className='nav-subcategory' key={subcategory}>{subcategory}</div>)}
+                    
+                  </>
+                  : null}
                 </div>
             </div>
             
-            <div className='nav-category' onMouseEnter={() => toggleMarketing(true)} onMouseLeave={() => toggleMarketing(false)}>
+            <div className='nav-category' style={showingMarketing ? {color: '#DFC853'}:null} onMouseEnter={() => toggleMarketing(true)} onMouseLeave={() => toggleMarketing(false)}>
                 <div className="nav-category-label">Marketing</div>
                 <div className='nav-subcategories'>
-                  {showingMarketing ? categoriesList["Marketing"].map(subcategory => <div className='nav-subcategory' key={subcategory}>{subcategory}</div>) : null}
+                  {showingMarketing ? 
+                  <>
+                    {categoriesList["Marketing"].map(subcategory => <div className='nav-subcategory' key={subcategory}>{subcategory}</div>)}
+                    
+                  </>
+                  : null}
                 </div>
             </div>
             
-            <div className='nav-category' onMouseEnter={() => toggleHealth(true)} onMouseLeave={() => toggleHealth(false)}>
+            <div className='nav-category' style={showingHealth ? {color: '#DFC853'}:null}onMouseEnter={() => toggleHealth(true)} onMouseLeave={() => toggleHealth(false)}>
                 <div className="nav-category-label">Health & Fitness</div>
                 <div className='nav-subcategories'>
-                  {showingHealth ? categoriesList["Health & Fitness"].map(subcategory => <div className='nav-subcategory' key={subcategory}>{subcategory}</div>) : null}
+                  {showingHealth ? 
+                  <>
+                    {categoriesList["Health & Fitness"].map(subcategory => <div className='nav-subcategory' key={subcategory}>{subcategory}</div>)}
+                    
+                  </>  
+                  : null}
                 </div>
             </div>
             
-            <div className='nav-category' onMouseEnter={() => toggleMusic(true)} onMouseLeave={() => toggleMusic(false)}>
+            <div className='nav-category' style={showingMusic ? {color: '#DFC853'}:null} onMouseEnter={() => toggleMusic(true)} onMouseLeave={() => toggleMusic(false)}>
                 <div className="nav-category-label">Music</div>
                 <div className='nav-subcategories'>
-                  {showingMusic ? categoriesList["Music"].map(subcategory => <div className='nav-subcategory' key={subcategory}>{subcategory}</div>) : null}
+                  {showingMusic ? 
+                  <>
+                    {categoriesList["Music"].map(subcategory => <div className='nav-subcategory' key={subcategory}>{subcategory}</div>)}
+                    
+                  </>
+                  : null}
                 </div>
             </div>
 
@@ -117,7 +168,7 @@ const NavBar = () => {
 
       <div className="nav-buttons">
         <Link to='/login' className="login-button">Log in</Link>
-        <Link to='/signup' className="login-button">Sign up</Link>
+        <Link to='/signup' className="login-button signup-button">Sign up</Link>
       </div>
       
     </div>
