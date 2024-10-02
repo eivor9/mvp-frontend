@@ -1,6 +1,7 @@
 // Pages/Category.jsx
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
+import "../Styles/Category.css";
 
 //components 
 import UserCard from '../Components/UserCard';
@@ -49,18 +50,16 @@ const Category = () => {
 
       <div className="category-user-list">
       {showMentors ? (mentors.map(mentor => {
-        return  <Link>
+        return  <Link key={mentor.id}>
                   <UserCard
-                    key={mentor.id}
                     name={`${mentor.first_name} ${mentor.last_name}`}
                     job_title={`${mentor.job_title}`}
                     categoryName={categoryName}
                   />
                 </Link>        
       })) : (mentees.map(mentee => {
-        return  <Link>
+        return  <Link key={mentee.id}>
                   <UserCard
-                    key={mentee.id}
                     name={`${mentee.first_name} ${mentee.last_name}`}
                     job_title={`${mentee.job_title}`}
                     categoryName={categoryName}
