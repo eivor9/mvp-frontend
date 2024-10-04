@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import {Link} from 'react-router-dom';
 import "../Styles/NavBar.css";
+import logo3 from "../assets/logo3.png";
 
 const NavBar = () => {
 
@@ -33,7 +34,9 @@ const NavBar = () => {
   return(
     <div className='NavBar'>
       <div className="menu-button">HB</div>
-      <Link to='/' className="nav-logo">LOGO</Link>
+      <Link to='/' className="nav-logo">
+        <img src={logo3} alt="" />
+      </Link>
 
       <div className='nav-categories' onMouseEnter={() => toggleCategories(true)} onMouseLeave={() => toggleCategories(false)}>
         <div className="categories-button">Categories</div>

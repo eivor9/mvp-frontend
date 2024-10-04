@@ -1,0 +1,40 @@
+.ProgressTracking{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    .category-header{
+        font-size: 38px;
+        margin: 0 70px;
+        font-weight: lighter;
+        span{
+            position: relative;
+            top: -3px;
+        }
+    }
+    .assignment-chart-container{
+        margin: 0 70px;
+        display: flex;
+        justify-content: space-between;
+        .dated-assignments{
+            font-size: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            .to-do{
+                border: 1px solid black;
+                padding: 5px;
+                width: 400px;
+            }
+            .upcoming-assignments{
+                border: 1px solid black;
+                padding: 5px;
+                width: 400px;
+            }
+            .past-assignments{
+                border: 1px solid black;
+                padding: 5px;
+                width: 400px;
+            }
+        }
+    }
+}

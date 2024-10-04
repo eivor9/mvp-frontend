@@ -9,30 +9,42 @@
     box-sizing: border-box;
     align-items: center;
     justify-content: center;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid rgba(0, 0, 0, 0);
+    z-index: 99;
+}
+.nav-logo{
+    img{
+        height: 80px;
+    }
 }
 .search-bar{
-    width: 70%;
+    width: 65%;
     height: 20px;
     border-radius: 20px;
-    border: 1px solid black;
+    border: 1px solid white;
     padding: 10px;
     font-size: 16px;
     outline: none;
+    background: transparent;
+    color: white;
+    &::placeholder{
+        color: white;
+    }
 }
 .nav-buttons{
     display: flex;
     gap: 20px;
     .login-button{
         text-decoration: none;
-        color: black;
-        border: 1px solid black;
-        padding: 8px;
+        color: white;
+        padding: 11px;
+        width: 70px;
         border-radius: 20px;
+        text-align: center;
     }
     .signup-button{
-        background: black;
-        color: white;
+        background: white;
+        color: black;
     }
 }
 .nav-categories{
@@ -42,6 +54,7 @@
         position: relative;
         top: 32px;
         padding-bottom: 65px;
+        color: white;
     }
     &:hover{
         .categories-button{
