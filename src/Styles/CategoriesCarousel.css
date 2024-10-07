@@ -1,56 +1,40 @@
-/* Container for the entire carousel */
-.carousel-container {
-  position: relative;
-  width: 50%; /* Set the carousel container to take 50% of the page width */
-  margin: auto;
-  overflow: hidden;
+.carousel-categories{
   display: flex;
-  justify-content: center;
-  align-items: center;
+  margin: 50px 30px 0;
+  font-size: 24px;
+  gap: 50px;
+  color: rgba(0, 0, 0, 0.5);
+  .home-category:hover{
+    color: black;
+    cursor: pointer;
+  }
 }
-
-/* The inner carousel that holds all items */
-.carousel {
+.carousel-subcategories{
   display: flex;
-  transition: transform 0.5s ease-in-out;
-}
-
-/* Each individual carousel item */
-.carousel-item {
-  width: calc(100% / 3); /* Show three items fully */
-  padding: 20px;
-  background-color: #f1f1f1;
-  text-align: center;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  margin: 10px;
-}
-
-/* Navigation buttons */
-.prev,
-.next {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background-color: rgba(0, 0, 0, 0.6);
-  color: white;
-  border: none;
-  padding: 10px;
-  cursor: pointer;
-  font-size: 18px;
-  border-radius: 50%;
-  z-index: 10;
-}
-
-.prev {
-  left: 10px;
-}
-
-.next {
-  right: 10px;
-}
-
-.prev:hover,
-.next:hover {
-  background-color: rgba(0, 0, 0, 0.8);
+  margin: 30px;
+  overflow-x: scroll;
+  padding-bottom: 20px;
+  gap: 25px;
+  .home-subcategory{
+    cursor: pointer;
+    .home-subcategory-picture{
+      width: 300px;
+      height: 200px;
+      filter: brightness(50%);
+    }
+    .home-subcategory-label{
+      border: 1px solid rgba(0, 0, 0, 0.2);
+      margin-top: 10px;
+      padding: 10px;
+  
+    }
+    &:hover{
+      .home-subcategory-picture{
+        filter: none;
+      }
+      .home-subcategory-label{
+        border-color: black;
+      }
+    }
+  }
 }

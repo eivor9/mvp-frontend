@@ -32,10 +32,10 @@ function App() {
             <Route path="/profile" element={<Profile />} />
             <Route path="/about" element={<About />} />
             {/* Categories Routes */}
-          <Route path="/categories/:category_id" element={<Category />} />
+            <Route path="/categories/:category_id" element={<Category />} />
             <Route path="/user-dashboard/:id" element={<UserDashboard />} />
             <Route path="/progress/:user_id/:connection_id" element={<ProgressTracking />} />
-          <Route path="*" element={<FourOFour />} />
+            <Route path="*" element={<FourOFour />} />
           </Routes>
         </main>
         <Footer />

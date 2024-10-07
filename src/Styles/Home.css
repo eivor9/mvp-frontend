@@ -1,0 +1,21 @@
+.Home{
+    .home-mission-statements{
+        display: flex;
+        justify-content: space-around;
+        background: rgba(235, 252, 255, 0.3);
+        margin-top: -80px;
+        padding: 95px 0;
+        .statement-container{
+            width: 300px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            color: rgba(0,0,0,0.5);
+            span{
+                font-weight: bold;
+                font-size: 24px;
+                color: black;
+            }
+        }
+    }
+}

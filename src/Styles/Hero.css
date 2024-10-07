@@ -21,13 +21,13 @@
       }
       .hero-small-text{
         position: absolute;
-        top: 280px;
+        top: 265px;
         left: 0;
         right: 0;
         margin: 0 auto; 
-        color: white;
+        color: rgba(255, 255, 255, 0.9);
         width: fit-content;
-        font-size: 26px;
+        font-size: 22px;
       }
       .hero-large-text{
         font-size: 48px;
@@ -37,7 +37,8 @@
         right: 0;
         margin: 0 auto;
         color: white;
-        width: fit-content;
+        width: 900px;
+        text-align: center;
       }
     }
   }
