@@ -1,14 +1,17 @@
 // Pages/SignUp.jsx
 
 import React, { useState } from "react";
-import "../Styles/SignUp.css"; // Assuming you want to style it separately
+import "../Styles/SignUp.css";
 import Hero from "../Components/Hero";
 const SignUp = () => {
   const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    password: "",
+    firstName: "",
+    lastName: "",
+    jobTitle: "",
+    education: "",
+    role: "", // This will be either 'Mentor' or 'Mentee'
   });
+
   const [errors, setErrors] = useState({});
   const [submitted, setSubmitted] = useState(false);
 
@@ -23,18 +26,12 @@ const SignUp = () => {
   const validate = () => {
     const errors = {};
 
-    // Basic validation rules
-    if (!formData.name.trim()) errors.name = "Name is required";
-    if (!formData.email.trim()) {
-      errors.email = "Email is required";
-    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-      errors.email = "Email is invalid";
-    }
-    if (!formData.password) {
-      errors.password = "Password is required";
-    } else if (formData.password.length < 6) {
-      errors.password = "Password must be at least 6 characters";
-    }
+    // Validation rules for required fields
+    if (!formData.firstName.trim()) errors.firstName = "First name is required";
+    if (!formData.lastName.trim()) errors.lastName = "Last name is required";
+    if (!formData.education) errors.education = "Please select your education";
+    if (!formData.role)
+      errors.role = "Please select whether you are a mentor or a mentee";
 
     return errors;
   };
@@ -57,53 +54,100 @@ const SignUp = () => {
       <Hero />
       <div className="signup-container">
         {submitted ? (
-          <h2>Thank you for signing up, {formData.name}!</h2>
+          <h2>Thank you for signing up, {formData.firstName}!</h2>
         ) : (
           <form onSubmit={handleSubmit} className="signup-form">
             <h2>Sign Up</h2>
 
-            {/* Name Field */}
+            {/* First Name Field */}
             <div className="form-group">
-              <label htmlFor="name">Name:</label>
+              <label htmlFor="firstName"></label>
               <input
                 type="text"
-                name="name"
-                value={formData.name}
+                name="firstName"
+                value={formData.firstName}
                 onChange={handleChange}
-                className={errors.name ? "error" : ""}
+                className={errors.firstName ? "error" : ""}
+                placeholder="Please enter first name"
               />
-              {errors.name && (
-                <small className="error-message">{errors.name}</small>
+              {errors.firstName && (
+                <small className="error-message">{errors.firstName}</small>
               )}
             </div>
 
-            {/* Email Field */}
+            {/* Last Name Field */}
             <div className="form-group">
-              <label htmlFor="email">Email:</label>
+              <label htmlFor="lastName"></label>
               <input
-                type="email"
-                name="email"
-                value={formData.email}
+                type="text"
+                name="lastName"
+                value={formData.lastName}
                 onChange={handleChange}
-                className={errors.email ? "error" : ""}
+                className={errors.lastName ? "error" : ""}
+                placeholder="Please enter last name"
               />
-              {errors.email && (
-                <small className="error-message">{errors.email}</small>
+              {errors.lastName && (
+                <small className="error-message">{errors.lastName}</small>
               )}
             </div>
 
-            {/* Password Field */}
+            {/* Job Title Field (Optional) */}
             <div className="form-group">
-              <label htmlFor="password">Password:</label>
+              <label htmlFor="jobTitle"></label>
               <input
-                type="password"
-                name="password"
-                value={formData.password}
+                type="text"
+                name="jobTitle"
+                value={formData.jobTitle}
                 onChange={handleChange}
-                className={errors.password ? "error" : ""}
+                placeholder="Please enter job title (optional)"
               />
-              {errors.password && (
-                <small className="error-message">{errors.password}</small>
+            </div>
+
+            {/* Education Dropdown */}
+            <div className="form-group">
+              <label htmlFor="education"></label>
+              <select
+                name="education"
+                value={formData.education}
+                onChange={handleChange}
+                className={errors.education ? "error" : ""}
+              >
+                <option value="">Select your education category</option>
+                <option value="Art">Art</option>
+                <option value="Science">Science</option>
+                <option value="Math">Math</option>
+                <option value="Engineering">Engineering</option>
+                <option value="Literature">Literature</option>
+                <option value="Business">Business</option>
+                <option value="Technology">Technology</option>
+                <option value="Humanities">Humanities</option>
+              </select>
+              {errors.education && (
+                <small className="error-message">{errors.education}</small>
+              )}
+            </div>
+
+            {/* Mentor/Mentee Buttons */}
+            <div className="form-group">
+              <label>Role:</label>
+              <div className="role-buttons">
+                <button
+                  type="button"
+                  className={formData.role === "Mentor" ? "selected" : ""}
+                  onClick={() => setFormData({ ...formData, role: "Mentor" })}
+                >
+                  Mentor
+                </button>
+                <button
+                  type="button"
+                  className={formData.role === "Mentee" ? "selected" : ""}
+                  onClick={() => setFormData({ ...formData, role: "Mentee" })}
+                >
+                  Mentee
+                </button>
+              </div>
+              {errors.role && (
+                <small className="error-message">{errors.role}</small>
               )}
             </div>
 
