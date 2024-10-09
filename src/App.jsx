@@ -7,7 +7,7 @@ import "./App.css";
 // PAGES
 import Home from "./Pages/Home";
 import SignUp from "./Pages/SignUp";
-import Login from "./Pages/Login";
+import Login from "./Pages/LoginDev";
 import Profile from "./Pages/Profile";
 import Category from "./Pages/Category";
 import FourOFour from "./Pages/FourOFour";
