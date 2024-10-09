@@ -1,0 +1,29 @@
+.faq-container{
+    margin: 30px;
+    display: flex;
+    flex-direction: column;
+    .faq-header{
+        font-size: 24px;
+        font-weight: bold;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    .faq{
+        width: 100%;
+        max-width: 900px;
+        border-top: 1px solid black;
+        margin: auto;
+        font-size: 20px;
+        padding: 20px 0 10px;
+        .faq-question{
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
+        .faq-answer{
+            font-size: 18px;
+            font-weight: lighter;
+            transition: height 1s ease;
+        }
+    }
+
+}

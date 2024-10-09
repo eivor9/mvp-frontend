@@ -1,6 +1,7 @@
 // Components/AssignmentsTable.jsx
 
 import React, { useState } from 'react';
+import '../Styles/AssignmentsTable.css';
 
 const AssignmentsTable = () => {
 
@@ -64,24 +65,26 @@ const AssignmentsTable = () => {
   return (
     <div className='AssignmentsTable'>
 
-      <div className="filter-table">
-        <div className="filter-table-label">Filter</div>
-        <select onChange={handleFilter} value={filter} name="" id="filter-table-menu">
-          <option value="">All</option>
-          {metrics.map(metric => <option key={metric} value={metric}>{metric}</option>)}
-        </select>
+      <div className="filters-container">
+        <div className="filter-table">
+          <div className="filter-table-label">Filter</div>
+          <select onChange={handleFilter} value={filter} name="" id="filter-table-menu">
+            <option value="">All</option>
+            {metrics.map(metric => <option key={metric} value={metric}>{metric}</option>)}
+          </select>
+        </div>
+
+        <div className="sort-table">
+          <div className="sort-table-label">Sort</div>
+          <select onChange={handleSort} value={sort} name="" id="sort-table-menu">
+            {Object.keys(assignments[1]).map(key => <option key={key} value={key}>{key}</option>)}
+          </select>
+        </div>
+
+        <div className="apply-filters-button" onClick={applyFilters}>Apply</div>
       </div>
 
-      <div className="sort-table">
-        <div className="sort-table-label">Sort</div>
-        <select onChange={handleSort} value={sort} name="" id="sort-table-menu">
-          {Object.keys(assignments[1]).map(key => <option key={key} value={key}>{key}</option>)}
-        </select>
-      </div>
-
-      <div className="apply-filters-button" onClick={applyFilters}>Apply</div>
-
-      <table>
+      <table className='assignments-table'>
         <thead>
           <tr>
             <th>Assignment</th>
@@ -94,7 +97,7 @@ const AssignmentsTable = () => {
         <tbody>
           {assignments.filter(assignment => tableMenu.filter ? assignment.Metric === tableMenu.filter : true).sort((x,y) => x[tableMenu.sort] < y[tableMenu.sort] ? -1 : 1).map(assignment => 
             <tr key={assignment.Name}>
-              <td>{assignment.Name}<br/>{assignment.Metric}</td>
+              <td>{assignment.Name}<span>{assignment.Metric}</span></td>
               <td>{assignment["Target Date"]}</td>
               <td>{assignment["Submission Date"]}</td>
               <td>{assignment.Score}</td>

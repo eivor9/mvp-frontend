@@ -18,6 +18,7 @@ import Subcategory from "./Pages/Subcategory";
 import NavBar from "./Components/NavBar";
 import Footer from "./Components/Footer";
 import UserDashboard from "./Pages/UserDashboard";
+import ProgressTracking from "./Pages/ProgressTracking";
 
 function App() {
   return (
@@ -34,7 +35,10 @@ function App() {
             {/* Categories Routes */}
             <Route path="/categories/:category_id" element={<Category />} />
             <Route path="/categories/:category_id/subcategories/:subcategory_id" element={<Subcategory />} />
+            <Route path="/categories/:category_id" element={<Category />} />
             <Route path="/user-dashboard/:id" element={<UserDashboard />} />
+            <Route path="*" element={<FourOFour />} />
+            <Route path="/progress/:user_id/:connection_id" element={<ProgressTracking />} />
             <Route path="*" element={<FourOFour />} />
           </Routes>
         </main>

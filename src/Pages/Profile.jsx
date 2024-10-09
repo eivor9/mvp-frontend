@@ -196,6 +196,7 @@ const Profile = () => {
         padding: 3,
         overflowY: 'auto',
         height: '100vh',
+        marginTop: '3em',
       }}
     >
       <Typography

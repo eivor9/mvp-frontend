@@ -1,15 +1,16 @@
 /* General body styles */
-body {
+/* body {
   font-family: sans-serif;
   display: flex;
-  justify-content: center; /* Horizontally centers content */
-  align-items: center; /* Vertically centers content */
-  flex-direction: column; /* Stack elements vertically */
-  min-height: 100vh; /* Full viewport height */
+  justify-content: center; // Horizontally centers content 
+  align-items: center; // Vertically centers content 
+  flex-direction: column; // Stack elements vertically 
+  min-height: 100vh; // Full viewport height 
   margin: 0;
-  text-align: center; /* Center text inside */
-  padding: 20px; /* Adds padding to the body to prevent content from hitting the edges */
-}
+  text-align: center; // Center text inside 
+  padding: 20px; // Adds padding to the body to prevent content from hitting the edges 
+} 
+*/
 
 /* Text box styling */
 .text-box {

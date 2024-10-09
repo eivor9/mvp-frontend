@@ -4,9 +4,9 @@ import Hero from "../Components/Hero";
 const About = () => {
   return (
     <div>
-      <h1>About</h1>
+      <Hero />
       <div className="text-box">
-        <Hero />
+        <h1>About</h1>
         <h3>Our Mission</h3>
         <strong>
           {" "}
