@@ -1,75 +1,196 @@
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     text-decoration: none;
 }
 
-.dashboard-user-list {
-    display: flex;
-    margin-left: 10px;
+body {
+    font-family: Arial, sans-serif;
 }
 
-.dashboard-card {
-    display: flex;
-    flex-direction: column;
-    border-radius: 5px;
-    margin: 10px;
-    box-sizing: border-box;
-    gap: 5px;
-    text-decoration: none;
-}
-
-.dashboard-card h4, p {
-    text-decoration: none;
-}
-
-.image-container img {
-    width:100%;
+.user-dashboard {
     height: 100%;
-    border-radius: 7px;
+    width: 100vw;
+    margin-top: 40px;
+    display: grid;
+    /* grid-template-rows: repeat(4, 1fr); */
+    /* flex-direction: column; */
+    /* align-items: center; */
+    /* gap: 20px;
+    padding: 20px; */
+    /* background-color: #f9f9f9; */
+}
+
+.dashboard-list-container {
+    width: 100%;
+    padding: 15px;
+}
+
+.dashboard-metrics-container {
+    width: 100%;
+    padding: 20px;
+}
+
+.dashboard-toggle-header {
+    display: flex;
+    align-items: flex-start;
     align-self: center;
 }
 
-.image-container {
-    position: relative;
+.dashboard-toggle-header h3 {
+    padding: .7em 2em;
+    border: 1px solid #222850;
+    border-radius: 25px;
 }
-.links-container { 
+
+.dashboard-toggle-header #mentee-header {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.dashboard-toggle-header #mentor-header {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+/* .dashboard-list-header {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-align: left;
+} */
+
+.dashboard-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+.dashboard-card {
+    position: relative;
+    width: 200px;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    /* overflow: hidden; */
+    transition: transform 0.3s ease;
+}
+
+.dashboard-card:hover {
+    transform: scale(1.05);
+}
+
+.dashboard-card h4,
+.dashboard-card p {
+    margin: 5px 0;
+    padding-left: 10px;
+    width: 100%;
+    text-align: left;
+    color: black;
+}
+
+.dashboard-card p{
+    color: rgb(142, 138, 138);
+}
+
+.user-card-image-container {
+    position: relative;
+    width: 100%;
+    height: 200px;
+}
+
+.user-card-image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 7px;
+}
+
+.user-card-links-container {
     position: absolute;
     top: 0;
     left: 0;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
-    border-radius: 7px;
     width: 100%;
     height: 100%;
     background: rgba(0, 0, 0, 0.4);
     color: white;
     text-align: center;
-    padding: 25px 5px;
+    padding: 5px;
+    border-radius: 7px;
     visibility: hidden;
-    transition: visibility 0.3s ease, opacity 0.3s ease;
     opacity: 0;
+    transition: visibility 0.3s ease, opacity 0.3s ease;
 }
 
-.links-container span{
-    width: 100%;
-    margin: 0 5px;
-    background-color: white;
-    color: black;
-    font-size: small;
-    padding: 7px 5px;
-    border-radius: 3px;
-}
-
-.links-container a {
-    text-decoration: none;
-    color: black;
-}
-
-.dashboard-card:hover .links-container {
+.dashboard-card:hover .user-card-links-container {
     visibility: visible;
     opacity: 1;
+}
+
+.user-card-links-container span {
+    width: 100%;
+    margin: 20px;
+    background-color: white;
+    color: black;
+    font-size: 14px;
+    padding: 10px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.user-card-links-container a {
+    color: black;
+    text-decoration: none;
+}
+
+.recent-activities-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 20px 0;
+    padding: 15px;
+    display: flex;
+    gap: 15px;
+    background-color: white;
+    border-radius: 10px;
+}
+
+.activity {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 150px;
+    height: 200px;
+    background-color: #f0f0f0;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    transition: transform 0.3s ease;
+}
+
+.activity img {
+    width: 100px;
+    height: 100px;
+    margin-bottom: 10px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.activity p {
+    font-size: 0.9rem;
+    margin: 5px 0;
+}
+
+.activity:hover {
+    transform: scale(1.05);
 }

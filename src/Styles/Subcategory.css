@@ -1,0 +1,15 @@
+.subcategory-container {
+    display: grid;
+    grid-auto-rows: 9fr 1fr 6fr;
+    height: 100%;
+    width: 100%;
+}
+
+.subcategory-card {
+    display: flex;
+    flex-direction: column;
+    color: black;
+}
+.subcategory-user-list {
+    display: flex;
+}
