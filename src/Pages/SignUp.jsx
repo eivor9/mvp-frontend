@@ -1,15 +1,24 @@
 // Pages/SignUp.jsx
 
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "../Styles/SignUp.css";
 import Hero from "../Components/Hero";
-const SignUp = () => {
+
+
+const SignUp = ({ setUser, setToken}) => {
+
+  const API = import.meta.env.VITE_BASE_URL;
+  const navigate = useNavigate();
+
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
     jobTitle: "",
     education: "",
     role: "", // This will be either 'Mentor' or 'Mentee'
+    email: "",
+    password_hash: "",
   });
 
   const [errors, setErrors] = useState({});
@@ -32,7 +41,9 @@ const SignUp = () => {
     if (!formData.education) errors.education = "Please select your education";
     if (!formData.role)
       errors.role = "Please select whether you are a mentor or a mentee";
-
+    if (!formData.email.trim()) errors.email = "Email is required";
+    if (!formData.password_hash.trim())
+      errors.password_hash = "Password is required";
     return errors;
   };
 
@@ -44,7 +55,50 @@ const SignUp = () => {
     } else {
       setErrors({});
       setSubmitted(true);
-      // Submit the form or make an API call here
+
+      //create 
+      const backEndObject = {
+        first_name: formData.firstName,
+        last_name: formData.lastName,
+        email: formData.email,
+        job_title: formData.jobTitle || null, 
+        is_mentee: formData.role === "Mentee",
+        is_mentor: formData.role === "Mentor",
+        password_hash: formData.password_hash,
+      }
+// send a post request to the backend
+      fetch(`${API}/users`, {
+        method: "POST",
+        body: JSON.stringify(backEndObject),
+        headers: {
+          "Content-Type": "application/json"
+        }
+      })
+      .then(res => res.json())
+      .then(res => {
+        // console.log(res)
+        if(res.user.id){
+          const { user, token } = res
+          setUser(user)
+          setToken(token)
+          setFormData((prev) => ({
+            firstName: "",
+            lastName: "",
+            jobTitle: "",
+            education: "",
+            role: "",
+            email: "",
+            password_hash: "",
+          }))
+          console.log(user.id)
+          navigate(`/user-dashboard/${user.id}`)
+        } else {
+          console.log(res)
+        }
+      })
+      .catch(err => {
+        console.error("Error signing up:", err)
+      })
       console.log("Form submitted successfully:", formData);
     }
   };
@@ -88,6 +142,37 @@ const SignUp = () => {
               />
               {errors.lastName && (
                 <small className="error-message">{errors.lastName}</small>
+              )}
+            </div>
+            
+            <div className="form-group">
+              <label htmlFor="password"></label>
+              <input
+                type="password"
+                name="password_hash"
+                value={formData.password_hash}
+                onChange={handleChange}
+                className={errors.password_hash ? "error" : ""}
+                placeholder="Please enter your password"
+              />
+              {errors.password_hash && (
+                <small className="error-message">{errors.password_hash}</small>
+              )}
+            </div>
+
+            {/* Email Field */}
+            <div className="form-group">
+              <label htmlFor="email"></label>
+              <input
+                type="email"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+                className={errors.email ? "error" : ""}
+                placeholder="Please enter your email"
+              />
+              {errors.email && (
+                <small className="error-message">{errors.email}</small>
               )}
             </div>
 
@@ -152,7 +237,7 @@ const SignUp = () => {
             </div>
 
             {/* Submit Button */}
-            <button type="submit" className="signup-button">
+            <button type="submit" onClick={handleSubmit} className="signup-button">
               Sign Up
             </button>
           </form>

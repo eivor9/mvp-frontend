@@ -27,7 +27,7 @@ const UserDashboard = () => {
 
     // Fetch all connections 
     useEffect(() => {       
-        fetch(`${API}/connections`)
+        fetch(`${API}/users/${id}/connections`)
         .then(res => res.json())
         .then(res => {
             setConnections(res)

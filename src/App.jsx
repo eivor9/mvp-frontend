@@ -2,6 +2,7 @@
 
 // DEPENDENCIES
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import React, { useState } from "react";
 import "./App.css";
 
 // PAGES
@@ -21,14 +22,18 @@ import UserDashboard from "./Pages/UserDashboard";
 import ProgressTracking from "./Pages/ProgressTracking";
 
 function App() {
+
+  const [user, setUser] = useState(null);
+  const [token, setToken] = useState(null)
+
   return (
     <div className="App">
       <Router>
-        <NavBar />
+        <NavBar user={user} setUser={setUser} setToken={setToken} />
         <main>
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/signup" element={<SignUp />} />
+            <Route path="/signup" element={<SignUp setUser={setUser} setToken={setToken} />} />
             <Route path="/login" element={<Login />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/about" element={<About />} />

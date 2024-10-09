@@ -5,7 +5,8 @@ import {Link} from 'react-router-dom';
 import "../Styles/NavBar.css";
 import logo3 from "../assets/logo3.png";
 
-const NavBar = () => {
+const NavBar = ({ user, setUser, setToken }) => {
+  
 
   const [showingCategories, toggleCategories] = useState(false);
   const [showingDeveleopment, toggleDevelopemnt] = useState(false);
@@ -29,6 +30,11 @@ const NavBar = () => {
     "Marketing": ["Digital Marketing", "Search Engine Optimization", "Social Media Marketing", "Branding", "Marketing Fundamentals", "Marketing Analytics & Animation"],
     "Health & Fitness": ["Fitness", "General Health", "Sports", "Nutrition & Diet", "Yoga", "Mental Health"],
     "Music": ["Instruments", "Music Production", "Music Fundamentals", "Vocal", "Music Techniques", "Music Software"]
+  }
+
+  const handleLogout = () => {
+    setUser(null)
+    setToken(null)
   }
 
   return(
