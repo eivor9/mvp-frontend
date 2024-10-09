@@ -4,23 +4,25 @@ import React, { useState, useEffect } from 'react';
 import { PieChart, Pie, Cell, ResponsiveContainer } from 'recharts';
 import '../Styles/DashboardMetrics.css';
 
-const DashboardMetrics = () => {
+const DashboardMetrics = (props) => {
   const [metrics, setMetrics] = useState([]);
+  const { connection_id } = props;
+  const API = import.meta.env.VITE_BASE_URL;
 
   useEffect(() => {
     const dummyData = [
       { id: 1, name: "Coding Skills", progress: 75, connection_id: 1 },
       { id: 2, name: "Communication", progress: 60, connection_id: 1 },
-      // { id: 3, name: "Problem Solving", progress: 80, connection_id: 1 },
-      // { id: 4, name: "Team Collaboration", progress: 90, connection_id: 1 },
+      { id: 3, name: "Problem Solving", progress: 80, connection_id: 1 },
+      { id: 4, name: "Team Collaboration", progress: 90, connection_id: 1 },
     ];
     setMetrics(dummyData);
     
     // Uncomment this block when ready to fetch real data
-    /*
+    
     const fetchMetrics = async () => {
       try {
-        const response = await fetch('http://localhost:4001/connections/1/metrics/all');
+        const response = await fetch(`${API}/connections/${connection_id}/metrics/all`);
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
@@ -32,8 +34,8 @@ const DashboardMetrics = () => {
     };
 
     fetchMetrics();
-    */
-  }, []);
+    
+  }, [connection_id]);
 
   const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
 
