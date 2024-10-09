@@ -11,10 +11,10 @@ const UserCard = (props) => {
 
   return (
     <div className={`user-card ${className}`}>
-      <div className="image-container">
+      <div className="user-card-image-container">
         <img src="https://mighty.tools/mockmind-api/content/human/41.jpg" alt="profile picture" />
         {addLinks && (
-          <div className="links-container">
+          <div className="user-card-links-container">
             <span id='conversation-link' onClick={(e) => {e.stopPropagation()}}>See Conversation</span>
             <span id='calender-link' onClick={(e) => {e.stopPropagation()}}>Calender</span>
           </div>
