@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
+import "../Styles/subcategory.css"
 
 //components 
 import UserCard from '../Components/UserCard';
+import Hero from '../Components/Hero';
 
 const Subcategory = () => {
 
@@ -37,40 +39,65 @@ const Subcategory = () => {
 
     useEffect(()=> {
     console.log({mentees: mentees, mentors : mentors});
-    }, [mentors], mentees)
+    }, [mentors, mentees])
 
+    // functions to set list-header behaviour
     const toggleShowMentors = () => {
         setShowMentors(!showMentors);
     }
 
+    const toggleShowMentees = () => {
+        setShowMentors(false);
+    };
+
+    const toggleHeaderColor = () => {
+        return {backgroundColor: '#222850', color: "white"};
+    }
+
     return (
-        <div>
-          <div className="header">
-            <span onClick={toggleShowMentors}>Mentors</span><span onClick={toggleShowMentors}>Mentees</span>
-          </div>
-    
-          <div className="category-user-list">
-          {showMentors ? (mentors.map(mentor => {
-            return  <Link key={mentor.id}>
-                      <UserCard
-                        name={`${mentor.first_name} ${mentor.last_name}`}
-                        job_title={`${mentor.job_title}`}
-                        categoryName={subcategoryName}
-                        className="subcategory-card"
-                      />
-                    </Link>        
-          })) : (mentees.map(mentee => {
-            return  <Link key={mentee.id}>
-                      <UserCard
-                        name={`${mentee.first_name} ${mentee.last_name}`}
-                        job_title={`${mentee.job_title}`}
-                        categoryName={subcategoryName}
-                        className="subcategory-card"
-                      />
-                    </Link>
+        <div className='subcategory-container'>
+            <Hero />
+            <div className="toggle-header">
+                <h3 id='mentor-header' style={showMentors ? toggleHeaderColor() : null} onClick={toggleShowMentors}>Mentors</h3>
+                <h3 id='mentee-header' style={!showMentors ? toggleHeaderColor() : null} onClick={toggleShowMentees}>Mentees</h3>
+            </div>
+        
             
-          }))}
-          </div>
+            {showMentors && (
+                <div className="subcategory-user-list">
+                    {mentors.length ? (mentors.map(mentor => {
+                        return  <Link key={mentor.id}>
+                                <UserCard
+                                    name={`${mentor.first_name} ${mentor.last_name}`}
+                                    job_title={`${mentor.job_title}`}
+                                    categoryName={subcategoryName}
+                                    className="subcategory-card"
+                                />
+                                </Link>        
+                            })): (
+                            <p>No mentors available in this subcategory</p>
+                    
+                    )}
+                </div>
+            )}
+                
+                {!showMentors && (
+                    <div className="subcategory-user-list">
+                       { mentees.length ? mentees.map(mentee => {
+                            return  <Link key={mentee.id}>
+                                    <UserCard
+                                        name={`${mentee.first_name} ${mentee.last_name}`}
+                                        job_title={`${mentee.job_title}`}
+                                        categoryName={subcategoryName}
+                                        className="subcategory-card"
+                                    />
+                                    </Link>
+                
+                            }) : (<p>No mentees in this subcategory</p>)
+                       } 
+                    </div>
+                )}
+            
         </div>
     );
 };
