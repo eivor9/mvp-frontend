@@ -5,6 +5,7 @@ import CategoriesCarousel from "../Components/CategoriesCarousel";
 import Testimonials from "../Components/Testimonials";
 import Hero from "../Components/Hero";
 import "../Styles/Home.css";
+import FAQ from "../Components/FAQ";
 
 
 const Home = () => {
@@ -29,6 +30,7 @@ const Home = () => {
 
       <CategoriesCarousel />
       <Testimonials />
+      <FAQ/>
     </div>
   );
 };

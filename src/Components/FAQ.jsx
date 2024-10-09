@@ -1,6 +1,7 @@
 // Components/FAQ.jsx
 
 import React, { useState } from 'react';
+import "../Styles/FAQ.css";
 
 const FAQ = () => {
 

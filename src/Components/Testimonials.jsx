@@ -47,9 +47,11 @@ const Testimonials = () => {
       sx={{
         display: 'flex',
         alignItems: 'center',
-        padding: 2,
+        justifyContent: 'center',
+        padding: 3,
         position: 'relative',
         zIndex: 0,
+        background: 'rgba(235, 252, 255, 0.3)'
       }}
     >
       <Button
@@ -73,7 +75,7 @@ const Testimonials = () => {
           display: 'flex',
           justifyContent: 'center',
           alignItems: 'center',
-          width: '500px', // Full width for centering
+          width: '900px', // Full width for centering
           overflow: 'hidden', // Hide overflow
           position: 'relative',
         }}
@@ -93,8 +95,11 @@ const Testimonials = () => {
               sx={{
                 flex: '0 0 100%',
                 maxWidth: '80%',
-                margin: '0 7%',
+                marginLeft: '90px',
+                marginRight: '6%',
                 padding: 2,
+                background: 'transparent',
+                boxShadow: 'none'
               }}
             >
               <CardContent>
