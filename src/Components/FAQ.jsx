@@ -38,7 +38,7 @@ const FAQ = () => {
         <div className="faq-question" onClick={() => {hideAllAnswers(); toggleQuestionThree(!showQuestionThree)}}>How do I find the right mentor for me?</div>
         {showQuestionThree ? <div className="faq-answer">Our platform includes filters based on industry, skills, experience, and availability, helping you find the best match. Additionally, each mentor profile includes reviews, ratings, and a detailed biography to give you a clearer picture of their approach and expertise.</div> : null}
       </div>
-
+{/* 
       <div className="faq">
         <div className="faq-question" onClick={() => {hideAllAnswers(); toggleQuestionFour(!showQuestionFour)}}>How long do mentorship relationships last?</div>
         {showQuestionFour ? <div className="faq-answer">Mentorship relationships can last as long as needed. Some mentorships are short-term for specific projects or goals, while others can be long-term, depending on the needs of the mentee and the availability of the mentor.</div> : null}
@@ -47,7 +47,7 @@ const FAQ = () => {
       <div className="faq">
         <div className="faq-question" onClick={() => {hideAllAnswers(); toggleQuestionFive(!showQuestionFive)}}>Can I mentor and be a mentee at the same time?</div>
         {showQuestionFive ? <div className="faq-answer">Absolutely! Many users on our platform serve as both mentors and mentees, depending on their expertise in certain areas and their desire to learn in others.</div> : null}
-      </div>
+      </div> */}
 
     </div>
   );

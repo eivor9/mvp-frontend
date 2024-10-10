@@ -8,7 +8,7 @@ import "./App.css";
 // PAGES
 import Home from "./Pages/Home";
 import SignUp from "./Pages/SignUp";
-import Login from "./Pages/LoginDev";
+import LoginDev from "./Pages/LoginDev";
 import Profile from "./Pages/Profile";
 import Category from "./Pages/Category";
 import FourOFour from "./Pages/FourOFour";
@@ -34,7 +34,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/signup" element={<SignUp setUser={setUser} setToken={setToken} />} />
-            <Route path="/login" element={<Login />} />
+            <Route path="/login" element={<LoginDev setUser={setUser} setToken={setToken} />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/about" element={<About />} />
             {/* Categories Routes */}

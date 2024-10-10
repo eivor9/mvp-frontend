@@ -14,7 +14,7 @@ body {
 
 .category-container {
     display: grid;
-    /* grid-auto-rows: 9fr 1fr 6fr; */
+    grid-auto-rows: 9fr 1fr 6fr;
     height: 100%;
     width: 100%;
 }

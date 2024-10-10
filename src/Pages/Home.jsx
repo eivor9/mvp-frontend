@@ -28,9 +28,9 @@ const Home = () => {
         </div>
       </div>
 
-      <CategoriesCarousel />
-      <Testimonials />
+      {/* <CategoriesCarousel /> */}
       <FAQ/>
+      <Testimonials />
     </div>
   );
 };

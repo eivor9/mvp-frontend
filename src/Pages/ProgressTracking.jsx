@@ -4,9 +4,11 @@ import Hero from "../Components/Hero";
 import ProgressTrackingMetrics from '../Components/ProgressTrackingMetrics';
 import AssignmentsTable from '../Components/AssignmentsTable';
 
-const API = import.meta.env.VITE_BASE_URL;
 
 const ProgressTracking = () => {
+
+  const API = import.meta.env.VITE_BASE_URL;
+
   return (
     <div className='ProgressTracking'>
         <Hero />
