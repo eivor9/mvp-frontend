@@ -21,6 +21,7 @@ const UserDashboard = () => {
     const [categories, setCategories] = useState([]);
     const [showMentors, setShowMentors] = useState(true);
     const [currentConnectionId, setCurrentConnectionId] = useState(null)
+    const [usersCategories , setUsersCategories] = useState([])
     
     // const [subcategories, setSubcategories] = useState([]);
 
@@ -51,6 +52,16 @@ const UserDashboard = () => {
         .then(res => res.json())
         .then(res => {
             setCategories(res)
+        })
+        .catch(err => {
+            console.error(err)
+        })
+
+        fetch(`${API}/category-users/users/${id}`)
+        .then(res => res.json())
+        .then(res => {
+            console.log("user's-categories:",res)
+            setUsersCategories(res)
         })
         .catch(err => {
             console.error(err)
