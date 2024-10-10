@@ -129,7 +129,15 @@ const UserDashboard = () => {
         <div className='user-dashboard'>
             {/* {console.log(currentConnectionId)} */}
             <div className="dashboard-metrics-container">
-                <DashboardMetrics connection_id={currentConnectionId}/>
+                {connections.length ? 
+                
+                    <DashboardMetrics connection_id={currentConnectionId} />
+                     : 
+                    <div className="get-started">
+                        {/* <Link to={`/categories/${}`}>Find A Mentor</Link> */}
+                    </div>
+                }
+                
             </div>
            
             <div className='dashboard-list-container connections-list'>

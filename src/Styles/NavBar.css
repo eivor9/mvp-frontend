@@ -79,10 +79,11 @@
                 padding-bottom: 250px;
             }
             .nav-subcategories{
+                display: none;
                 position: absolute;
                 width: fit-content;
                 top: -1px;
-                left: 280px;
+                left: 260px;
                 height: 600px;
                 border: 1px solid black;
                 background: white;

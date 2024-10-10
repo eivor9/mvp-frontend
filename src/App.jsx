@@ -36,7 +36,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/signup" element={<SignUp setUser={setUser} setToken={setToken} />} />
             <Route path="/login" element={<LoginDev setUser={setUser} setToken={setToken} />} />
-            <Route path="/profile" element={<Profile />} />
+            <Route path="/profile/:user_id" element={<Profile />} />
             <Route path="/about" element={<About />} />
             {/* Categories Routes */}
             <Route path="/categories/:category_id" element={<Category />} />

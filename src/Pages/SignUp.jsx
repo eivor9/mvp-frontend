@@ -81,6 +81,13 @@ const SignUp = ({ setUser, setToken}) => {
           const { user, token } = res
           setUser(user)
           setToken(token)
+
+        // using value from education field to create first userCategory row for new user.(the update profile to add more)
+          const userCategoryObject = {
+            user_id: user.id,
+            category_id: formData.education,
+          }
+
           setFormData((prev) => ({
             firstName: "",
             lastName: "",
@@ -198,14 +205,16 @@ const SignUp = ({ setUser, setToken}) => {
                 className={errors.education ? "error" : ""}
               >
                 <option value="">Select your education category</option>
-                <option value="Art">Art</option>
-                <option value="Science">Science</option>
-                <option value="Math">Math</option>
-                <option value="Engineering">Engineering</option>
-                <option value="Literature">Literature</option>
-                <option value="Business">Business</option>
-                <option value="Technology">Technology</option>
-                <option value="Humanities">Humanities</option>
+                <option value="1">Development</option>
+                <option value="2">Business</option>
+                <option value="3">Finance & Accounting</option>
+                <option value="4">IT & Software</option>
+                <option value="5">Office Productivity</option>
+                <option value="6">Personal Development</option>
+                <option value="7">Design</option>
+                <option value="8">Marketing</option>
+                <option value="9">Health & Fitness</option>
+                <option value="10">Music</option>
               </select>
               {errors.education && (
                 <small className="error-message">{errors.education}</small>
