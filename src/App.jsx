@@ -14,6 +14,7 @@ import Category from "./Pages/Category";
 import FourOFour from "./Pages/FourOFour";
 import About from "./Pages/About";
 import Subcategory from "./Pages/Subcategory";
+import FAQ from "./Components/FAQ";
 
 // COMPONENTS
 import NavBar from "./Components/NavBar";
@@ -45,6 +46,7 @@ function App() {
             <Route path="*" element={<FourOFour />} />
             <Route path="/progress/:user_id/:connection_id" element={<ProgressTracking />} />
             <Route path="*" element={<FourOFour />} />
+            <Route path= "/faq" element={<FAQ />} />
           </Routes>
         </main>
         <Footer />
