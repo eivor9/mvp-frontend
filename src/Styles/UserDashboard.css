@@ -203,6 +203,10 @@ body {
     width: 100%;
     border: 1px solid black;
     display: flex;
-    align-items: center;
-    justify-content: center;
+    align-items: end;
+    
+    select{
+        font-size: 30px;
+        width: 150px;
+    }
 }

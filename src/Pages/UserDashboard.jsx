@@ -22,6 +22,9 @@ const UserDashboard = () => {
     const [showMentors, setShowMentors] = useState(true);
     const [currentConnectionId, setCurrentConnectionId] = useState(null)
     const [usersCategories , setUsersCategories] = useState([])
+    const [currentCategory, setCurrentCategory] = useState('');
+    const [showMetrics, setShowMetrics] = useState(false);
+    const [potentialMentors, setPotentialMentors] = useState([]);
     
     // const [subcategories, setSubcategories] = useState([]);
 
@@ -31,7 +34,9 @@ const UserDashboard = () => {
         fetch(`${API}/users/${id}/connections`)
         .then(res => res.json())
         .then(res => {
-            setConnections(res)
+            setConnections(res);
+            console.log("connections:", res);
+            setShowMetrics(res.length > 0);
         })
         .catch(err => {
             console.error(err);
@@ -61,11 +66,24 @@ const UserDashboard = () => {
         .then(res => res.json())
         .then(res => {
             console.log("user's-categories:",res)
-            setUsersCategories(res)
+            setUsersCategories(res);
+            return res;
         })
+        .then(res => {
+            setCurrentCategory(res[0].category_id);
+            fetch(`${API}/categories/${res[0].category_id}/category-users`)
+            .then(res => res.json())
+            .then(res => {
+            console.log(res)
+        })
+        })
+
+        
+        
         .catch(err => {
             console.error(err)
         })
+
     }, [])
 
     // useEffect to set mentor/mentee arrays.
@@ -134,22 +152,41 @@ const UserDashboard = () => {
         setCurrentConnectionId(current_id);
     }
 
-    
+    const handleCategoryChange = (e) => {
+        setCurrentCategory(e.target.value);
+        fetch(`${API}/categories/${currentCategory}/category-users`)
+        .then(res => res.json())
+        .then(res => {
+        console.log(res)
+
+        //filter for mentors
+        const filterMentors = res.categoryUsers.filter(user => user.is_mentor === true);
+
+        setPotentialMentors(filterMentors);
+        console.log("potentialMentors: ", potentialMentors)
+        });
+    }
 
     return (
         <div className='user-dashboard'>
             {/* {console.log(currentConnectionId)} */}
             <div className="dashboard-metrics-container">
-                {connections.length ? 
+                {connections.length < 0 ? 
                 
                     <DashboardMetrics connection_id={currentConnectionId} />
                      : 
                     <div className="get-started">
                         {/* <Link to={`/categories/${}`}>Find A Mentor</Link> */}
+                        <div className="get-started-label">Pick a Mentor</div>
+                        
                     </div>
                 }
                 
             </div>
+
+            <select onChange={handleCategoryChange} value={currentCategory} id="current-category">
+                {usersCategories.map(category => <option key={category.id} value={category.category_id}>{categories[category.category_id - 1].name}</option>)}
+            </select>
            
             <div className='dashboard-list-container connections-list'>
                 <div className="toggle-header">
