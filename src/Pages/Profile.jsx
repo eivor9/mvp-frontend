@@ -1,6 +1,6 @@
 // Pages/Profile.jsx
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   Box,
   TextField,
@@ -15,97 +15,11 @@ import EditIcon from '@mui/icons-material/Edit';
 import SaveIcon from '@mui/icons-material/Save';
 import CancelIcon from '@mui/icons-material/Cancel';
 import DeleteIcon from '@mui/icons-material/Delete';
+import { useParams } from 'react-router-dom'; // Import useParams
 
 const Profile = () => {
-  // Hardcoded categories and subcategories
-  const categoriesList = {
-    Development: [
-      'Web Development',
-      'Mobile Development',
-      'Programming Languages',
-      'Game Development',
-      'Database Design & Development',
-      'Software Testing',
-    ],
-    Business: [
-      'Entrepreneurship',
-      'Communication',
-      'Management',
-      'Sales',
-      'Business Strategy',
-    ],
-    'Finance & Accounting': [
-      'Accounting & Bookkeping',
-      'Cryptocurrency & Blockchain',
-      'Finance',
-      'Financial Modeling & Analysis',
-      'Investing & Trading',
-    ],
-    'IT & Software': [
-      'IT Certifications',
-      'Network & Security',
-      'Hardware',
-      'Operating Systems & Servers',
-      'Other IT & Software',
-    ],
-    'Office Productivity': [
-      'Microsoft',
-      'Apple',
-      'Google',
-      'SAP',
-      'Oracle',
-      'Other Office Productivity',
-    ],
-    'Personal Development': [
-      'Personal Transformation',
-      'Personal Productivity',
-      'Leadership',
-      'Career Development',
-      'Parenting & Relationships',
-    ],
-    Design: [
-      'Web Design',
-      'Graphic Design & Illustration',
-      'Design Tools',
-      'User Experience Design',
-      'Game Design',
-      '3D & Animation',
-    ],
-    Marketing: [
-      'Digital Marketing',
-      'Search Engine Optimization',
-      'Social Media Marketing',
-      'Branding',
-      'Marketing Fundamentals',
-      'Marketing Analytics & Animation',
-    ],
-    'Health & Fitness': [
-      'Fitness',
-      'General Health',
-      'Sports',
-      'Nutrition & Diet',
-      'Yoga',
-      'Mental Health',
-    ],
-    Music: [
-      'Instruments',
-      'Music Production',
-      'Music Fundamentals',
-      'Vocal',
-      'Music Techniques',
-      'Music Software',
-    ],
-  };
+  const { user_id } = useParams(); // Get user_id from URL parameters
 
-  const hardcodedCategories = Object.keys(categoriesList).map(
-    (key, index) => ({
-      id: index + 1,
-      name: key,
-      subcategories: categoriesList[key],
-    })
-  );
-
-  const [categories] = useState(hardcodedCategories);
   const [editing, setEditing] = useState({
     firstName: false,
     lastName: false,
@@ -113,8 +27,8 @@ const Profile = () => {
     jobTitle: false,
     bio: false,
     goals: false,
-    selectedCategory: '',
-    selectedSubcategory: '',
+    selectedCategory: '', // Remove this
+    selectedSubcategory: '', // Remove this
     links: [false, false, false], // Track editing state for links
   });
   const [formData, setFormData] = useState({
@@ -125,8 +39,10 @@ const Profile = () => {
     bio: '',
     goals: '',
     memberSince: '',
-    links: ['LinkedIn', 'Twitter', ''], // Initial links with LinkedIn and Twitter
+    links: ['LinkedIn.com/', 'X.com/', ''], 
   });
+
+  const [isEditing, setIsEditing] = useState(true); // Keep this as true to allow editing
 
   const handleEditToggle = (field) => {
     setEditing({ ...editing, [field]: !editing[field] });
@@ -160,33 +76,80 @@ const Profile = () => {
     setFormData({ ...formData, links: [...formData.links, ''] }); // Add a new empty link
   };
 
-  const handleSave = () => {
-    // Save logic here
-    setEditing({
-      firstName: false,
-      lastName: false,
-      email: false,
-      jobTitle: false,
-      bio: false,
-      goals: false,
-      selectedCategory: '',
-      selectedSubcategory: '',
-      links: [false, false, false], // Reset link editing states
-    });
+  const handleSave = async () => {
+    const API = import.meta.env.VITE_BASE_URL; // Get the base URL from environment variables
+    console.log('Form Data:', formData); // Log the form data to check the email format
+    console.log('User ID:', user_id);
+    try {
+      const response = await fetch(`${API}/users/${user_id}`, { // Use user_id to target the correct user
+        method: 'PUT', // Use PUT method to update user data
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          id: user_id,
+          first_name: formData.firstName,
+          last_name: formData.lastName,
+          job_title: formData.jobTitle,
+          bio: formData.bio,
+          goals: formData.goals,
+          email: formData.email, // Ensure email is included in the request
+          password_hash: formData.password_hash || '', // Add password_hash if required
+        }),
+      });
+
+      const data = await response.json();
+      if (response.ok) {
+        console.log('User data updated successfully:', data);
+        // Do not set isEditing to false to keep fields editable
+      } else {
+        console.error('Error updating user data:', data.error);
+      }
+    } catch (error) {
+      console.error('Error updating user data:', error);
+    }
   };
 
   const handleCancel = () => {
-    setEditing({
-      firstName: false,
-      lastName: false,
-      email: false,
-      jobTitle: false,
-      bio: false,
-      goals: false,
-      selectedCategory: '',
-      selectedSubcategory: '',
-      links: [false, false, false], // Reset link editing states
-    });
+    // Logic to reset form data if needed
+    setIsEditing(false); // Disable editing on cancel
+  };
+
+  useEffect(() => {
+    const fetchUserData = async () => {
+      const API = import.meta.env.VITE_BASE_URL;
+
+      try {
+        const response = await fetch(`${API}/users/${user_id}`); // Use user_id here
+        const data = await response.json();
+        if (response.ok) {
+          // Prepopulate formData with fetched user data
+          setFormData((prevData) => ({
+            ...prevData,
+            firstName: data.first_name,
+            lastName: data.last_name,
+            email: data.email,
+            jobTitle: data.job_title,
+            bio: data.bio || '', 
+            goals: data.goals || '',
+            memberSince: formatDate(data.signup_date), 
+            links: data.links || prevData.links, 
+          }));
+        } else {
+          console.error('Error fetching user data:', data.error);
+        }
+      } catch (error) {
+        console.error('Error fetching user data:', error);
+      }
+    };
+
+    fetchUserData();
+  }, [user_id]); // Add user_id as a dependency
+
+  // Function to format the date
+  const formatDate = (dateString) => {
+    const options = { year: 'numeric', month: 'long', day: 'numeric' };
+    return new Date(dateString).toLocaleDateString(undefined, options);
   };
 
   return (
@@ -214,11 +177,8 @@ const Profile = () => {
             name='firstName'
             value={formData.firstName}
             onChange={handleChange}
-            disabled={!editing.firstName}
+            disabled={!isEditing} // Allow editing based on overall state
           />
-          <IconButton onClick={() => handleEditToggle('firstName')}>
-            <EditIcon />
-          </IconButton>
         </Grid>
         <Grid item xs={12} md={6}>
           <TextField
@@ -228,11 +188,8 @@ const Profile = () => {
             name='lastName'
             value={formData.lastName}
             onChange={handleChange}
-            disabled={!editing.lastName}
+            disabled={!isEditing} // Allow editing based on overall state
           />
-          <IconButton onClick={() => handleEditToggle('lastName')}>
-            <EditIcon />
-          </IconButton>
         </Grid>
         <Grid item xs={12}>
           <TextField
@@ -242,11 +199,8 @@ const Profile = () => {
             name='email'
             value={formData.email}
             onChange={handleChange}
-            disabled={!editing.email}
+            disabled // Make email field non-editable
           />
-          <IconButton onClick={() => handleEditToggle('email')}>
-            <EditIcon />
-          </IconButton>
         </Grid>
         <Grid item xs={12}>
           <TextField
@@ -256,11 +210,8 @@ const Profile = () => {
             name='jobTitle'
             value={formData.jobTitle}
             onChange={handleChange}
-            disabled={!editing.jobTitle}
+            disabled={!isEditing}
           />
-          <IconButton onClick={() => handleEditToggle('jobTitle')}>
-            <EditIcon />
-          </IconButton>
         </Grid>
         <Grid item xs={12}>
           <TextField
@@ -272,11 +223,8 @@ const Profile = () => {
             onChange={handleChange}
             multiline
             rows={4}
-            disabled={!editing.bio}
+            disabled={!isEditing}
           />
-          <IconButton onClick={() => handleEditToggle('bio')}>
-            <EditIcon />
-          </IconButton>
         </Grid>
         <Grid item xs={12}>
           <Typography
@@ -293,71 +241,8 @@ const Profile = () => {
             onChange={handleChange}
             multiline
             rows={4}
-            disabled={!editing.goals}
+            disabled={!isEditing}
           />
-          <IconButton onClick={() => handleEditToggle('goals')}>
-            <EditIcon />
-          </IconButton>
-        </Grid>
-        <Grid item xs={12}>
-          <Typography
-            variant='h6'
-            sx={{ color: '#DFC853', marginBottom: 1 }}
-          >
-            Categories
-          </Typography>
-          <Select
-            fullWidth
-            value={editing.selectedCategory}
-            onChange={(e) =>
-              setEditing({
-                ...editing,
-                selectedCategory: e.target.value,
-              })
-            }
-            displayEmpty
-          >
-            <MenuItem value='' disabled>
-              Select Category
-            </MenuItem>
-            {categories.map((category) => (
-              <MenuItem key={category.id} value={category.name}>
-                {category.name}
-              </MenuItem>
-            ))}
-          </Select>
-          <Select
-            fullWidth
-            value={editing.selectedSubcategory}
-            onChange={(e) =>
-              setEditing({
-                ...editing,
-                selectedSubcategory: e.target.value,
-              })
-            }
-            displayEmpty
-          >
-            <MenuItem value='' disabled>
-              Select Subcategory
-            </MenuItem>
-            {editing.selectedCategory &&
-              categories
-                .find((cat) => cat.name === editing.selectedCategory)
-                ?.subcategories.map((sub) => (
-                  <MenuItem key={sub} value={sub}>
-                    {sub}
-                  </MenuItem>
-                ))}
-          </Select>
-          <Button
-            variant='contained'
-            sx={{ backgroundColor: '#002366', color: '#fff' }}
-            onClick={() => {
-              /* Add logic to add category/subcategory */
-            }}
-          >
-            Add Category/Subcategory
-          </Button>
         </Grid>
         <Grid item xs={12}>
           <Typography
@@ -383,18 +268,11 @@ const Profile = () => {
                   onChange={(e) =>
                     handleLinkChange(index, e.target.value)
                   }
-                  disabled={index < 2 ? !editing.links[index] : false} // Allow editing for LinkedIn and Twitter
+                  disabled={!isEditing} // Allow editing for all links based on overall state
                 />
               </Grid>
               <Grid item xs={2}>
-                {index < 2 && ( // Only show edit icon for LinkedIn and Twitter
-                  <IconButton
-                    onClick={() => handleLinkEditToggle(index)}
-                  >
-                    <EditIcon />
-                  </IconButton>
-                )}
-                {index >= 2 && ( // Only show delete icon for links beyond the first two
+                {index >= 2 && (
                   <IconButton onClick={() => handleDeleteLink(index)}>
                     <DeleteIcon />
                   </IconButton>
@@ -415,7 +293,9 @@ const Profile = () => {
             fullWidth
             label='Member Since'
             variant='outlined'
+            value={formData.memberSince}
             placeholder='dd/mm/yyyy'
+            disabled
           />
         </Grid>
         <Grid item xs={12}>
