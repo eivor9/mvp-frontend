@@ -3,11 +3,15 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import "../Styles/UserDashboard.css"
+import profilepic from "../assets/default.jpeg";
+import logo2 from "../assets/logo2.png";
 
 // Component imports
 import UserCard from '../Components/UserCard';
 import DashboardMetrics from '../Components/DashboardMetrics';
 import RecentActivities from '../Components/RecentActivities';
+import MentorPopup from '../Components/MentorPopup';
+import connectionPending from "../assets/connectionPending.gif";
 
 const UserDashboard = () => {
 
@@ -22,9 +26,10 @@ const UserDashboard = () => {
     const [showMentors, setShowMentors] = useState(true);
     const [currentConnectionId, setCurrentConnectionId] = useState(null)
     const [usersCategories , setUsersCategories] = useState([])
-    const [currentCategory, setCurrentCategory] = useState('');
+    const [currentCategory, setCurrentCategory] = useState(1);
     const [showMetrics, setShowMetrics] = useState(false);
     const [potentialMentors, setPotentialMentors] = useState([]);
+    const [currentMentor, setCurrentMentor] = useState("No Current Mentor");
     
     // const [subcategories, setSubcategories] = useState([]);
 
@@ -69,17 +74,6 @@ const UserDashboard = () => {
             setUsersCategories(res);
             return res;
         })
-        .then(res => {
-            setCurrentCategory(res[0].category_id);
-            fetch(`${API}/categories/${res[0].category_id}/category-users`)
-            .then(res => res.json())
-            .then(res => {
-            console.log(res)
-        })
-        })
-
-        
-        
         .catch(err => {
             console.error(err)
         })
@@ -146,6 +140,20 @@ const UserDashboard = () => {
         }
     }, [mentors, mentees])
 
+    useEffect(() => {
+        fetch(`${API}/category-users/${currentCategory || 1}`)
+        .then(res => res.json())
+        .then(res => {
+        console.log(res)
+
+        //filter for mentors
+        const filterMentors = res.categoryUsers.filter(user => user.is_mentor === true && user.id != id);
+
+        setPotentialMentors(filterMentors);
+        console.log("potentialMentors: ", filterMentors)
+        });
+    }, [currentCategory])
+
     // function for changing currentConnectionId to change displayed dashboardMetrics
 
     const handleSelectConnectionId = (current_id) => {
@@ -153,18 +161,7 @@ const UserDashboard = () => {
     }
 
     const handleCategoryChange = (e) => {
-        setCurrentCategory(e.target.value);
-        fetch(`${API}/categories/${currentCategory}/category-users`)
-        .then(res => res.json())
-        .then(res => {
-        console.log(res)
-
-        //filter for mentors
-        const filterMentors = res.categoryUsers.filter(user => user.is_mentor === true);
-
-        setPotentialMentors(filterMentors);
-        console.log("potentialMentors: ", potentialMentors)
-        });
+        setCurrentCategory(Number(e.target.value));
     }
 
     return (
@@ -176,15 +173,26 @@ const UserDashboard = () => {
                     <DashboardMetrics connection_id={currentConnectionId} />
                      : 
                     <div className="get-started">
-                        {/* <Link to={`/categories/${}`}>Find A Mentor</Link> */}
+                        {/* <div className="get-started-background">
+                            <img src={logo2} />
+                        </div> */}
                         <div className="get-started-label">Pick a Mentor</div>
+                        {typeof currentMentor === "object" ? <MentorPopup currentMentor={currentMentor} setCurrentMentor={setCurrentMentor} menteeId={id} currentCategory={currentCategory}/> : null}
+                        <div className="recommended-mentors">
+                            {potentialMentors.map(mentor =>
+                            <div className="recommended-mentor" onClick={() => setCurrentMentor(mentor)} key={mentor.id}>
+                                <img className='recommended-mentor-img' src={connections.map(connection => connection.mentor_id).includes(mentor.id) ? connectionPending : profilepic} alt="" />
+                                <div className="recommended-mentor-info">{`${mentor.first_name} ${mentor.last_name}`}<span>{mentor.job_title}</span></div>
+                            </div>
+                            )}
+                        </div>
                         
                     </div>
                 }
                 
             </div>
 
-            <select onChange={handleCategoryChange} value={currentCategory} id="current-category">
+            <select className='dashboard-category-select' onChange={handleCategoryChange} value={currentCategory} id="current-category">
                 {usersCategories.map(category => <option key={category.id} value={category.category_id}>{categories[category.category_id - 1].name}</option>)}
             </select>
            
