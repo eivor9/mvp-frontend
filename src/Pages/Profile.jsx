@@ -8,12 +8,8 @@ import {
   Typography,
   Grid,
   IconButton,
-  MenuItem,
-  Select,
+  Modal,
 } from '@mui/material';
-import EditIcon from '@mui/icons-material/Edit';
-import SaveIcon from '@mui/icons-material/Save';
-import CancelIcon from '@mui/icons-material/Cancel';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { useParams } from 'react-router-dom'; // Import useParams
 
@@ -27,9 +23,7 @@ const Profile = () => {
     jobTitle: false,
     bio: false,
     goals: false,
-    selectedCategory: '', // Remove this
-    selectedSubcategory: '', // Remove this
-    links: [false, false, false], // Track editing state for links
+    links: [false, false, false], 
   });
   const [formData, setFormData] = useState({
     firstName: '',
@@ -42,7 +36,8 @@ const Profile = () => {
     links: ['LinkedIn.com/', 'X.com/', ''], 
   });
 
-  const [isEditing, setIsEditing] = useState(true); // Keep this as true to allow editing
+  const [isEditing, setIsEditing] = useState(true); 
+  const [openModal, setOpenModal] = useState(false); 
 
   const handleEditToggle = (field) => {
     setEditing({ ...editing, [field]: !editing[field] });
@@ -66,14 +61,26 @@ const Profile = () => {
 
   const handleDeleteLink = (index) => {
     if (index > 1) {
-      // Only allow deletion for links beyond the first two
-      const newLinks = formData.links.filter((_, i) => i !== index); // Remove the link entry
+      const newLinks = formData.links.filter((_, i) => i !== index);
       setFormData({ ...formData, links: newLinks });
     }
   };
 
   const handleAddLink = () => {
     setFormData({ ...formData, links: [...formData.links, ''] }); // Add a new empty link
+  };
+
+  const handleSaveConfirmation = () => {
+    setOpenModal(true); // Open the confirmation modal
+  };
+
+  const handleConfirmSave = async () => {
+    setOpenModal(false); // Close the modal
+    await handleSave(); // Call the original handleSave function
+  };
+
+  const handleCancelSave = () => {
+    setOpenModal(false); // Close the modal without saving
   };
 
   const handleSave = async () => {
@@ -111,7 +118,6 @@ const Profile = () => {
   };
 
   const handleCancel = () => {
-    // Logic to reset form data if needed
     setIsEditing(false); // Disable editing on cancel
   };
 
@@ -302,7 +308,7 @@ const Profile = () => {
           <Button
             variant='contained'
             sx={{ backgroundColor: '#002366', color: '#fff' }}
-            onClick={handleSave}
+            onClick={handleSaveConfirmation} // Change to handleSaveConfirmation
           >
             Save Changes
           </Button>
@@ -315,6 +321,45 @@ const Profile = () => {
           </Button>
         </Grid>
       </Grid>
+
+      {/* Confirmation Modal */}
+      <Modal
+        open={openModal}
+        onClose={handleCancelSave}
+        sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+      >
+        <Box
+          sx={{
+            bgcolor: 'background.paper',
+            borderRadius: 2,
+            boxShadow: 24,
+            p: 4,
+            width: 300,
+            textAlign: 'center',
+          }}
+        >
+          <Typography variant="h6" component="h2">
+            Confirm Save Changes
+          </Typography>
+          <Typography sx={{ mt: 2 }}>
+            Are you sure you want to save the changes?
+          </Typography>
+          <Button
+            variant='contained'
+            sx={{ mt: 2, backgroundColor: '#002366', color: '#fff' }}
+            onClick={handleConfirmSave}
+          >
+            Yes
+          </Button>
+          <Button
+            variant='outlined'
+            sx={{ mt: 2, marginLeft: 2 }}
+            onClick={handleCancelSave}
+          >
+            No
+          </Button>
+        </Box>
+      </Modal>
     </Box>
   );
 };
