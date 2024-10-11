@@ -193,7 +193,14 @@ const UserDashboard = () => {
             </div>
 
             <select className='dashboard-category-select' onChange={handleCategoryChange} value={currentCategory} id="current-category">
-                {usersCategories.map(category => <option key={category.id} value={category.category_id}>{categories[category.category_id - 1].name}</option>)}
+                {usersCategories.map(category => {
+                    const categoryData = categories[category.category_id - 1];
+                    return (
+                        categoryData ? (
+                            <option key={category.id} value={category.category_id}>{categoryData.name}</option>
+                        ) : null
+                    );
+                })}
             </select>
            
             <div className='dashboard-list-container connections-list'>
@@ -206,7 +213,9 @@ const UserDashboard = () => {
                     <div className='dashboard-list'>
                         {mentors.length > 0 ? (
                             mentors.map(({ user, category, connection_id }) => {
-                                return  <Link key={user.id} onClick={()=>{handleSelectConnectionId(connection_id)}}>
+                                return (
+                                    category ? (
+                                        <Link key={user.id} onClick={() => { handleSelectConnectionId(connection_id) }}>
                                             <UserCard 
                                                 name={`${user.first_name} ${user.last_name}`} 
                                                 categoryName={category}
@@ -214,10 +223,12 @@ const UserDashboard = () => {
                                                 addLinks={true}
                                             />
                                         </Link>
-                                        })
-                                    ) : (
-                                <p>You are currently not connected to any mentors.</p>
-                            )
+                                    ) : null
+                                );
+                            })
+                        ) : (
+                            <p>You are currently not connected to any mentors.</p>
+                        )
                         }
                     </div>
                 )}
@@ -226,7 +237,9 @@ const UserDashboard = () => {
                     <div className='dashboard-list'>
                         {mentees.length > 0 ? (
                             mentees.map(({ user, category, connection_id}) => {
-                                return  <Link key={user.id} onClick={()=>{handleSelectConnectionId(connection_id)}}>
+                                return (
+                                    category ? (
+                                        <Link key={user.id} onClick={() => { handleSelectConnectionId(connection_id) }}>
                                             <UserCard
                                                 name={`${user.first_name} ${user.last_name}`} 
                                                 categoryName={category}
@@ -234,10 +247,12 @@ const UserDashboard = () => {
                                                 addLinks={true}
                                             />
                                         </Link>
-                                    })
-                                ) : (
-                                <p>You are currently not connected to any mentees.</p>
-                            )
+                                    ) : null
+                                );
+                            })
+                        ) : (
+                            <p>You are currently not connected to any mentees.</p>
+                        )
                         }
                     </div>
                 )}

@@ -1,4 +1,4 @@
-/* Container for the form */
+/*
 .signup-container {
   max-width: 400px;
   margin: 50px auto;
@@ -8,7 +8,6 @@
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Form styling */
 .signup-form {
   display: flex;
   flex-direction: column;
@@ -78,4 +77,4 @@
 
 .signup-button:hover {
   background-color: rgb(255, 169, 71);
-}
+} */
