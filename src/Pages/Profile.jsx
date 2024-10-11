@@ -77,6 +77,10 @@ const Profile = () => {
   const handleConfirmSave = async () => {
     setOpenModal(false); // Close the modal
     await handleSave(); // Call the original handleSave function
+    // {{ edit_1 }} 
+    // Keep the fields editable after saving
+    setIsEditing(true); 
+    // ... existing code ...
   };
 
   const handleCancelSave = () => {
@@ -117,9 +121,7 @@ const Profile = () => {
     }
   };
 
-  const handleCancel = () => {
-    setIsEditing(false); // Disable editing on cancel
-  };
+
 
   useEffect(() => {
     const fetchUserData = async () => {
@@ -258,7 +260,12 @@ const Profile = () => {
             Links
           </Typography>
           {formData.links.map((link, index) => (
-            <Grid container spacing={1} key={index}>
+            <Grid
+              container
+              spacing={1}
+              key={index}
+              sx={{ mt: 1, mb: 1 }}
+            >
               <Grid item xs={10}>
                 <TextField
                   fullWidth
@@ -289,9 +296,9 @@ const Profile = () => {
           <Button
             variant='contained'
             sx={{ backgroundColor: '#002366', color: '#fff' }}
-            onClick={handleAddLink}
+            onClick={handleSaveConfirmation} // Single Save Changes button
           >
-            Add Another Link
+            Save Changes
           </Button>
         </Grid>
         <Grid item xs={12}>
@@ -304,29 +311,17 @@ const Profile = () => {
             disabled
           />
         </Grid>
-        <Grid item xs={12}>
-          <Button
-            variant='contained'
-            sx={{ backgroundColor: '#002366', color: '#fff' }}
-            onClick={handleSaveConfirmation} // Change to handleSaveConfirmation
-          >
-            Save Changes
-          </Button>
-          <Button
-            variant='outlined'
-            sx={{ marginLeft: 2 }}
-            onClick={handleCancel}
-          >
-            Cancel
-          </Button>
-        </Grid>
       </Grid>
 
       {/* Confirmation Modal */}
       <Modal
         open={openModal}
         onClose={handleCancelSave}
-        sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+        sx={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+        }}
       >
         <Box
           sx={{
@@ -338,7 +333,7 @@ const Profile = () => {
             textAlign: 'center',
           }}
         >
-          <Typography variant="h6" component="h2">
+          <Typography variant='h6' component='h2'>
             Confirm Save Changes
           </Typography>
           <Typography sx={{ mt: 2 }}>
