@@ -181,7 +181,7 @@ const UserDashboard = () => {
                         <div className="recommended-mentors">
                             {potentialMentors.map(mentor =>
                             <div className="recommended-mentor" onClick={() => setCurrentMentor(mentor)} key={mentor.id}>
-                                <img className='recommended-mentor-img' src={connections.map(connection => connection.mentor_id).includes(mentor.id) ? connectionPending : profilepic} alt="" />
+                                <img className='recommended-mentor-img' src={profilepic} alt="" />
                                 <div className="recommended-mentor-info">{`${mentor.first_name} ${mentor.last_name}`}<span>{mentor.job_title}</span></div>
                             </div>
                             )}
