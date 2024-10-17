@@ -1,0 +1,91 @@
+.CategoryDescriptions{
+    .home-category-buttons{
+        display: flex;
+        gap: 20px;
+        width: 100%;
+        max-width: 1292px;
+        margin: auto;
+        padding: 0 20px;
+        .home-category-button{
+            font-weight: bold;
+            color: rgba(0, 0, 0, 0.5);
+            cursor: pointer;
+            padding: 0 5px 10px;
+            &:hover{
+                color: black;
+            }
+        }
+    }
+    .home-category-descriptions{
+        width: 100%;
+        height: 575px;
+        background: #ebfcff3d;
+        padding: 0 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        .home-category-description{
+            width: 76%;
+            border-top: 1px solid rgba(0, 0, 0, 0.2);
+            height: 100%;
+            max-width: 1290px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            padding: 20px 0;
+            justify-content: center;
+            .home-why-header{
+                font-size: 28px;
+                font-family: serif;
+                font-weight: bold;
+                color: rgba(0, 0, 0, 0.8);
+            }
+            .home-why-content{
+                font-size: 16px;
+                color:rgba(0, 0, 0, 0.7);
+                margin-bottom: 20px;
+            }
+            .home-how-header{
+                font-size: 28px;
+                font-family: serif;
+                font-weight: bold;
+                color: rgba(0, 0, 0, 0.8);
+            }
+            .home-how-content{
+                display: flex;
+                gap: 30px;
+                .home-how-answer{
+                    border-radius: 10px;
+                    display: flex;
+                    flex-direction: column;
+                    border: 1px solid rgba(0, 0, 0, 0.2);
+                    width: 300px;
+                    height: 250px;
+                    background: white;
+                    img{
+                        border-top-left-radius: inherit;
+                        border-top-right-radius: inherit;
+                        width: 100%;
+                        aspect-ratio: 16/9;
+                        object-fit: cover;
+                        background: black;
+                    }
+                    .how-answer-text{
+                        padding: 10px;
+                        font-weight: bold;
+                        font-size: 18px;
+                        color: black;
+                        span{
+                            font-weight: normal;
+                            font-size: 14px;
+                            color: rgba(0, 0, 0, 0.7);
+                        }
+                    }
+                    &:hover{
+                        img{filter:brightness(80%)}
+                    }
+                }
+            }
+        }
+    }
+}

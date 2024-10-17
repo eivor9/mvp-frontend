@@ -49,7 +49,7 @@ function App() {
             <Route path= "/faq" element={<FAQ />} />
           </Routes>
         </main>
-        <Footer />
+        {/* <Footer /> */}
       </Router>
     </div>
   );
