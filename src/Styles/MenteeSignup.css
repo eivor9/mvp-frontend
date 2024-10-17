@@ -1,0 +1,56 @@
+.mentee-signup{
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    label, button{
+        width: 400px;
+    }
+    label{
+        display: flex;
+        flex-direction: column;
+        color: rgba(0, 0, 0, 0.7);
+        font-size: 18px;
+        gap: 5px;
+        input{
+            width: 400px;
+            height: 50px;
+            border-radius: 10px;
+            border: 1px solid rgba(0, 0, 0, 0.4);
+            padding: 10px;
+            font-size: 18px;
+            outline: none;
+            &:focus{
+                border: 2px solid #222E50;
+            }
+            &::placeholder{
+                color:rgba(0, 0, 0, 0.4);
+            }
+        }
+    }
+    button{
+        width: 400px;
+        height: 50px;
+        margin: auto;
+        border-radius: 10px;
+        background: #2249b3;
+        color: white;
+        font-size: 20px;
+        border: none;
+        cursor: pointer;
+        &:hover{
+            background: #2249b3e8;
+        }
+    }
+    .mentor-signup-link{
+        width: 400px;
+        text-align: right;
+        margin-top: -10px;
+        color: #222E50;
+        font-size: 14px;
+        &:hover{
+            color: #776c31;
+        }
+    }
+}

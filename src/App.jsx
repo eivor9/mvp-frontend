@@ -21,6 +21,8 @@ import NavBar from "./Components/NavBar";
 import Footer from "./Components/Footer";
 import UserDashboard from "./Pages/UserDashboard";
 import ProgressTracking from "./Pages/ProgressTracking";
+import MentorSignUp from "./Pages/MentorSignUp";
+import MenteeSignUp from "./Pages/MenteeSignUp";
 
 function App() {
 
@@ -35,6 +37,8 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/signup" element={<SignUp setUser={setUser} setToken={setToken} />} />
+            <Route path="/mentor-signup" element={<MentorSignUp setUser={setUser} setToken={setToken} />} />
+            <Route path="/mentee-signup" element={<MenteeSignUp setUser={setUser} setToken={setToken} />} />
             <Route path="/login" element={<LoginDev setUser={setUser} setToken={setToken} />} />
             <Route path="/profile/:user_id" element={<Profile />} />
             <Route path="/about" element={<About />} />
