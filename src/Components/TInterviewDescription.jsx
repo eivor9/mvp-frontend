@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import logo2 from "../assets/logo2.png";
-import jsdotcom from "../assets/jsdotcom.png";
-import javascriptfcc from "../assets/javascriptfcc.png";
+import techinterviewhandbook from "../assets/technicalinterview.svg";
+import leetcode from "../assets/leetcode.png";
 
 function TInterviewDescription() {
   return (
@@ -9,7 +9,7 @@ function TInterviewDescription() {
 
         <div className="home-category-description">
             <div className="home-why-header">What is a Technical Interview?</div>
-            <div className="home-why-content">JavaScript (JS) is a widely-used programming language essential for web development, enabling interactivity on websites. It allows developers to create dynamic content like animations, form validations, and real-time updates without needing to reload a page. As one of the core technologies alongside HTML and CSS, JavaScript enhances user experiences, making websites more engaging. Beyond the browser, JavaScript is also used in server-side development with environments like Node.js. Learning JavaScript is crucial for anyone interested in web development, as it’s versatile, in-demand, and foundational for building modern, interactive applications.</div>
+            <div className="home-why-content">A technical interview assesses a candidate's technical skills and problem-solving abilities, often involving coding challenges and algorithm questions. It is a common practice in the tech industry to evaluate proficiency in relevant programming languages and tools.</div>
             <div className="home-how-header">How do you Prepare?</div>
             <div className="home-how-content">
                 <Link className="home-how-answer" to="/mentee-signup">
@@ -19,18 +19,18 @@ function TInterviewDescription() {
                         <span>Start your journey</span>
                     </div>
                 </Link>
-                <Link className="home-how-answer" to="https://www.javascript.com" target="_blank">
-                    <img src={jsdotcom} alt=""  style={{padding: "5px", objectFit: "contain"}}/>
+                <Link className="home-how-answer" to="https://www.techinterviewhandbook.org/" target="_blank">
+                    <img src={techinterviewhandbook} alt="Tech Interview Handbook" style={{padding: "5px", objectFit: "contain", backgroundColor: "transparent"}}/>
                     <div className="how-answer-text">
-                        JavaScript.com<br/>
-                        <span>Learn more about JavaScript</span>
+                        Technical Interview Handbook <br/>
+                        <span> Behavioral interviews for Software Engineers: How to prepare </span>
                     </div>
                 </Link>
-                <Link className="home-how-answer" to="https://www.freecodecamp.org/news/full-javascript-course-for-beginners/" target="_blank">
-                    <img src={javascriptfcc} alt="" />
+                <Link className="home-how-answer" to="https://leetcode.com/" target="_blank">
+                    <img src={leetcode} alt="LeetCode" style={{padding: "5px", objectFit: "contain", backgroundColor: "transparent"}}/>
                     <div className="how-answer-text">
-                        freeCodeCamp.org<br/>
-                        <span>JavaScript Course for Beginners</span>
+                        LeetCode<br/>
+                        <span> Practice coding problems for interviews</span>
                     </div>
                 </Link>
             </div>

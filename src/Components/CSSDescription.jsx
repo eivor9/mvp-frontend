@@ -1,43 +1,75 @@
-import { Link } from "react-router-dom";
-import logo2 from "../assets/logo2.png";
-import jsdotcom from "../assets/jsdotcom.png";
-import javascriptfcc from "../assets/javascriptfcc.png";
+import { Link } from 'react-router-dom';
+import logo2 from '../assets/logo2.png';
+import w3schools from '../assets/w3schools.png';
+import mdnwebdocs from '../assets/mdnwebdocs.png';
 
 function CSSDescription() {
   return (
-    <div className="home-category-descriptions">
-
-        <div className="home-category-description">
-            <div className="home-why-header">What is CSS?</div>
-            <div className="home-why-content">JavaScript (JS) is a widely-used programming language essential for web development, enabling interactivity on websites. It allows developers to create dynamic content like animations, form validations, and real-time updates without needing to reload a page. As one of the core technologies alongside HTML and CSS, JavaScript enhances user experiences, making websites more engaging. Beyond the browser, JavaScript is also used in server-side development with environments like Node.js. Learning JavaScript is crucial for anyone interested in web development, as it’s versatile, in-demand, and foundational for building modern, interactive applications.</div>
-            <div className="home-how-header">How do you learn CSS?</div>
-            <div className="home-how-content">
-                <Link className="home-how-answer" to="/mentee-signup">
-                    <img src={logo2} alt="" />
-                    <div className="how-answer-text">
-                        Create an account<br/>
-                        <span>Start your journey</span>
-                    </div>
-                </Link>
-                <Link className="home-how-answer" to="https://www.javascript.com" target="_blank">
-                    <img src={jsdotcom} alt=""  style={{padding: "5px", objectFit: "contain"}}/>
-                    <div className="how-answer-text">
-                        JavaScript.com<br/>
-                        <span>Learn more about JavaScript</span>
-                    </div>
-                </Link>
-                <Link className="home-how-answer" to="https://www.freecodecamp.org/news/full-javascript-course-for-beginners/" target="_blank">
-                    <img src={javascriptfcc} alt="" />
-                    <div className="how-answer-text">
-                        freeCodeCamp.org<br/>
-                        <span>JavaScript Course for Beginners</span>
-                    </div>
-                </Link>
-            </div>
+    <div className='home-category-descriptions'>
+      <div className='home-category-description'>
+        <div className='home-why-header'>What is CSS?</div>
+        <div className='home-why-content'>
+          CSS (Cascading Style Sheets) is a stylesheet language used
+          to control the presentation of web pages. It allows
+          developers to apply styles, such as colors, fonts, and
+          layouts, to HTML elements. CSS enhances the visual appeal of
+          websites and is essential for responsive design, ensuring
+          that web pages look good on various devices.
         </div>
-
+        <div className='home-how-header'>How do you learn CSS?</div>
+        <div className='home-how-content'>
+          <Link className='home-how-answer' to='/mentee-signup'>
+            <img src={logo2} alt='' />
+            <div className='how-answer-text'>
+              Create an account
+              <br />
+              <span>Start your journey</span>
+            </div>
+          </Link>
+          <Link
+            className='home-how-answer'
+            to='https://www.w3schools.com/css/'
+            target='_blank'
+          >
+            <img
+              src={w3schools}
+              alt='W3Schools CSS'
+              style={{
+                objectFit: 'contain',
+                padding: '5px',
+                backgroundColor: 'transparent',
+              }}
+            />
+            <div className='how-answer-text'>
+              W3Schools CSS
+              <br />
+              <span>Learn CSS basics</span>
+            </div>
+          </Link>
+          <Link
+            className='home-how-answer'
+            to='https://developer.mozilla.org/en-US/docs/Web/CSS'
+            target='_blank'
+          >
+            <img
+              src={mdnwebdocs}
+              alt='MDN Web Docs CSS'
+              style={{
+                objectFit: 'contain',
+                padding: '5px',
+                backgroundColor: 'transparent',
+              }}
+            />
+            <div className='how-answer-text'>
+              MDN Web Docs
+              <br />
+              <span>Comprehensive CSS guide</span>
+            </div>
+          </Link>
+        </div>
+      </div>
     </div>
-  )
+  );
 }
 
-export default CSSDescription
+export default CSSDescription;

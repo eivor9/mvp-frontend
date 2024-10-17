@@ -1,43 +1,78 @@
-import { Link } from "react-router-dom";
-import logo2 from "../assets/logo2.png";
-import jsdotcom from "../assets/jsdotcom.png";
-import javascriptfcc from "../assets/javascriptfcc.png";
+import { Link } from 'react-router-dom';
+import logo2 from '../assets/logo2.png';
+import codecademy from '../assets/codecademy.png';
+import udemy from '../assets/udemy.png';
 
 function WebDevDescription() {
   return (
-    <div className="home-category-descriptions">
-
-        <div className="home-category-description">
-            <div className="home-why-header">What is Web Developement?</div>
-            <div className="home-why-content">JavaScript (JS) is a widely-used programming language essential for web development, enabling interactivity on websites. It allows developers to create dynamic content like animations, form validations, and real-time updates without needing to reload a page. As one of the core technologies alongside HTML and CSS, JavaScript enhances user experiences, making websites more engaging. Beyond the browser, JavaScript is also used in server-side development with environments like Node.js. Learning JavaScript is crucial for anyone interested in web development, as it’s versatile, in-demand, and foundational for building modern, interactive applications.</div>
-            <div className="home-how-header">How do you learn Web Development?</div>
-            <div className="home-how-content">
-                <Link className="home-how-answer" to="/mentee-signup">
-                    <img src={logo2} alt="" />
-                    <div className="how-answer-text">
-                        Create an account<br/>
-                        <span>Start your journey</span>
-                    </div>
-                </Link>
-                <Link className="home-how-answer" to="https://www.javascript.com" target="_blank">
-                    <img src={jsdotcom} alt=""  style={{padding: "5px", objectFit: "contain"}}/>
-                    <div className="how-answer-text">
-                        JavaScript.com<br/>
-                        <span>Learn more about JavaScript</span>
-                    </div>
-                </Link>
-                <Link className="home-how-answer" to="https://www.freecodecamp.org/news/full-javascript-course-for-beginners/" target="_blank">
-                    <img src={javascriptfcc} alt="" />
-                    <div className="how-answer-text">
-                        freeCodeCamp.org<br/>
-                        <span>JavaScript Course for Beginners</span>
-                    </div>
-                </Link>
-            </div>
+    <div className='home-category-descriptions'>
+      <div className='home-category-description'>
+        <div className='home-why-header'>
+          What is Web Developement?
         </div>
-
+        <div className='home-why-content'>
+          Web development is the process of building and maintaining
+          websites. It involves various tasks, including web design,
+          coding, and content management. Web developers use languages
+          like HTML, CSS, and JavaScript to create interactive and
+          user-friendly web applications.
+        </div>
+        <div className='home-how-header'>
+          How do you learn Web Development?
+        </div>
+        <div className='home-how-content'>
+          <Link className='home-how-answer' to='/mentee-signup'>
+            <img src={logo2} alt='' />
+            <div className='how-answer-text'>
+              Create an account
+              <br />
+              <span>Start your journey</span>
+            </div>
+          </Link>
+          <Link
+            className='home-how-answer'
+            to='https://www.codecademy.com/learn/paths/web-development'
+            target='_blank'
+          >
+            <img
+              src={codecademy}
+              alt='Codecademy'
+              style={{
+                objectFit: 'contain',
+                backgroundColor: 'transparent',
+                padding: '5px',
+              }}
+            />
+            <div className='how-answer-text'>
+              Codecademy
+              <br />
+              <span>Learn Web Development Basics</span>
+            </div>
+          </Link>
+          <Link
+            className='home-how-answer'
+            to='https://www.udemy.com/courses/search/?q=web%20development'
+            target='_blank'
+          >
+            <img
+              src={udemy}
+              alt='Udemy'
+              style={{
+                objectFit: 'contain',
+                backgroundColor: 'white',
+                padding: '5px',
+              }}
+            />
+            <div className='how-answer-text'>
+              Udemy
+              <br />
+              <span>Explore Web Development Courses</span>
+            </div>
+          </Link>
+        </div>
+      </div>
     </div>
-  )
+  );
 }
 
-export default WebDevDescription
+export default WebDevDescription;
