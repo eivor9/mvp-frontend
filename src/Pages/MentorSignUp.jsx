@@ -18,7 +18,7 @@ function MentorSignUp() {
                     <div className="mentor-signup-left">
 
                         <div className="mentor-signup-subheading">Personal Info</div>
-                        <label htmlFor="name"> Full Name <input required placeholder="Michael Brown" id="name" type="text" /> </label>
+                        <label htmlFor="name"> Full Name <input required placeholder="Enter your full name" id="name" type="text" /> </label>
                         <label htmlFor="bio"> Background <textarea required placeholder="I am a versatile web developer with over five years of experience in building responsive websites and web applications..." id="bio" ></textarea> </label>
 
                         <div className="mentor-job-title-container">
