@@ -1,11 +1,13 @@
 import "../Styles/MentorSignUp.css"
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import logo from "../assets/logo.png";
 
 function MentorSignUp() {
     const [showJobInput, setShowJobInput ] = useState(false);
     const [backgroundColor, setBackgroundColor] = useState("linear-gradient(0deg,rgba(177,177,177,0.9)0%,rgba(180,180,180,0.4)100%)");
+    
+    const navigate = useNavigate();
 
     const backgroundColors = [
         "linear-gradient(0deg,rgba(177,177,177,0.9)0%,rgba(180,180,180,0.4)100%)",
@@ -30,10 +32,62 @@ function MentorSignUp() {
         return initials.substring(0,3);
     }
 
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
+        // Gather data from the form
+        const newMentor = {
+            name: document.getElementById("name").value,
+            bio: document.getElementById("bio").value,
+            email: document.getElementById("email").value,
+            password_hash: document.getElementById("password_hash").value,
+            job_title: showJobInput ? document.getElementById("job_title").value : null,
+            skills: [
+                document.getElementById("js-checkbox").checked ? "JavaScript" : null,
+                document.getElementById("html-checkbox").checked ? "HTML" : null,
+                document.getElementById("css-checkbox").checked ? "CSS" : null,
+                document.getElementById("sql-checkbox").checked ? "SQL" : null,
+                document.getElementById("wd-checkbox").checked ? "Web Development" : null,
+                document.getElementById("ti-checkbox").checked ? "Technical Interview Prep" : null,
+                document.getElementById("bi-checkbox").checked ? "Behavioral Interview Prep" : null,
+            ].filter(Boolean), // Remove null values
+            is_mentor: true,
+            signup_date: new Date().toISOString(),
+        };
+
+        // Validate required fields
+        if (!newMentor.name.trim() || !newMentor.email.trim() || !newMentor.password_hash.trim()) {
+            console.error("Name, email, and password are required");
+            return; // Exit if required fields are empty
+        }
+
+        try {
+            const response = await fetch(`${import.meta.env.VITE_BASE_URL}/users`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(newMentor),
+            });
+
+            if (response.ok) {
+                const data = await response.json();
+                console.log("Mentor created:", data);
+                console.log("Name:", data.user.name);
+                navigate("/", { state: { message: `Thanks for signing up, ${data.user.name}!` } });
+            } else {
+                const errorData = await response.json();
+                console.error("Error creating mentor:", errorData);
+            }
+        } catch (error) {
+            console.error("Network error:", error);
+        }
+    };
+
   return (
     <div className="MentorSignUp">
         <div className="mentor-signup-container">
-            <form>
+            <form onSubmit={handleSubmit}>
                 <div className="mentor-signup-header">
                     <Link to="/"><img src={logo} alt="" /></Link>
                     Join the team
@@ -74,7 +128,7 @@ function MentorSignUp() {
                     </div>
                         <div className="right-input-container">
                             <label htmlFor="email"> Email <input required id="email" type="email" placeholder="What's your email address?" /> </label>
-                            <label htmlFor="password_hash"> Password <input minlength="6" maxLength="25" required id="password_hash" type="password" placeholder="Don't forget this!" /> </label>
+                            <label htmlFor="password_hash"> Password <input minLength="6" maxLength="25" required id="password_hash" type="password" placeholder="Don't forget this!" /> </label>
                             <button type="submit">Sign Up</button>
                         </div>
                         <Link className="mentee-signup-link" to="/mentee-signup">Just starting your journey?</Link>
