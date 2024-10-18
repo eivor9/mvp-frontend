@@ -45,7 +45,7 @@ const NavBar = ({ user, setUser, setToken }) => {
 
       <a href="#CategoryDescriptions" className="nav-categories-button">Categories</a>
 
-      <i class="fa-solid fa-magnifying-glass"></i>
+      <i className="fa-solid fa-magnifying-glass"></i>
       <input type="text" placeholder='Search for anything' className="search-bar" />
 
       <Link to='/about' className="nav-about-button">About</Link>

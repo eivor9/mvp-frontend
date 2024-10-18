@@ -143,13 +143,13 @@
                         height: 50px;
                         margin: auto;
                         border-radius: 10px;
-                        background: #2249b3;
+                        background: #162c69;
                         color: white;
                         font-size: 20px;
                         border: none;
                         cursor: pointer;
                         &:hover{
-                            background: #2249b3e8;
+                            background: #162c69ed;
                         }
                     }
                 }

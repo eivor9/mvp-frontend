@@ -1,0 +1,145 @@
+.UserDashNew{
+    .dash-user-container{
+        display: flex;
+        padding: 50px 200px;
+        justify-content: space-between;
+        max-width: 1700px;
+        margin: auto;
+        .dash-user-info{
+            display: flex;
+            gap: 15px;
+            .profile-picture{
+                width: 120px;
+                height: 120px;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 48px;
+                color: white;
+                background: linear-gradient(0deg, rgba(177,177,177,0.9) 0%, rgba(180,180,180,0.4) 100%);
+            }
+            .user-info{
+                font-size: 28px;
+                color: rgba(0,0,0,0.7);
+                justify-content: center;
+                display: flex;
+                flex-direction: column;
+                gap: 5px;
+                .dash-user-progress{
+                    font-size: 16px;
+                    color: rgba(0,0,0,0.5);
+                }
+            }
+        }
+
+        .dash-user-buttons{
+            display: flex;
+            .dash-user-button{
+                width: 100px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: flex-end;
+                gap: 5px;
+                font-size: 13px;
+                color: rgba(0,0,0,0.7);
+                i{
+                    border: 2px solid black;
+                    border-radius: 10px;
+                    padding: 5px;
+                    font-size: 32px;
+                    background: #fce77b;
+                }
+                .fa-linkedin{
+                    color: rgb(10, 102, 194);
+                    border: none;
+                    font-size: 48px;
+                    padding: 0;
+                    background: none;
+                }
+            }
+        }
+    }
+
+    .dash-connections-container{
+        background-color: rgba(60, 60, 67, 0.03);
+        border-top: 1px solid rgba(0, 0, 0, 0.2);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+        padding: 30px;
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+        .dash-connection{
+            border-radius: 20px;
+            padding: 10px 15px 20px;
+            width: 200px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            font-size: 22px;
+            cursor: pointer;
+            color:white;
+            background: linear-gradient(0deg, rgba(177,177,177,0.9) 0%, rgba(180,180,180,0.4) 100%);
+            .profile-picture{
+                width: 175px;
+                height: 150px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 70px;
+                color: white;
+            }
+            .dash-connection-skill{
+                font-size: 20px;
+                height: 50px;
+            }
+            .dash-connection-completion{
+                font-size: 16px;
+            }
+            &:hover{
+                filter: brightness(95%);
+            }
+        }
+    }
+
+    .dash-assignments-container{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 220px;
+        gap: 30px;
+        .dash-assignment{
+            background: linear-gradient(0deg, rgba(177,177,177,0.9) 0%, rgba(180,180,180,0.4) 100%);
+            border-radius: 10px;
+            width: 400px;
+            height: 190px;
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            cursor: pointer;
+            .dash-assignment-header{
+                display: flex;
+                justify-content: space-between;
+                font-size: 22px;
+                color: white;
+                font-weight: bold;
+                .dash-assignment-info{
+                    display: flex;
+                    flex-direction: column;
+                    span{
+                        font-size: 16px;
+                    }
+                }
+            }
+            p{
+                font-size: 16px;
+                color: white;
+            }
+            &:hover{
+                filter: brightness(95%);
+            }
+        }
+    }
+}

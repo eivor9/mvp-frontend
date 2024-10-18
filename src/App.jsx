@@ -23,6 +23,7 @@ import UserDashboard from "./Pages/UserDashboard";
 import ProgressTracking from "./Pages/ProgressTracking";
 import MentorSignUp from "./Pages/MentorSignUp";
 import MenteeSignUp from "./Pages/MenteeSignUp";
+import UserDashNew from "./Pages/UserDashNew";
 
 function App() {
 
@@ -36,17 +37,20 @@ function App() {
         <main>
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/signup" element={<SignUp setUser={setUser} setToken={setToken} />} />
+            
             <Route path="/mentor-signup" element={<MentorSignUp setUser={setUser} setToken={setToken} />} />
             <Route path="/mentee-signup" element={<MenteeSignUp setUser={setUser} setToken={setToken} />} />
             <Route path="/login" element={<LoginDev setUser={setUser} setToken={setToken} />} />
+            <Route path="/dashboard" element={<UserDashNew />} />
+
+
+            <Route path="/signup" element={<SignUp setUser={setUser} setToken={setToken} />} />
             <Route path="/profile/:user_id" element={<Profile />} />
             <Route path="/about" element={<About />} />
-            {/* Categories Routes */}
             <Route path="/categories/:category_id" element={<Category />} />
             <Route path="/categories/:category_id/subcategories/:subcategory_id" element={<Subcategory />} />
             <Route path="/categories/:category_id" element={<Category />} />
-            <Route path="/user-dashboard/:id" element={<UserDashboard />} />
+            
             <Route path="*" element={<FourOFour />} />
             <Route path="/progress/:user_id/:connection_id" element={<ProgressTracking />} />
             <Route path="*" element={<FourOFour />} />
