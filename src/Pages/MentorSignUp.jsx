@@ -5,6 +5,30 @@ import logo from "../assets/logo.png";
 
 function MentorSignUp() {
     const [showJobInput, setShowJobInput ] = useState(false);
+    const [backgroundColor, setBackgroundColor] = useState("linear-gradient(0deg,rgba(177,177,177,0.9)0%,rgba(180,180,180,0.4)100%)");
+
+    const backgroundColors = [
+        "linear-gradient(0deg,rgba(177,177,177,0.9)0%,rgba(180,180,180,0.4)100%)",
+        "linear-gradient(0deg,rgba(252, 116, 149,0.9)0%,rgba(252,116,149,0.5)100%)",
+        "linear-gradient(0deg,rgba(253,87,77,1)0%,rgba(253,87,77,0.6)100%)",
+        "linear-gradient(0deg,rgba(253,159,53,1)0%,rgba(253,159,53,0.6)100%)",
+        "linear-gradient(0deg,rgba(252,201,59,1)0%,rgba(252,201,5,0.6)100%)",
+        "linear-gradient(0deg,rgba(101,219,118,1)0%,rgba(101,219,118,0.6)100%)",
+        "linear-gradient(0deg,rgba(112,205,248,1)0%,rgba(112,205,248,0.6)100%)",
+        "linear-gradient(0deg,rgba(163,138,245,1)0%,rgba(163,138,245,0.6)100%)"
+      ];
+
+    const userInitials = (input) => {
+        if (!input) return "";
+
+        let initials = "";
+        const userNames = input.split(" ");
+
+        for (const name of userNames)
+            if (name) initials += name[0];
+
+        return initials.substring(0,3);
+    }
 
   return (
     <div className="MentorSignUp">
@@ -39,6 +63,15 @@ function MentorSignUp() {
 
                     </div>
                     <div className="mentor-signup-right">
+                    <div className="mentee-profile-pic-container">
+                        <div className="mentee-profile-pic" style={{background: backgroundColor}}>{userInitials("Nasheed Jeremiah")}</div>
+                        <div className="profile-pic-options">
+                            {backgroundColors.map(color => 
+                                <div onClick={() => setBackgroundColor(color)} style={backgroundColor === color ? {background:color, border:"2px solid rgba(0,0,0,0.4)"} : {background:color}} className="profile-pic-option"></div>
+                            )}
+                        </div>
+                    
+                    </div>
                         <div className="right-input-container">
                             <label htmlFor="email"> Email <input required id="email" type="email" placeholder="What's your email address?" /> </label>
                             <label htmlFor="password_hash"> Password <input minlength="6" maxLength="25" required id="password_hash" type="password" placeholder="Don't forget this!" /> </label>

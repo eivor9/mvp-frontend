@@ -107,8 +107,8 @@
                 display: flex;
                 flex-direction: column;
                 align-items: center;
-                justify-content: center;
-                height: 555px;
+                height: 700px;
+                padding-top: 50px;
                 .right-input-container{
                     display: flex;
                     flex-direction: column;
@@ -161,6 +161,39 @@
                     font-size: 14px;
                     &:hover{
                         color: #776c31;
+                    }
+                }
+                .mentee-profile-pic-container{
+                    margin-bottom: 40px;
+                    align-items: center;
+                    width: 400px;
+                    display: flex;
+                    gap: 20px;
+                        .mentee-profile-pic{
+                            color: white;
+                            border-radius: 50%;
+                            width: 150px;
+                            height: 150px;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            font-size: 70px;
+                            background: linear-gradient(0deg,rgba(177,177,177,0.9)0%,rgba(180,180,180,0.4)100%);
+                        }
+    
+                        .profile-pic-options{
+                            display: flex;
+                            justify-content: center;
+                            flex-wrap: wrap;
+                            height: fit-content;
+                            width: 200px;
+                            gap: 10px;
+                            .profile-pic-option{
+                                border-radius: 50%;
+                                width: 50px;
+                                height: 50px;
+                                cursor: pointer;
+                        }
                     }
                 }
             }
