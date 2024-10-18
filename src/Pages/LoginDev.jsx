@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { Box, Button, TextField, Typography } from '@mui/material';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import logo from '../assets/logo.png';
 import "../Styles/Login.css";
 
@@ -55,14 +55,29 @@ const API = import.meta.env.VITE_BASE_URL;
 
   return (
     <div className="Login">
-        <div className="login-logo">
+        <Link className="login-logo" to="/">
             <img src={logo} alt="" />
-        </div>
+        </Link>
+
         <form onSubmit={handleSubmit} className="login-form">
-            <input required onChange={handleTextChange} value={formData.email} id='email' type="email"placeholder='Email'/>
-            <input required onChange={handleTextChange} value={formData.password_hash} id='password_hash' type="password" placeholder="Password"/>
+            <label htmlFor="email">Email
+                <input required onChange={handleTextChange} value={formData.email} id='email' type="email" placeholder="What's your email?"/>
+            </label>
+
+            <label htmlFor="password_hash">Password
+                <input required onChange={handleTextChange} value={formData.password_hash} id='password_hash' type="password" placeholder="Did you forget?"/>
+            </label>
             <button type="submit">Log In</button>
         </form>
+
+        <div className="or-signup">
+            <div className="left-line or-line"></div>or<div className="right-line or-line"></div>
+        </div>
+
+        <div className="signup-buttons">
+            <Link to="/mentee-signup">Start your journey</Link>
+            <Link to="/mentor-signup">Join the team</Link>
+        </div>
     </div>
   )
 };

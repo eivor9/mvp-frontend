@@ -4,7 +4,8 @@ import { Link } from "react-router-dom";
 import logo from "../assets/logo.png";
 
 function MentorSignUp() {
-    const [showJobInput, setShowJobInput ] = useState(false);
+    const [showJobInput, setShowJobInput] = useState(false);
+    const [name, setName] = useState("");
     const [backgroundColor, setBackgroundColor] = useState("linear-gradient(0deg,rgba(177,177,177,0.9)0%,rgba(180,180,180,0.4)100%)");
 
     const backgroundColors = [
@@ -16,7 +17,7 @@ function MentorSignUp() {
         "linear-gradient(0deg,rgba(101,219,118,1)0%,rgba(101,219,118,0.6)100%)",
         "linear-gradient(0deg,rgba(112,205,248,1)0%,rgba(112,205,248,0.6)100%)",
         "linear-gradient(0deg,rgba(163,138,245,1)0%,rgba(163,138,245,0.6)100%)"
-      ];
+    ];
 
     const userInitials = (input) => {
         if (!input) return "";
@@ -42,7 +43,7 @@ function MentorSignUp() {
                     <div className="mentor-signup-left">
 
                         <div className="mentor-signup-subheading">Personal Info</div>
-                        <label htmlFor="name"> Full Name <input required placeholder="Enter your full name" id="name" type="text" /> </label>
+                        <label htmlFor="name"> Full Name <input required  value={name} onChange={(e) => setName(e.target.value)} placeholder="Enter your full name" id="name" type="text" /> </label>
                         <label htmlFor="bio"> Background <textarea required placeholder="I am a versatile web developer with over five years of experience in building responsive websites and web applications..." id="bio" ></textarea> </label>
 
                         <div className="mentor-job-title-container">
@@ -64,7 +65,7 @@ function MentorSignUp() {
                     </div>
                     <div className="mentor-signup-right">
                     <div className="mentee-profile-pic-container">
-                        <div className="mentee-profile-pic" style={{background: backgroundColor}}>{userInitials("Nasheed Jeremiah")}</div>
+                        <div className="mentee-profile-pic" style={{background: backgroundColor}}>{userInitials(name)}</div>
                         <div className="profile-pic-options">
                             {backgroundColors.map(color => 
                                 <div onClick={() => setBackgroundColor(color)} style={backgroundColor === color ? {background:color, border:"2px solid rgba(0,0,0,0.4)"} : {background:color}} className="profile-pic-option"></div>

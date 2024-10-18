@@ -8,6 +8,7 @@ function MenteeSignUp() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [bio, setBio] = useState("");
   const navigate = useNavigate();
   const [backgroundColor, setBackgroundColor] = useState("linear-gradient(0deg,rgba(177,177,177,0.9)0%,rgba(180,180,180,0.4)100%)")
 
@@ -98,7 +99,7 @@ function MenteeSignUp() {
               </label>
 
               <label htmlFor="bio"> Background 
-                <textarea required placeholder="I am a versatile web developer with over five years of experience in building responsive websites and web applications..." id="bio" ></textarea> 
+                <textarea required value={bio} onChange={(e) => setBio(e.target.value)} placeholder="I'm an aspiring web developer eager to learn and grow in the field..." id="bio" ></textarea> 
               </label>
 
               <label htmlFor="email"> Email 
