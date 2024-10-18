@@ -26,19 +26,16 @@ function MenteeSignUp() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const fullName = name.trim(); // Trim any extra spaces
-    const nameParts = fullName.split(" "); // Split the name by spaces
-
-    // Handle cases where the name might not have both first and last names
-    const firstName = nameParts[0] || ""; // Default to empty string if undefined
-    const lastName = nameParts.slice(1).join(" ") || ""; // Join the rest as last name
+    // Check if name is empty
+    if (!name.trim()) {
+      console.error("Name is required");
+      return; // Exit if name is empty
+    }
 
     const newMentee = {
-      first_name: firstName,
-      last_name: lastName,
+      name: name,
       email: email,
       password_hash: password,
-      is_mentee: true,
       is_mentor: false,
       signup_date: new Date().toISOString(),
     };
@@ -107,7 +104,7 @@ function MenteeSignUp() {
               </label>
 
               <label htmlFor="password"> Password 
-                <input minlength="6" maxLength="25" required id="password" type="password" placeholder="Don't forget this!" value={password} onChange={(e) => setPassword(e.target.value)} />
+                <input minLength="6" maxLength="25" required id="password" type="password" placeholder="Don't forget this!" value={password} onChange={(e) => setPassword(e.target.value)} />
               </label>
 
               <button type="submit">Sign Up</button>
@@ -118,8 +115,13 @@ function MenteeSignUp() {
             <div className="mentee-profile-pic-container">
               <div className="mentee-profile-pic" style={{background: backgroundColor}}>{userInitials(name)}</div>
               <div className="profile-pic-options">
-                {backgroundColors.map(color => 
-                  <div onClick={() => setBackgroundColor(color)} style={backgroundColor === color ? {background:color, border:"2px solid rgba(0,0,0,0.4)"} : {background:color}} className="profile-pic-option"></div>
+                {backgroundColors.map((color, index) => 
+                  <div 
+                    key={index} // Added unique key prop
+                    onClick={() => setBackgroundColor(color)} 
+                    style={backgroundColor === color ? {background:color, border:"2px solid rgba(0,0,0,0.4)"} : {background:color}} 
+                    className="profile-pic-option">
+                  </div>
                 )}
               </div>
             </div>
