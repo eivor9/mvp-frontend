@@ -36,6 +36,7 @@ function MenteeSignUp() {
       name: name,
       email: email,
       password_hash: password,
+      bio: bio,
       is_mentor: false,
       signup_date: new Date().toISOString(),
     };
@@ -52,7 +53,7 @@ function MenteeSignUp() {
       if (response.ok) {
         const data = await response.json();
         console.log("Mentee created:", data);
-        console.log("First Name:", data.user.first_name);
+        console.log("Name:", data.user.name);
         navigate("/", { state: { message: `Thanks for signing up, ${data.user.first_name}!` } });
       } else {
         const errorData = await response.json();
