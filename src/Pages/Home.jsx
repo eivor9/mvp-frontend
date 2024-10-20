@@ -37,7 +37,7 @@ const Home = () => {
         <div className="home-welcome-container-left">
           <div className="home-welcome-header">
             {showingMentorWelcome ? (
-              <>Guide new developers and<br/><span>Get Connected</span></>
+              <>Guide new developers - <br/><span>Get Connected</span></>
             ) : (
               <>Free Guidance from<br/><span>Real Web Devs</span></>
             )}

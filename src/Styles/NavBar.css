@@ -1,59 +1,64 @@
 .NavBar{
-    background: white;
-    height: 70px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding-left: 7px;
-    padding-right: 15px;
-    gap: 20px;
     box-shadow: 0 0 25px rgba(0, 0, 0, 0.3);
-    .nav-logo img{
+    justify-content: space-between;
+    align-items: center;
+    background: white;
+    padding: 0 20px 0 30px;
+    display: flex;
+    height: 50px;
+    gap: 20px;
+    .nav-logo{
+        position: relative;
+        top: -5px;
         height: 50px;
+        width: 50px;
+        img{
+            height: 100%;
+            width: 100%;
+            scale: 1.8;
+            transform: rotate(3deg);
+        }
     }
-    .nav-categories-button{
-        font-size: 16px;
-        font-weight: lighter;
-        cursor: pointer;
-        color: black;
+    .nav-logo-text{
+        height: 50px;
+        font-size: 30px;
+        display: flex;
+        align-items: center;
+        color:rgba(0, 0, 0, 0.4);
     }
-    i{
-        position: absolute;
-        left: 235px;
-        top: 27px;
-        font-size: 16px;
-        color: rgba(0, 0, 0, 0.6);
-    }
-    .search-bar{
-        height: 45px;
-        border-radius: 50px;
-        border: 1px solid rgba(0, 0, 0, 0.5);
-        outline: none;
-        padding-left: 50px;
-        font-size: 14px;
-        color: rgba(0, 0, 0, 0.7);
-        width: 100%;
-        background: #ebfcff3d;
-    }
-    .nav-about-button{
-        font-size: 16px;
-        font-weight: lighter;
-        color: black;
-        width: fit-content;
-    }
-    .nav-faq-button{
-        font-size: 16px;
-        font-weight: lighter;
-        color: black;
-    }
-    .nav-login-button{
-        border-radius: 20px;
-        padding: 10px 15px;
-        color: #222e50;
-        background: rgba(0, 0, 0, 0.8);
-        color: white;
-        &:hover{
-            background: black;
+    .nav-links{
+        display: flex;
+        gap: 10px;
+        a{
+            height: 40px;
+            width: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 5px;
+            i{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 85%;
+                height: 85%;
+                color: white;
+                border-radius: 50%;
+            }
+            .fa-right-to-bracket{
+                background: #DFC853;
+            }
+            .fa-circle-info{
+                font-size: 28px;
+                color: #222e50f1;
+            }
+            .fa-circle-question{
+                font-size: 28px;
+                color: #222e50f1;
+            }
+            &:hover{
+                background: rgba(0, 0, 0, 0.04);
+            }
         }
     }
 }

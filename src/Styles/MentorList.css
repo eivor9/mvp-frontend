@@ -40,6 +40,7 @@
             display: flex;
             select{
                 outline: none;
+                font-size: 16px;
             }
         }
         .mentor-list{
@@ -49,7 +50,7 @@
             font-weight: bold;
             padding-top: 10px;
             font-size: 13px;
-            height: 346px;
+            height: 340px;
             .mentor-list-title{
                 border-bottom: 1px solid rgba(0, 0, 0, 0.05);
                 padding-bottom: 10px;

@@ -33,13 +33,6 @@ function MentorList({ setShowMentorList }) {
           "job_title": "Product Manager",
           "bio": "Noah is a seasoned product manager with a background in both technical and business domains. Over the past seven years, he has successfully managed the lifecycle of numerous digital products, from concept to launch. Noah has a deep understanding of market research, user needs, and business strategy, which allows him to build products that resonate with customers. He is adept at leading cross-functional teams and excels at stakeholder communication. In his previous role, Noah managed a SaaS platform that grew revenue by 25% through strategic feature releases and data-driven improvements.",
           "backgroundColor": "linear-gradient(0deg,rgba(177,177,177,0.9)0%,rgba(180,180,180,0.4)100%)"
-        },
-        {
-          "id": 5,
-          "name": "Olivia E. Sanders",
-          "job_title": "Data Analyst",
-          "bio": "Olivia is an analytical and detail-oriented data analyst with four years of experience in data visualization and statistical analysis. She is skilled in SQL, Python, and Tableau, and has worked with large datasets to uncover actionable insights for businesses. Olivia has experience collaborating with cross-functional teams to optimize performance through data-driven decision-making. In her last role, she developed a forecasting model that improved supply chain efficiency by 15%. Olivia is passionate about using data to solve complex problems and drive business success, and she continually seeks to expand her knowledge in the field.",
-          "backgroundColor": "linear-gradient(0deg,rgba(163,138,245,1)0%,rgba(163,138,245,0.6)100%)"
         }
       ]
 

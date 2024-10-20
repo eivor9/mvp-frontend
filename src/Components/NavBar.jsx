@@ -3,8 +3,9 @@
 import React, { useState } from 'react';
 import {Link} from 'react-router-dom';
 import "../Styles/NavBar.css";
-import logo3 from "../assets/logo3.png";
-import mvp2 from "../assets/mvp2.png";
+import logo from "../assets/logo.png"
+import hands from "../assets/hands.png"
+
 
 const NavBar = ({ user, setUser, setToken }) => {
   
@@ -40,21 +41,13 @@ const NavBar = ({ user, setUser, setToken }) => {
 
   return(
     <div className='NavBar'>
-
-      <Link to='/' className="nav-logo"> <img src={mvp2} alt="" /> </Link>
-
-      <a href="#CategoryDescriptions" className="nav-categories-button">Categories</a>
-
-      <i className="fa-solid fa-magnifying-glass"></i>
-      <input type="text" placeholder='Search for anything' className="search-bar" />
-
-      <Link to='/about' className="nav-about-button">About</Link>
-
-      <Link to='/faq' className="nav-faq-button">FAQ</Link>
-
-      <Link to='/login' className="nav-login-button">Login</Link>
-
-
+      <Link to='/' className="nav-logo"><img src={logo} alt="mvp logo"/></Link>
+      {/* <div className="nav-logo-text">MVP</div> */}
+      <div className="nav-links">
+        <Link to='/about' className="nav-about-button"><i class="fa-solid fa-circle-info"></i></Link>
+        <Link to='/faq' className="nav-faq-button"><i class="fa-solid fa-circle-question"></i></Link>
+        <Link to='/login' className="nav-login-button"><i class="fa-solid fa-right-to-bracket"></i></Link>
+      </div>
     </div>
   );
 };

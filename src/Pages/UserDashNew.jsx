@@ -198,7 +198,7 @@ function UserDashNew() {
 
             <div className="dash-user-buttons">
                 <Link className='user-linkedin dash-user-button' to={user.linkedin || "https://www.linkedin.com/"} target="_blank">
-                    <i className="fa-brands fa-linkedin"></i>
+                    <i class="fa-brands fa-linkedin-in"></i>
                     LinkedIn
                 </Link>
                 
