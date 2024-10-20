@@ -1,0 +1,96 @@
+.MentorList{
+    position: absolute;
+    background: none;
+    left: 0; top: 0;
+    display: flex;
+    height: 100%;
+    z-index: 99;
+    width: 100%;
+    .mentor-list-background{
+        position: absolute;
+        height: 100%;
+        width: 100%;
+    }
+    .mentor-list-container{
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+        border: 1px solid rgba(0, 0, 0, 0.2);
+        background: rgba(236,234,233,0.99);
+        border-radius: 20px;
+        margin: 110px auto;
+        position: sticky;
+        height: 430px;
+        width: 600px;
+        top: 110px;
+        .mentor-list-header{
+            border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+            text-align: center;
+            font-size: 26px;
+            padding: 10px;
+        }
+        .mentor-list-skills{
+            border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+            justify-content: space-between;
+            color:rgba(0, 0, 0, 0.5);
+            padding-bottom: 5px;
+            margin-right: 15px;
+            margin-left: 15px;
+            font-weight: bold;
+            padding-top: 10px;
+            font-size: 13px;
+            display: flex;
+            select{
+                outline: none;
+            }
+        }
+        .mentor-list{
+            color:rgba(0, 0, 0, 0.5);
+            padding-bottom: 5px;
+            overflow-y: scroll;
+            font-weight: bold;
+            padding-top: 10px;
+            font-size: 13px;
+            height: 346px;
+            .mentor-list-title{
+                border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+                padding-bottom: 10px;
+                padding-left: 15px;
+            }
+            .mentor-list-mentor{
+                border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+                border-top: 1px solid rgba(0, 0, 0, 0.05);
+                cursor: pointer;
+                padding: 10px 10px 10px 20px;
+                display: flex;
+                gap: 20px;
+                &:hover{
+                    background: rgba(0, 0, 0, 0.05);
+                    filter: brightness(95%);
+                }
+                .mentor-list-pic{
+                    justify-content: center;
+                    align-items: center;
+                    border-radius: 50%;
+                    font-size: 16px;
+                    color: white;
+                    display: flex;
+                    height: 40px;
+                    width: 40px;
+                }
+                .mentor-list-info{
+                    color:rgba(0, 0, 0, 0.7);
+                    justify-content: center;
+                    flex-direction: column;
+                    font-weight: normal;
+                    font-size: 18px;
+                    display: flex;
+                    height: 40px;
+                    span{
+                        color: rgba(0, 0, 0, 0.5);
+                        font-size: 14px;
+                    }
+                }
+            }
+        }
+    }
+}
+

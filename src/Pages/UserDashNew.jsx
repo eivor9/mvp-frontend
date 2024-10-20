@@ -1,12 +1,17 @@
+import MentorList from "../Components/MentorList";
 import { Link } from 'react-router-dom';
 import "../Styles/UserDashNew.css";
+import { useState } from 'react';
 
 function UserDashNew() {
+
+    const [showMentorList, setShowMentorList] = useState(false);
 
     const user = {
         name: "Nasheed Jeremiah",
         linkedin: "https://www.linkedin.com/in/nasheedjeremiah/",
-        bio: "I'm an aspiring web developer with a passion for crafting engaging and user-friendly web applications. Currently honing my skills in HTML, CSS, and JavaScript, I am eager to dive deeper into front-end development and responsive design. I thrive in collaborative environments and believe that effective communication and teamwork are essential to creating successful projects. As I learn and grow in this field, I enjoy participating in coding communities and contributing to open-source initiatives. My goal is to build innovative digital experiences that connect people and enhance their online interactions."
+        bio: "I'm an aspiring web developer with a passion for crafting engaging and user-friendly web applications. Currently honing my skills in HTML, CSS, and JavaScript, I am eager to dive deeper into front-end development and responsive design. I thrive in collaborative environments and believe that effective communication and teamwork are essential to creating successful projects. As I learn and grow in this field, I enjoy participating in coding communities and contributing to open-source initiatives. My goal is to build innovative digital experiences that connect people and enhance their online interactions.",
+        backgroundColor: "linear-gradient(0deg,rgba(163,138,245,1)0%,rgba(163,138,245,0.6)100%)"
     }
 
     const connections = [
@@ -22,19 +27,22 @@ function UserDashNew() {
                     metric: "Communication and Storytelling",
                     completed: false,
                     due_date: "2024-11-22",
+                    skill: "Behavioral Interview Prep",
                 },
                 {
                     name: "Teamwork and Collaboration",
                     body: "",
                     metric: "Communication and Storytelling",
                     completed: true,
-                    due_date: "2024-11-08"
+                    due_date: "2024-11-08",
+                    skill: "Behavioral Interview Prep",
                 },
                 {
                     name: "Problem-Solving and Decision-Making",
-                    body: "",
+                    body: "Start by selecting three challenging workplace scenarios, like handling a missed project deadline or resolving a team conflict. Break each problem down into smaller parts: identify the core issue, brainstorm at least three solutions, and evaluate the pros and cons of each option. Choose the best solution, explain why, and consider possible outcomes. Next, rehearse explaining your thought process clearly and concisely to a friend or mentor. Finally, review industry-specific case studies to understand how experts approach problem-solving in real-world situations.",
                     metric: "Speech Problem-Solving and Adaptability",
                     completed: false,
+                    skill: "Behavioral Interview Prep",
                     due_date: "2024-11-23"
                 },
                 {
@@ -42,6 +50,7 @@ function UserDashNew() {
                     body: "",
                     metric: "Speech Problem-Solving and Adaptability",
                     completed: true,
+                    skill: "Behavioral Interview Prep",
                     due_date: "2024-11-02"
                 },
                 {
@@ -49,12 +58,13 @@ function UserDashNew() {
                     body: "",
                     metric: "Leadership and Initiative",
                     completed: true,
+                    skill: "Behavioral Interview Prep",
                     due_date: "2024-11-11"
                 }
             ]
         },
         {            
-            mentor: {name:"Nathan Drake", linkedin: "https://www.linkedin.com/", bio: "I'm a skilled web developer passionate about creating dynamic, user-friendly applications. With a strong foundation in HTML, CSS, and JavaScript, I excel in front-end development and responsive design. I have a knack for behavioral interviews, using effective communication and problem-solving skills to connect with teams and stakeholders. I believe that collaboration and empathy are essential to successful projects. Outside of coding, I enjoy contributing to open-source projects and staying updated on the latest web technologies. My goal is to build impactful digital experiences that enhance user engagement and satisfaction."},
+            mentor: {name:"Nathan Drake", linkedin: "https://www.linkedin.com/", backgroundColor:"linear-gradient(0deg,rgba(101,219,118,1)0%,rgba(101,219,118,0.6)100%)", bio: "I'm a skilled web developer passionate about creating dynamic, user-friendly applications. With a strong foundation in HTML, CSS, and JavaScript, I excel in front-end development and responsive design. I have a knack for behavioral interviews, using effective communication and problem-solving skills to connect with teams and stakeholders. I believe that collaboration and empathy are essential to successful projects. Outside of coding, I enjoy contributing to open-source projects and staying updated on the latest web technologies. My goal is to build impactful digital experiences that enhance user engagement and satisfaction."},
             mentee: {name:"Nasaheed Jeremiah", linkedin: "https://www.linkedin.com/", bio: "I'm an aspiring web developer with a passion for crafting engaging and user-friendly web applications. Currently honing my skills in HTML, CSS, and JavaScript, I am eager to dive deeper into front-end development and responsive design. I thrive in collaborative environments and believe that effective communication and teamwork are essential to creating successful projects. As I learn and grow in this field, I enjoy participating in coding communities and contributing to open-source initiatives. My goal is to build innovative digital experiences that connect people and enhance their online interactions."}, 
             skill: "SQL",
             metrics: { "Data Manipulation (CRUD)": 100, "Database Design": 67, "Security Control and Query Optimization": 100 },
@@ -64,6 +74,7 @@ function UserDashNew() {
                     body: "",
                     metric: "Data Manipulation (CRUD)",
                     completed: true,
+                    skill: "SQL",
                     due_date: "2024-11-22"
                 },
                 {
@@ -71,13 +82,15 @@ function UserDashNew() {
                     body: "",
                     metric: "Database Design",
                     completed: true,
+                    skill: "SQL",
                     due_date: "2024-11-08"
                 },
                 {
                     name: "DDL and DML: Key Differences",
-                    body: "",
+                    body: "To understand the key differences between Data Definition Language (DDL) and Data Manipulation Language (DML), perform the following tasks. First, research the main commands for each: DDL includes CREATE, ALTER, DROP, and TRUNCATE for defining and modifying database structures, while DML uses SELECT, INSERT, UPDATE, and DELETE to manage and manipulate data within those structures. Next, create a sample database and apply DDL commands to set up tables. Then, use DML commands to add, retrieve, modify, and remove data. Document each step, explaining how DDL affects database structure while DML handles the actual data within it.",
                     metric: "Database Design",
                     completed: false,
+                    skill: "SQL",
                     due_date: "2024-11-23"
                 },
                 {
@@ -85,6 +98,7 @@ function UserDashNew() {
                     body: "",
                     metric: "Database Design",
                     completed: true,
+                    skill: "SQL",
                     due_date: "2024-11-02"
                 },
                 {
@@ -92,6 +106,7 @@ function UserDashNew() {
                     body: "",
                     metric: "Security Control and Query Optimization",
                     completed: true,
+                    skill: "SQL",
                     due_date: "2024-11-11"
                 }
             ]
@@ -142,12 +157,12 @@ function UserDashNew() {
     }
 
     const getAllOpenAssignments = () => {
+        if(!connections.length) return [];
 
         let assignments = [];
         for (const connection of connections) assignments.push(...connection.assignments);
 
         const openAssignments = assignments.filter(assignment => !assignment.completed);
-
         return openAssignments.slice(0, 3);
     }
 
@@ -155,8 +170,8 @@ function UserDashNew() {
         const metric = assignment.metric;
 
         for (let i = 0; i < connections.length; i++){
-            Object.keys(connections[i].metrics).includes(metric)
-            return connections[i].mentor.name;
+            if(Object.keys(connections[i].metrics).includes(metric))
+                return connections[i].mentor.name;
         }
     }
 
@@ -164,8 +179,8 @@ function UserDashNew() {
         const metric = assignment.metric;
 
         for (let i = 0; i < connections.length; i++){
-            Object.keys(connections[i].metrics).includes(metric)
-            return connections[i].mentor.backgroundColor;
+            if(Object.keys(connections[i].metrics).includes(metric))
+                return connections[i].mentor.backgroundColor;
         }
     }
 
@@ -174,7 +189,7 @@ function UserDashNew() {
         <div className="dash-user-container">
             
             <div className="dash-user-info">
-                <div className="profile-picture">{userInitials(user.name)}</div>
+                <div className="profile-picture" style={{background:user.backgroundColor}}>{userInitials(user.name)}</div>
                 <div className="user-info">
                     {user.name || "?"}
                     <div className="dash-user-progress">{assignmentProgress()}</div>
@@ -186,49 +201,47 @@ function UserDashNew() {
                     <i className="fa-brands fa-linkedin"></i>
                     LinkedIn
                 </Link>
-                <Link className="dash-categories-button dash-user-button" to="/">
+                
+                <div className="dash-categories-button dash-user-button" onClick={() => setShowMentorList(true)}>
                     <i className="fa-solid fa-microchip"></i>
-                    More Skills
-                </Link>
+                    New Skill
+                </div>
+
+                {showMentorList ? <MentorList setShowMentorList={setShowMentorList}/> : null}
             </div>
 
         </div>
 
         <div className="dash-connections-container">
+            <div className="dash-assignments-header">Mentors</div>
 
-            {connections.map(connection => 
-                <div className="dash-connection" style={{background:connection.mentor.backgroundColor}} key={connection.skill}>
-                    <div className="profile-picture">{userInitials(connection.mentor.name)}</div>
-                    <div className="dash-connection-skill">{connection.skill}</div>
-                    <div className="dash-connection-completion">{totalProgress(connection)}</div>
-                </div>
-            )}
-
-            {connections.length < 7 ?
-                <div className="dash-connection">
-                    <div className="profile-picture">{userInitials("+")}</div>
-                    <div className="dash-connection-skill"></div>
-                    <div className="dash-connection-completion">Add a skill</div>
-                </div> 
-            :null}
+            <div className="dash-connections">
+                {connections.length ? connections.map(connection => 
+                    <div className="dash-connection" style={{background:connection.mentor.backgroundColor}} key={connection.skill}>
+                        <div className="profile-picture">{userInitials(connection.mentor.name)}</div>
+                        <div className="dash-connection-skill">{connection.skill}</div>
+                        <div className="dash-connection-completion">{totalProgress(connection)}</div>
+                    </div>
+                ):null}
+            </div>
+                
         </div>
+            
 
         <div className="dash-assignments-container">
+            <div className="dash-assignments-header">Upcoming Assignments</div>
 
-            {getAllOpenAssignments().map(assignment =>
-
-                <div key={assignment.name} className="dash-assignment" style={{background: mentorColorFromAssignment(assignment)}} >
-                    <div className="dash-assignment-header">
-                        <div className="dash-assignment-info">{assignment.name.length < 25 ? assignment.name : assignment.name.substring(0, 25) + "..."}<span>{assignment.metric}</span></div>
-                        <div className="dash-assignment-profile">{userInitials(mentorNameFromAssignment(assignment))}</div>
+            <div className="dash-assignments">
+                {getAllOpenAssignments().length ? getAllOpenAssignments().map(assignment =>
+                    <div key={assignment.name} className="dash-assignment">
+                            <div className="dash-assignment-mentor" style={{background:mentorColorFromAssignment(assignment)}}>{userInitials(mentorNameFromAssignment(assignment))}</div>
+                            <div className="dash-assignment-name">{assignment.name.length < 25 ? assignment.name : assignment.name.substring(0, 25) + "..."}</div>
+                            <div className="dash-assignment-body" >{assignment.body.length < 540 ? assignment.body : assignment.body.substring(0, 540) + "..."}</div>
+                            <div className="dash-assignment-skill">{assignment.skill}</div>
                     </div>
-                    <p>{assignment.body.length < 280 ? assignment.body : assignment.body.substring(0, 280) + "..."}</p>
-                </div>
-
-            )}
-
+                ):null}
+            </div>
         </div>
-
     </div>
   )
 }
