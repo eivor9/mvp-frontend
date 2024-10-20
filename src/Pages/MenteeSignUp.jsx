@@ -4,7 +4,7 @@ import logo from "../assets/logo.png";
 import mentee_signup from "../assets/mentee_signup.png";
 import "../Styles/MenteeSignUp.css";
 
-function MenteeSignUp() {
+function MenteeSignUp({ setToken, setUser }) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -54,7 +54,12 @@ function MenteeSignUp() {
         const data = await response.json();
         console.log("Mentee created:", data);
         console.log("Name:", data.user.name);
-        navigate("/", { state: { message: `Thanks for signing up, ${data.user.first_name}!` } });
+        if(data.user.id){
+            const { user, token } = data;
+            setUser(user);
+            setToken(token);
+        }
+        navigate("/dashboard", { state: { message: `Thanks for signing up, ${data.user.first_name}!` } });
       } else {
         const errorData = await response.json();
         console.error("Error creating mentee:", errorData);

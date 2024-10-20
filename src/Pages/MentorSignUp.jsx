@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import logo from "../assets/logo.png";
 
-function MentorSignUp() {
+function MentorSignUp({ setToken, setUser }) {
     const [showJobInput, setShowJobInput] = useState(false);
     const [name, setName] = useState("");
     const [backgroundColor, setBackgroundColor] = useState("linear-gradient(0deg,rgba(177,177,177,0.9)0%,rgba(180,180,180,0.4)100%)");
@@ -75,6 +75,11 @@ function MentorSignUp() {
                 const data = await response.json();
                 console.log("Mentor created:", data);
                 console.log("Name:", data.user.name);
+                if(data.user.id){
+                    const { user, token } = data;
+                    setUser(user);
+                    setToken(token);
+                }
                 navigate("/", { state: { message: `Thanks for signing up, ${data.user.name}!` } });
             } else {
                 const errorData = await response.json();
