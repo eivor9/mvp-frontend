@@ -1,6 +1,6 @@
 // Pages/LoginDev.jsx
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import { useNavigate, Link } from 'react-router-dom';
 import logo from '../assets/logo.png';
@@ -17,6 +17,17 @@ const API = import.meta.env.VITE_BASE_URL;
         email: '',
         password_hash: ''
     })
+
+    useEffect(() => {
+        const storedUser = localStorage.getItem('user');
+        const storedToken = localStorage.getItem('token');
+        
+        if (storedUser && storedToken) {
+            setUser(JSON.parse(storedUser));
+            setToken(storedToken);
+            navigate(`/dashboard`);
+        }
+    }, [setUser, setToken, navigate]);
 
     const handleTextChange = (e) => {
         setFormData({ ...formData, [e.target.id]: e.target.value })
@@ -36,21 +47,23 @@ const API = import.meta.env.VITE_BASE_URL;
             .then(res => {
                 console.log(res)
                 if(res.user.id){
+
                     const { user, token } = res
                     setUser(user)
                     setToken(token)
+                    localStorage.setItem('user', JSON.stringify(user));
+                    localStorage.setItem('token', token);
+
                     setFormData(() => ({
                         email: '',
                         password_hash: ''
                     }))
-                    navigate(`/user-dashboard/${user.id}`);
+                    navigate(`/dashboard`);
                 } else {
                     console.log(res)
                 }
             })
             .catch(err => console.log(err))
-    
-        
       };
 
   return (
