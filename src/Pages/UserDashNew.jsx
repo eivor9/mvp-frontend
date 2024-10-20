@@ -67,8 +67,8 @@ function UserDashNew() {
             ]
         },
         {            
-            mentor: {name:"Nathan Drake", linkedin: "https://www.linkedin.com/", backgroundColor:"linear-gradient(0deg,rgba(101,219,118,1)0%,rgba(101,219,118,0.6)100%)", bio: "I'm a skilled web developer passionate about creating dynamic, user-friendly applications. With a strong foundation in HTML, CSS, and JavaScript, I excel in front-end development and responsive design. I have a knack for behavioral interviews, using effective communication and problem-solving skills to connect with teams and stakeholders. I believe that collaboration and empathy are essential to successful projects. Outside of coding, I enjoy contributing to open-source projects and staying updated on the latest web technologies. My goal is to build impactful digital experiences that enhance user engagement and satisfaction."},
-            mentee: {name:"Nasaheed Jeremiah", linkedin: "https://www.linkedin.com/", bio: "I'm an aspiring web developer with a passion for crafting engaging and user-friendly web applications. Currently honing my skills in HTML, CSS, and JavaScript, I am eager to dive deeper into front-end development and responsive design. I thrive in collaborative environments and believe that effective communication and teamwork are essential to creating successful projects. As I learn and grow in this field, I enjoy participating in coding communities and contributing to open-source initiatives. My goal is to build innovative digital experiences that connect people and enhance their online interactions."}, 
+            mentor: {name:"Sir Francis Drake", job_title:"Treasure Hunter", linkedin: "https://www.linkedin.com/", backgroundColor:"linear-gradient(0deg,rgba(101,219,118,1)0%,rgba(101,219,118,0.6)100%)", bio: "I'm a skilled web developer passionate about creating dynamic, user-friendly applications. With a strong foundation in HTML, CSS, and JavaScript, I excel in front-end development and responsive design. I have a knack for behavioral interviews, using effective communication and problem-solving skills to connect with teams and stakeholders. I believe that collaboration and empathy are essential to successful projects. Outside of coding, I enjoy contributing to open-source projects and staying updated on the latest web technologies. My goal is to build impactful digital experiences that enhance user engagement and satisfaction."},
+            mentee: {name:"Nasheed Jeremiah", linkedin: "https://www.linkedin.com/", bio: "I'm an aspiring web developer with a passion for crafting engaging and user-friendly web applications. Currently honing my skills in HTML, CSS, and JavaScript, I am eager to dive deeper into front-end development and responsive design. I thrive in collaborative environments and believe that effective communication and teamwork are essential to creating successful projects. As I learn and grow in this field, I enjoy participating in coding communities and contributing to open-source initiatives. My goal is to build innovative digital experiences that connect people and enhance their online interactions."}, 
             skill: "SQL",
             metrics: { "Data Manipulation (CRUD)": 100, "Database Design": 67, "Security Control and Query Optimization": 100 },
             assignments: [
@@ -220,13 +220,28 @@ function UserDashNew() {
         </div>
 
         <div className="dash-assignments-container">
-            <div className="dash-assignment-card">
+            {/* <div className="dash-assignment-card">
                 <div className="dash-assignment-name">{assignment.name}</div>
                 <div className="dash-assignment-body">
                     <div className="dash-assignment-body-container">{assignment.body}</div>
                 </div>
                 <Link>{assignment.skill}</Link>
+            </div> */}
+
+            <div className="dash-network-card">
+                <div className="network-card-info">
+                    <div className="network-card-pic" style={{background:connections[1].mentor.backgroundColor}}>{userInitials(connections[1].mentor.name)}</div>
+                    <div className="network-card-text">
+                        {connections[1].mentor.name}
+                        <span>{connections[1].mentor.job_title}</span>
+                    </div>
+                </div>
+                <div className="network-card-bio">{connections[1].mentor.bio}</div>
+                <Link className="network-card-linkedin" target="_blank" to={connections[1].mentor.linkedin}>Connect</Link>
             </div>
+
+            
+
             <div className="dash-assignment-picture">
                 <img src={firstAssignment ? assignment_photo : assignment_photo_2} alt="" />
             </div>
