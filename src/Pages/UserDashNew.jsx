@@ -2,10 +2,13 @@ import MentorList from "../Components/MentorList";
 import { Link } from 'react-router-dom';
 import "../Styles/UserDashNew.css";
 import { useState } from 'react';
+import assignment_photo from "../assets/assignment.png";
+import assignment_photo_2 from "../assets/assignment2.png";
 
 function UserDashNew() {
 
     const [showMentorList, setShowMentorList] = useState(false);
+    const [firstAssignment, setFirstAssignment] = useState(true);
 
     const user = {
         name: "Nasheed Jeremiah",
@@ -23,7 +26,7 @@ function UserDashNew() {
             assignments: [
                 {
                     name: "The STAR Method",
-                    body: "The STAR method is a powerful framework for answering behavioral interview questions by focusing on four key elements: Situation, Task, Action, and Result. Start by briefly describing the context (Situation) and the challenge you faced (Task). Then, emphasize the specific steps you took to address the issue (Action), detailing your role and the skills you applied. Finally, conclude by sharing the outcome (Result), highlighting positive impacts or measurable success. Practicing with real-life examples helps you stay concise and ensures your responses effectively showcase your problem-solving and decision-making abilities.",
+                    body: "Prepare answers to these questions: https://www.techinterviewhandbook.org/behavioral-interview-questions/",
                     metric: "Communication and Storytelling",
                     completed: false,
                     due_date: "2024-11-22",
@@ -156,14 +159,27 @@ function UserDashNew() {
         return `${Math.round(completed / total)}% completed`;
     }
 
-    const getAllOpenAssignments = () => {
+    const getTwoOpenAssignments = () => {
         if(!connections.length) return [];
 
         let assignments = [];
         for (const connection of connections) assignments.push(...connection.assignments);
 
-        const openAssignments = assignments.filter(assignment => !assignment.completed);
-        return openAssignments.slice(0, 3);
+        const firstRandomIndex = Math.floor(Math.random() * assignments.length);
+        let secondRandomIndex = firstRandomIndex;
+
+        while (firstRandomIndex !== secondRandomIndex)
+            secondRandomIndex = Math.floor(Math.random() * assignments.length);
+
+        return[assignments[firstRandomIndex], assignments[secondRandomIndex]];
+    }
+
+    const getOpenAssignments = (connection) => {
+        const assignments = connection.assignments;
+        if (!assignments.length) return 0;
+
+        const openAssignments = assignments.filter(x => !x.completed);
+        return openAssignments.length;
     }
 
     const mentorNameFromAssignment = (assignment) => {
@@ -184,64 +200,63 @@ function UserDashNew() {
         }
     }
 
+    const userFirstName = () => {
+        const names = user.name.split(" ");
+        return names[0];
+    }
+
+    const dashAssignments = getTwoOpenAssignments();
+    const assignment = firstAssignment ? dashAssignments[0] : dashAssignments[1];
+
   return (
+
     <div className="UserDashNew">
         <div className="dash-user-container">
-            
-            <div className="dash-user-info">
-                <div className="profile-picture" style={{background:user.backgroundColor}}>{userInitials(user.name)}</div>
-                <div className="user-info">
-                    {user.name || "?"}
-                    <div className="dash-user-progress">{assignmentProgress()}</div>
+            <div className="profile-picture" style={{background:user.backgroundColor}}>{userInitials(user.name)}</div>
+            <div className="user-info">
+                {`Welcome back, ${userFirstName()}`}
+                <Link to={user.linkedin} className="dash-user-linkedin"> Your LinkedIn Profile</Link>
+            </div>
+        </div>
+
+        <div className="dash-assignments-container">
+            <div className="dash-assignment-card">
+                <div className="dash-assignment-name">{assignment.name}</div>
+                <div className="dash-assignment-body">
+                    <div className="dash-assignment-body-container">{assignment.body}</div>
                 </div>
+                <Link>{assignment.skill}</Link>
+            </div>
+            <div className="dash-assignment-picture">
+                <img src={firstAssignment ? assignment_photo : assignment_photo_2} alt="" />
             </div>
 
-            <div className="dash-user-buttons">
-                <Link className='user-linkedin dash-user-button' to={user.linkedin || "https://www.linkedin.com/"} target="_blank">
-                    <i class="fa-brands fa-linkedin-in"></i>
-                    LinkedIn
-                </Link>
-                
-                <div className="dash-categories-button dash-user-button" onClick={() => setShowMentorList(true)}>
-                    <i className="fa-solid fa-microchip"></i>
-                    New Skill
-                </div>
 
-                {showMentorList ? <MentorList setShowMentorList={setShowMentorList}/> : null}
-            </div>
-
+            <div onClick={() => setFirstAssignment(!firstAssignment)} className="dash-previous assignment-button"><i className="fa-solid fa-chevron-left"></i></div>
+            <div onClick={() => setFirstAssignment(!firstAssignment)} className="dash-next assignment-button"><i className="fa-solid fa-chevron-right"></i></div>
         </div>
 
         <div className="dash-connections-container">
-            <div className="dash-assignments-header">Mentors</div>
+            {showMentorList ? <MentorList setShowMentorList={setShowMentorList}/> : null}
+
+            <div className="dash-connections-header">
+                Your Connections
+                <span onClick={()=>setShowMentorList(true)}>Learn a new skill</span>
+            </div>
 
             <div className="dash-connections">
-                {connections.length ? connections.map(connection => 
-                    <div className="dash-connection" style={{background:connection.mentor.backgroundColor}} key={connection.skill}>
-                        <div className="profile-picture">{userInitials(connection.mentor.name)}</div>
+                {connections.map(connection => 
+                    <div className="dash-connection" key={connection.skill}>
+                        <div className="profile-picture" style={{background:connection.mentor.backgroundColor}} >{userInitials(connection.mentor.name)}</div>
+                        <div className="dash-connection-mentor">{connection.mentor.name}</div>
                         <div className="dash-connection-skill">{connection.skill}</div>
-                        <div className="dash-connection-completion">{totalProgress(connection)}</div>
+                        <div className="dash-connection-completion">{getOpenAssignments(connection)} assignments left</div>
                     </div>
-                ):null}
+                )}
             </div>
                 
         </div>
-            
-
-        <div className="dash-assignments-container">
-            <div className="dash-assignments-header">Upcoming Assignments</div>
-
-            <div className="dash-assignments">
-                {getAllOpenAssignments().length ? getAllOpenAssignments().map(assignment =>
-                    <div key={assignment.name} className="dash-assignment">
-                            <div className="dash-assignment-mentor" style={{background:mentorColorFromAssignment(assignment)}}>{userInitials(mentorNameFromAssignment(assignment))}</div>
-                            <div className="dash-assignment-name">{assignment.name.length < 25 ? assignment.name : assignment.name.substring(0, 25) + "..."}</div>
-                            <div className="dash-assignment-body" >{assignment.body.length < 540 ? assignment.body : assignment.body.substring(0, 540) + "..."}</div>
-                            <div className="dash-assignment-skill">{assignment.skill}</div>
-                    </div>
-                ):null}
-            </div>
-        </div>
+        
     </div>
   )
 }

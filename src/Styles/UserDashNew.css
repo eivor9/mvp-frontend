@@ -1,176 +1,186 @@
 .UserDashNew{
+    max-width: 1300px;
+    margin: auto;
     .dash-user-container{
+        padding: 30px;
         display: flex;
-        padding: 50px 200px;
-        justify-content: space-between;
-        max-width: 1700px;
-        margin: auto;
-        .dash-user-info{
-            display: flex;
-            gap: 15px;
-            .profile-picture{
-                width: 120px;
-                height: 120px;
-                border-radius: 50%;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                font-size: 48px;
-                color: white;
-                background: linear-gradient(0deg, rgba(177,177,177,0.9) 0%, rgba(180,180,180,0.4) 100%);
-            }
-            .user-info{
-                font-size: 28px;
-                color: rgba(0,0,0,0.7);
-                justify-content: center;
-                display: flex;
-                flex-direction: column;
-                gap: 5px;
-                .dash-user-progress{
-                    font-size: 16px;
-                    color: rgba(0,0,0,0.5);
-                }
-            }
-        }
-
-        .dash-user-buttons{
-            display: flex;
-            .dash-user-button{
-                width: 100px;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                justify-content: flex-end;
-                gap: 5px;
-                font-size: 13px;
-                cursor: pointer;
-                color: rgba(0,0,0,0.5);
-                i{
-                    border-radius: 10px;
-                    width: 50px;
-                    aspect-ratio: 1;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    font-size: 34px;
-                    color: white;
-                    background: linear-gradient(0deg,rgba(177,177,177,0.9)0%,rgba(180,180,180,0.4)100%);
-                }
-                .fa-linkedin-in{
-                    background: linear-gradient(0deg,rgba(10, 102, 194,1)0%,rgba(10, 102, 194,0.7)100%);
-                }
-            }
-        }
-    }
-
-    .dash-connections-container{
-        background-color: rgba(60, 60, 67, 0.03);
-        border-top: 1px solid rgba(0, 0, 0, 0.2);
-        border-bottom: 1px solid rgba(0, 0, 0, 0.2);
-        padding: 20px 20px 40px;
-        display: flex;
-        flex-direction: column;
-        gap: 15px;
-        .dash-assignments-header{
-            width: 100%;
-            max-width: 1700px;
-            font-size: 26px;
-            margin: auto;
-            position: relative;
-            color:rgba(0, 0, 0, 0.3)
-        }
-        .dash-connections{
-            display: flex;
-            gap: 30px;
+        gap: 20px;
+        .profile-picture{
+            background: linear-gradient(0deg, rgba(177,177,177,0.9) 0%, rgba(180,180,180,0.4) 100%);
             justify-content: center;
-            .dash-connection{
-                border-radius: 20px;
-                padding: 10px 15px 20px;
-                width: 200px;
-                display: flex;
-                flex-direction: column;
-                gap: 10px;
-                font-size: 22px;
-                cursor: pointer;
-                color:white;
-                background: linear-gradient(0deg, rgba(177,177,177,0.9) 0%, rgba(180,180,180,0.4) 100%);
-                box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.1);
-                .profile-picture{
-                    width: 175px;
-                    height: 150px;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    font-size: 70px;
-                    color: white;
-                }
-                .dash-connection-skill{
-                    font-size: 20px;
-                    height: 50px;
-                }
-                .dash-connection-completion{
-                    font-size: 16px;
-                }
-                &:hover{
-                    filter: brightness(99%);
-                }
+            align-items: center;
+            border-radius: 50%;
+            font-size: 32px;
+            color: white;
+            display: flex;
+            height: 70px;
+            width: 70px;
+        }
+        .user-info{
+            color: rgba(0,0,0,0.8);
+            justify-content: center;
+            flex-direction: column;
+            font-weight: bold;
+            font-size: 22px;
+            display: flex;
+            gap: 5px;
+            .dash-user-linkedin{
+                color: rgba(0,0,0,0.5);
+                font-weight: normal;
+                width: fit-content;
+                font-size: 16px;
             }
         }
     }
 
     .dash-assignments-container{
+        background: rgba(235, 252, 255, 0.3);
+        justify-content: space-between;
+        position: relative;
         display: flex;
-        flex-direction: column;
-        max-width: 1700px;
-        margin: auto;
-        padding-bottom: 50px;
-        gap: 25px;
-        padding: 20px 20px 50px;
-        .dash-assignments-header{
-            width: fit-content;
-            font-size: 26px;
-            color:rgba(0, 0, 0, 0.3)
-        }
-        .dash-assignments{
+        margin-bottom: 30px;
+        height: 400px;
+        width: 100%;
+        .dash-assignment-card{
+            box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.1);
+            margin: auto 0 auto 80px;
+            flex-direction: column;
+            height: fit-content;
+            background: white;
+            border-radius: 5px;
             display: flex;
+            padding: 10px;
+            width: 400px;
+            .dash-assignment-name{
+                color:rgba(0, 0, 0, 0.8);
+                font-weight: bold;
+                font-size: 26px;
+            }
+            .dash-assignment-body{
+                .dash-assignment-body-header{
+                    color:rgba(0, 0, 0, 0.8);
+                    padding-bottom: 5px;
+                    font-size: 14px;
+                }
+                .dash-assignment-body-container{
+                    padding: 10px 10px 10px 0;
+                    overflow-y: scroll;
+                    line-height: 22px;
+                    height: 100px;
+                }
+            }
+            a{
+                background: rgba(0, 0, 0, 0.8);
+                border-radius: 5px;
+                width: fit-content;
+                margin-top: 10px;
+                color: white;
+                padding: 10px;
+                &:hover{
+                    background: rgba(0, 0, 0, 0.75);
+                }
+            }
+            
+        }
+        .dash-assignment-picture{
+            display: flex;
+            width: 65%;
+            img{
+                height: 100%;
+                margin: auto;
+            }
+        }
+        .assignment-button{
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            background: rgba(0, 0, 0, 0.8);
             justify-content: center;
-            gap: 30px;
-            .dash-assignment{
-                border-radius: 10px;
-                width: 450px;
-                height: 380px;
-                padding: 15px;
-                display: flex;
-                justify-content: space-between;
-                flex-direction: column;
-                cursor: default;
+            align-items: center;
+            position: absolute;
+            border-radius: 50%;
+            font-size: 18px;
+            cursor: pointer;
+            color: white;
+            display: flex;
+            height: 40px;
+            margin: auto;
+            width: 40px;
+            bottom: 0;
+            top: 0;
+            &:hover{
+                background: rgba(0, 0, 0, 0.75);
+            }
+        }
+        .dash-next{
+            right: 20px;
+        }
+        .dash-previous{
+            left: 20px;
+        }
+    }
+
+    .dash-connections-container{
+        flex-direction: column;
+        padding: 0 30px;
+        display: flex;
+        gap: 10px;
+        .dash-connections-header{
+            justify-content: space-between;
+            color: rgba(0,0,0,0.8);
+            align-items: flex-end;
+            font-weight: bold;
+            font-size: 22px;
+            display: flex;
+            span{
+                color: rgba(0,0,0,0.5);
+                font-size: 16px;
+                cursor: pointer;
+                &:hover{
+                    color: rgba(0,0,0,0.8);
+                }
+            }
+        }
+        .dash-connections{
+            display: flex;
+            gap: 20px;
+            .dash-connection{
                 box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.1);
-                .dash-assignment-mentor{
-                    width: 50px;
-                    height: 50px;
-                    display: flex;
+                flex-direction: column;
+                border-radius: 10px;
+                margin-bottom: 70px;
+                cursor: pointer;
+                display: flex;
+                padding: 10px;
+                height: 200px;
+                width: 160px;
+                gap: 5px;
+                .profile-picture{
                     justify-content: center;
                     align-items: center;
+                    margin-bottom: 5px;
                     border-radius: 50%;
+                    font-size: 22px;
                     color: white;
-                    font-size: 22px;
+                    display: flex;
+                    height: 50px;
+                    width: 50px;
                 }
-                .dash-assignment-name{
-                    font-size: 22px;
+                .dash-connection-mentor{
+                    color: rgba(0, 0, 0, 0.7);
                     font-weight: bold;
-                    color: rgba(0,0,0,0.6);
+                    font-size: 16px;
                 }
-                .dash-assignment-body{
-                    font-size: 15px;
-                    color: rgba(0,0,0,0.6);
-                    line-height: 22px;
-                }
-                .dash-assignment-skill{
-                    font-size: 15px;
+                .dash-connection-skill{
+                    color: rgba(0, 0, 0, 0.6);
                     font-weight: bold;
-                    color: rgba(0,0,0,0.5);
+                    font-size: 14px;
+                }
+                .dash-connection-completion{
+                    color: rgba(0, 0, 0, 0.4);
+                    margin-top: auto;
+                    font-size: 16px;
                 }
             }
         }
     }
+
 }
