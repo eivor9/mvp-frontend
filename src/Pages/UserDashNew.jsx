@@ -1,121 +1,71 @@
 import MentorList from "../Components/MentorList";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
 import "../Styles/UserDashNew.css";
 import { useState } from 'react';
 import assignment_photo from "../assets/assignment.png";
 import assignment_photo_2 from "../assets/assignment2.png";
 
-function UserDashNew() {
+function UserDashNew({ user, token, setUser, setToken }) {
 
     const [showMentorList, setShowMentorList] = useState(false);
     const [firstCard, setFirstCard] = useState(true);
+    const [connections, setConnections] = useState([])
+    const [connectionDetails, setConnectionDetails] = useState([])
 
-    const user = {
-        name: "Nasheed Jeremiah",
-        linkedin: "https://www.linkedin.com/in/nasheedjeremiah/",
-        bio: "I'm an aspiring web developer with a passion for crafting engaging and user-friendly web applications. Currently honing my skills in HTML, CSS, and JavaScript, I am eager to dive deeper into front-end development and responsive design. I thrive in collaborative environments and believe that effective communication and teamwork are essential to creating successful projects. As I learn and grow in this field, I enjoy participating in coding communities and contributing to open-source initiatives. My goal is to build innovative digital experiences that connect people and enhance their online interactions.",
-        backgroundColor: "linear-gradient(0deg,rgba(163,138,245,1)0%,rgba(163,138,245,0.6)100%)"
-    }
+    // const user = {
+    //     name: "Nasheed Jeremiah",
+    //     linkedin: "https://www.linkedin.com/in/nasheedjeremiah/",
+    //     bio: "I'm an aspiring web developer with a passion for crafting engaging and user-friendly web applications. Currently honing my skills in HTML, CSS, and JavaScript, I am eager to dive deeper into front-end development and responsive design. I thrive in collaborative environments and believe that effective communication and teamwork are essential to creating successful projects. As I learn and grow in this field, I enjoy participating in coding communities and contributing to open-source initiatives. My goal is to build innovative digital experiences that connect people and enhance their online interactions.",
+    //     backgroundColor: "linear-gradient(0deg,rgba(163,138,245,1)0%,rgba(163,138,245,0.6)100%)"
+    // }
+    const navigate = useNavigate();
+    const API = import.meta.env.VITE_BASE_URL;
 
-    const connections = [
-        {
-            mentor: {name:"Joel Miller", linkedin: "https://www.linkedin.com/", backgroundColor: "linear-gradient(0deg, rgba(129,212,250,1) 0%, rgba(129,212,250,0.4) 100%)", bio: "I'm a skilled web developer passionate about creating dynamic, user-friendly applications. With a strong foundation in HTML, CSS, and JavaScript, I excel in front-end development and responsive design. I have a knack for behavioral interviews, using effective communication and problem-solving skills to connect with teams and stakeholders. I believe that collaboration and empathy are essential to successful projects. Outside of coding, I enjoy contributing to open-source projects and staying updated on the latest web technologies. My goal is to build impactful digital experiences that enhance user engagement and satisfaction."},
-            mentee: {name:"Nasheed Jeremiah", linkedin: "https://www.linkedin.com/", backgroundColor: "linear-gradient(0deg, rgba(129,212,250,1) 0%, rgba(129,212,250,0.4) 100%)", bio: "I'm an aspiring web developer with a passion for crafting engaging and user-friendly web applications. Currently honing my skills in HTML, CSS, and JavaScript, I am eager to dive deeper into front-end development and responsive design. I thrive in collaborative environments and believe that effective communication and teamwork are essential to creating successful projects. As I learn and grow in this field, I enjoy participating in coding communities and contributing to open-source initiatives. My goal is to build innovative digital experiences that connect people and enhance their online interactions."}, 
-            skill: "Behavioral Interview Prep",
-            metrics: { "Communication and Storytelling": 50, "Speech Problem-Solving and Adaptability": 50, "Leadership and Initiative": 100 },
-            assignments: [
-                {
-                    name: "The STAR Method",
-                    body: "Prepare answers to these questions: https://www.techinterviewhandbook.org/behavioral-interview-questions/",
-                    metric: "Communication and Storytelling",
-                    completed: false,
-                    due_date: "2024-11-22",
-                    skill: "Behavioral Interview Prep",
-                },
-                {
-                    name: "Teamwork and Collaboration",
-                    body: "",
-                    metric: "Communication and Storytelling",
-                    completed: true,
-                    due_date: "2024-11-08",
-                    skill: "Behavioral Interview Prep",
-                },
-                {
-                    name: "Problem-Solving and Decision-Making",
-                    body: "Start by selecting three challenging workplace scenarios, like handling a missed project deadline or resolving a team conflict. Break each problem down into smaller parts: identify the core issue, brainstorm at least three solutions, and evaluate the pros and cons of each option. Choose the best solution, explain why, and consider possible outcomes. Next, rehearse explaining your thought process clearly and concisely to a friend or mentor. Finally, review industry-specific case studies to understand how experts approach problem-solving in real-world situations.",
-                    metric: "Speech Problem-Solving and Adaptability",
-                    completed: false,
-                    skill: "Behavioral Interview Prep",
-                    due_date: "2024-11-23"
-                },
-                {
-                    name: "Adaptability and Flexibility",
-                    body: "",
-                    metric: "Speech Problem-Solving and Adaptability",
-                    completed: true,
-                    skill: "Behavioral Interview Prep",
-                    due_date: "2024-11-02"
-                },
-                {
-                    name: "Take Ownership of a New Initiative",
-                    body: "",
-                    metric: "Leadership and Initiative",
-                    completed: true,
-                    skill: "Behavioral Interview Prep",
-                    due_date: "2024-11-11"
-                }
-            ]
-        },
-        {            
-            mentor: {name:"Sir Francis Drake", job_title:"Treasure Hunter", linkedin: "https://www.linkedin.com/", backgroundColor:"linear-gradient(0deg,rgba(101,219,118,1)0%,rgba(101,219,118,0.6)100%)", bio: "I'm a skilled web developer passionate about creating dynamic, user-friendly applications. With a strong foundation in HTML, CSS, and JavaScript, I excel in front-end development and responsive design. I have a knack for behavioral interviews, using effective communication and problem-solving skills to connect with teams and stakeholders. I believe that collaboration and empathy are essential to successful projects. Outside of coding, I enjoy contributing to open-source projects and staying updated on the latest web technologies. My goal is to build impactful digital experiences that enhance user engagement and satisfaction."},
-            mentee: {name:"Nasheed Jeremiah", linkedin: "https://www.linkedin.com/", bio: "I'm an aspiring web developer with a passion for crafting engaging and user-friendly web applications. Currently honing my skills in HTML, CSS, and JavaScript, I am eager to dive deeper into front-end development and responsive design. I thrive in collaborative environments and believe that effective communication and teamwork are essential to creating successful projects. As I learn and grow in this field, I enjoy participating in coding communities and contributing to open-source initiatives. My goal is to build innovative digital experiences that connect people and enhance their online interactions."}, 
-            skill: "SQL",
-            metrics: { "Data Manipulation (CRUD)": 100, "Database Design": 67, "Security Control and Query Optimization": 100 },
-            assignments: [
-                {
-                    name: "CRUD Operations: Data Manipulation in SQL",
-                    body: "",
-                    metric: "Data Manipulation (CRUD)",
-                    completed: true,
-                    skill: "SQL",
-                    due_date: "2024-11-22"
-                },
-                {
-                    name: "Defining Databases in Full-Stack Apps",
-                    body: "",
-                    metric: "Database Design",
-                    completed: true,
-                    skill: "SQL",
-                    due_date: "2024-11-08"
-                },
-                {
-                    name: "DDL and DML: Key Differences",
-                    body: "To understand the key differences between Data Definition Language (DDL) and Data Manipulation Language (DML), perform the following tasks. First, research the main commands for each: DDL includes CREATE, ALTER, DROP, and TRUNCATE for defining and modifying database structures, while DML uses SELECT, INSERT, UPDATE, and DELETE to manage and manipulate data within those structures. Next, create a sample database and apply DDL commands to set up tables. Then, use DML commands to add, retrieve, modify, and remove data. Document each step, explaining how DDL affects database structure while DML handles the actual data within it.",
-                    metric: "Database Design",
-                    completed: false,
-                    skill: "SQL",
-                    due_date: "2024-11-23"
-                },
-                {
-                    name: "Creating and Modifying Tables",
-                    body: "",
-                    metric: "Database Design",
-                    completed: true,
-                    skill: "SQL",
-                    due_date: "2024-11-02"
-                },
-                {
-                    name: "Connecting to psql: Essential Commands",
-                    body: "",
-                    metric: "Security Control and Query Optimization",
-                    completed: true,
-                    skill: "SQL",
-                    due_date: "2024-11-11"
-                }
-            ]
+    useEffect(() => {
+        if (!user) {
+          navigate('/login');
         }
-    ]
+      }, [user, navigate]);
+    
+      if (!user) {
+        return null;
+      }
 
+   useEffect(()=> {
+    fetch(`${API}/users/${user.id}/connections`,{
+        headers: {
+            'Authorization': token
+        }
+    })
+    .then(res => res.json())
+    .then(res => {
+        console.log(res)
+        setConnections(res)
+    })
+    .catch(err => {
+        console.error(err)
+    })
+   }, [])
+
+   // GET ALL CONNECTION DETAILS FOR USER
+   useEffect(() => {
+    fetch(`${API}/users/${user.id}/connection-details`,{
+        headers: {
+            "Authorization": token
+        }
+    })
+    .then(res => res.json())
+    .then(res => {
+        console.log(res)
+        setConnectionDetails(res)
+    })
+    .catch(err => {
+        console.error(err)
+    })
+   }, [user.id])
+
+// HELPER FUNCTIONS
     const userInitials = (input) => {
         if (!input) return "?";
 
@@ -205,8 +155,8 @@ function UserDashNew() {
         return names[0];
     }
 
-    const dashAssignments = getTwoOpenAssignments();
-    const assignment = firstCard ? dashAssignments[0] : dashAssignments[1];
+    // const dashAssignments = getTwoOpenAssignments();
+    // const assignment = firstCard ? dashAssignments[0] : dashAssignments[1];
 
   return (
 
@@ -233,7 +183,7 @@ function UserDashNew() {
             */}
 
             {/* For Mentor Dashboard */}
-            <div className="dash-network-card">
+            {/* <div className="dash-network-card">
                 <div className="network-card-info">
                     <div className="network-card-pic" style={{background:connections[1].mentor.backgroundColor}}>{userInitials(connections[1].mentor.name)}</div>
                     <div className="network-card-text">
@@ -243,7 +193,7 @@ function UserDashNew() {
                 </div>
                 <div className="network-card-bio">{connections[1].mentor.bio}</div>
                 <Link className="network-card-linkedin" target="_blank" to={connections[1].mentor.linkedin}>Connect</Link>
-            </div>
+            </div> */}
 
             
 
@@ -257,20 +207,21 @@ function UserDashNew() {
         </div>
 
         <div className="dash-connections-container">
-            {showMentorList ? <MentorList setShowMentorList={setShowMentorList}/> : null}
+            {showMentorList ? <MentorList user={user} token={token} setShowMentorList={setShowMentorList} connections={connections}/> : null}
 
+            
             <div className="dash-connections-header">
                 Your Connections
-                <span onClick={()=>setShowMentorList(true)}>Learn a new skill</span>
+                <span onClick={()=>setShowMentorList(true)}>{user.is_mentor ? "Pending Connections" : "Learn a new skill"}</span>
             </div>
 
             <div className="dash-connections">
-                {connections.map(connection => 
-                    <div className="dash-connection" key={connection.skill}>
-                        <div className="profile-picture" style={{background:connection.mentor.backgroundColor}} >{userInitials(connection.mentor.name)}</div>
-                        <div className="dash-connection-mentor">{connection.mentor.name}</div>
-                        <div className="dash-connection-skill">{connection.skill}</div>
-                        <div className="dash-connection-completion">{getOpenAssignments(connection)} assignments left</div>
+                {connectionDetails.map(connection => 
+                    <div className="dash-connection" key={connection.connection_id}>
+                        <div className="profile-picture" style={{background:connection.background_color}} >{userInitials(connection.name)}</div>
+                        <div className="dash-connection-mentor">{connection.name}</div>
+                        <div className="dash-connection-skill">{connection.skill_name}</div>
+                        <div className="dash-connection-completion">{0} assignments left</div>
                     </div>
                 )}
             </div>

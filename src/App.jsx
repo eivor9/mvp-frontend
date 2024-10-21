@@ -2,7 +2,7 @@
 
 // DEPENDENCIES
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./App.css";
 
 // PAGES
@@ -29,6 +29,23 @@ function App() {
 
   const [user, setUser] = useState(null);
   const [token, setToken] = useState(null)
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+        
+    const storedUser = localStorage.getItem('user');
+    const storedToken = localStorage.getItem('token');
+    
+    if (storedUser && storedToken) {
+        setUser(JSON.parse(storedUser));
+        setToken(storedToken);
+    }
+    setLoading(false);
+  }, [setUser, setToken]);
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <div className="App">
@@ -41,7 +58,9 @@ function App() {
             <Route path="/mentor-signup" element={<MentorSignUp setUser={setUser} setToken={setToken} />} />
             <Route path="/mentee-signup" element={<MenteeSignUp setUser={setUser} setToken={setToken} />} />
             <Route path="/login" element={<LoginDev setUser={setUser} setToken={setToken} />} />
-            <Route path="/dashboard" element={<UserDashNew />} />
+            <Route path="/dashboard" element={<UserDashNew user={user} token={token} setToken={setToken} setUser={setUser} />} />
+            {/* <Route path="/dashboard" element={user ? <UserDashNew user={user} token={token} setToken={setToken} setUser={setUser} /> : <div>Loading...</div>} /> */}
+
 
 
             <Route path="/signup" element={<SignUp setUser={setUser} setToken={setToken} />} />

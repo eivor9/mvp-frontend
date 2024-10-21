@@ -18,16 +18,7 @@ const API = import.meta.env.VITE_BASE_URL;
         password_hash: ''
     })
 
-    useEffect(() => {
-        const storedUser = localStorage.getItem('user');
-        const storedToken = localStorage.getItem('token');
-        
-        if (storedUser && storedToken) {
-            setUser(JSON.parse(storedUser));
-            setToken(storedToken);
-            navigate(`/dashboard`);
-        }
-    }, [setUser, setToken, navigate]);
+   
 
     const handleTextChange = (e) => {
         setFormData({ ...formData, [e.target.id]: e.target.value })
