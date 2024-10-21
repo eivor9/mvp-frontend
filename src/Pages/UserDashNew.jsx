@@ -8,7 +8,7 @@ import assignment_photo_2 from "../assets/assignment2.png";
 function UserDashNew() {
 
     const [showMentorList, setShowMentorList] = useState(false);
-    const [firstAssignment, setFirstAssignment] = useState(true);
+    const [firstCard, setFirstCard] = useState(true);
 
     const user = {
         name: "Nasheed Jeremiah",
@@ -206,7 +206,7 @@ function UserDashNew() {
     }
 
     const dashAssignments = getTwoOpenAssignments();
-    const assignment = firstAssignment ? dashAssignments[0] : dashAssignments[1];
+    const assignment = firstCard ? dashAssignments[0] : dashAssignments[1];
 
   return (
 
@@ -219,15 +219,20 @@ function UserDashNew() {
             </div>
         </div>
 
-        <div className="dash-assignments-container">
-            {/* <div className="dash-assignment-card">
+        <div style={{background: firstCard ? "rgba(223, 200, 83, 0.4)" : "rgba(235, 252, 255, 1)"}} className="dash-assignments-container">
+
+            {/* For Mentee Dashboard */}
+            {/* 
+            <div className="dash-assignment-card">
                 <div className="dash-assignment-name">{assignment.name}</div>
                 <div className="dash-assignment-body">
                     <div className="dash-assignment-body-container">{assignment.body}</div>
                 </div>
                 <Link>{assignment.skill}</Link>
-            </div> */}
+            </div> 
+            */}
 
+            {/* For Mentor Dashboard */}
             <div className="dash-network-card">
                 <div className="network-card-info">
                     <div className="network-card-pic" style={{background:connections[1].mentor.backgroundColor}}>{userInitials(connections[1].mentor.name)}</div>
@@ -243,12 +248,12 @@ function UserDashNew() {
             
 
             <div className="dash-assignment-picture">
-                <img src={firstAssignment ? assignment_photo : assignment_photo_2} alt="" />
+                <img src={firstCard ? assignment_photo : assignment_photo_2} alt="" />
             </div>
 
 
-            <div onClick={() => setFirstAssignment(!firstAssignment)} className="dash-previous assignment-button"><i className="fa-solid fa-chevron-left"></i></div>
-            <div onClick={() => setFirstAssignment(!firstAssignment)} className="dash-next assignment-button"><i className="fa-solid fa-chevron-right"></i></div>
+            <div onClick={() => setFirstCard(!firstCard)} className="dash-previous assignment-button"><i className="fa-solid fa-chevron-left"></i></div>
+            <div onClick={() => setFirstCard(!firstCard)} className="dash-next assignment-button"><i className="fa-solid fa-chevron-right"></i></div>
         </div>
 
         <div className="dash-connections-container">

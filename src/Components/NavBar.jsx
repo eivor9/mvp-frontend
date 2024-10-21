@@ -44,9 +44,9 @@ const NavBar = ({ user, setUser, setToken }) => {
       <Link to='/' className="nav-logo"><img src={logo} alt="mvp logo"/></Link>
       {/* <div className="nav-logo-text">MVP</div> */}
       <div className="nav-links">
-        <Link to='/about' className="nav-about-button"><i class="fa-solid fa-circle-info"></i></Link>
-        <Link to='/faq' className="nav-faq-button"><i class="fa-solid fa-circle-question"></i></Link>
-        <Link to='/login' className="nav-login-button"><i class="fa-solid fa-right-to-bracket"></i></Link>
+        <Link to='/about' className="nav-about-button"><i className="fa-solid fa-circle-info"></i></Link>
+        <Link to='/faq' className="nav-faq-button"><i className="fa-solid fa-circle-question"></i></Link>
+        <Link to='/login' className="nav-login-button"><i className="fa-solid fa-right-to-bracket"></i></Link>
       </div>
     </div>
   );
