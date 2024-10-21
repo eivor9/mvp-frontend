@@ -38,7 +38,7 @@ function MenteeSignUp({ setToken, setUser }) {
       password_hash: password,
       bio: bio,
       is_mentor: false,
-      signup_date: new Date().toISOString(),
+      background_color: backgroundColor,
     };
 
     try {

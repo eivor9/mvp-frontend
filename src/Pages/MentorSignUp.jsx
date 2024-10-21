@@ -42,7 +42,7 @@ function MentorSignUp({ setToken, setUser }) {
             bio: document.getElementById("bio").value,
             email: document.getElementById("email").value,
             password_hash: document.getElementById("password_hash").value,
-            job_title: showJobInput ? document.getElementById("job_title").value : null,
+            job_title: showJobInput ? document.getElementById("job_title").value : "Open to new roles",
             skills: [
                 document.getElementById("js-checkbox").checked ? "JavaScript" : null,
                 document.getElementById("html-checkbox").checked ? "HTML" : null,
@@ -53,7 +53,7 @@ function MentorSignUp({ setToken, setUser }) {
                 document.getElementById("bi-checkbox").checked ? "Behavioral Interview Prep" : null,
             ].filter(Boolean), // Remove null values
             is_mentor: true,
-            signup_date: new Date().toISOString(),
+            background_color: backgroundColor
         };
 
         // Validate required fields
@@ -80,7 +80,7 @@ function MentorSignUp({ setToken, setUser }) {
                     setUser(user);
                     setToken(token);
                 }
-                navigate("/", { state: { message: `Thanks for signing up, ${data.user.name}!` } });
+                navigate("/dashboard", { state: { message: `Thanks for signing up, ${data.user.name}!` } });
             } else {
                 const errorData = await response.json();
                 console.error("Error creating mentor:", errorData);
@@ -134,7 +134,7 @@ function MentorSignUp({ setToken, setUser }) {
                     </div>
                         <div className="right-input-container">
                             <label htmlFor="email"> Email <input required id="email" type="email" placeholder="What's your email address?" /> </label>
-                            <label htmlFor="password_hash"> Password <input minLength="6" maxLength="25" required id="password_hash" type="password" placeholder="Don't forget this!" /> </label>
+                            <label htmlFor="password_hash"> Password <input minLength="6" maxLength="255" required id="password_hash" type="password" placeholder="Don't forget this!" /> </label>
                             <button type="submit">Sign Up</button>
                         </div>
                         <Link className="mentee-signup-link" to="/mentee-signup">Just starting your journey?</Link>
