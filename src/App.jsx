@@ -24,6 +24,7 @@ import ProgressTracking from "./Pages/ProgressTracking";
 import MentorSignUp from "./Pages/MentorSignUp";
 import MenteeSignUp from "./Pages/MenteeSignUp";
 import UserDashNew from "./Pages/UserDashNew";
+import ProtectedRoute from "./Components/ProtectedRoute";
 
 function App() {
 
@@ -58,11 +59,16 @@ function App() {
             <Route path="/mentor-signup" element={<MentorSignUp setUser={setUser} setToken={setToken} />} />
             <Route path="/mentee-signup" element={<MenteeSignUp setUser={setUser} setToken={setToken} />} />
             <Route path="/login" element={<LoginDev setUser={setUser} setToken={setToken} />} />
-            <Route path="/dashboard" element={<UserDashNew user={user} token={token} setToken={setToken} setUser={setUser} />} />
-            {/* <Route path="/dashboard" element={user ? <UserDashNew user={user} token={token} setToken={setToken} setUser={setUser} /> : <div>Loading...</div>} /> */}
-
-
-
+            {/* <Route path="/dashboard" element={<UserDashNew user={user} token={token} setToken={setToken} setUser={setUser} />} /> */}
+            <Route path="/dashboard" element={
+                <ProtectedRoute 
+                  element={UserDashNew}
+                  isAuthenticated={!!user && !!token}
+                  user={user}
+                  token={token}
+                />
+              } 
+            />
             <Route path="/signup" element={<SignUp setUser={setUser} setToken={setToken} />} />
             <Route path="/profile/:user_id" element={<Profile />} />
             <Route path="/about" element={<About />} />
