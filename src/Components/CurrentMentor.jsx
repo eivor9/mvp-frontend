@@ -23,7 +23,7 @@ function CurrentMentor({ user, token, currentMentor, setCurrentMentor, currentSk
         setConnection({
             mentee_id: user.id,
             mentor_id: currentMentor.id,
-            skill_id: currentSkillId
+            skill_id: Number(currentSkillId)
         })
     }, [currentMentor, currentSkillId, user, token])
     
@@ -42,7 +42,7 @@ function CurrentMentor({ user, token, currentMentor, setCurrentMentor, currentSk
         .then(res => {
             console.log(res)
             setCurrentMentor("No mentor set")
-            window.location.reload();
+            // window.location.reload();
         })
         .catch(err => {
             console.error(err)
@@ -68,7 +68,7 @@ function CurrentMentor({ user, token, currentMentor, setCurrentMentor, currentSk
         .then(res => res.json())
         .then(res => {
             console.log(res)
-            window.location.reload()
+            // window.location.reload()
         })
         .catch(err => {
             console.error(err)
