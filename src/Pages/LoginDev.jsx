@@ -36,7 +36,6 @@ const API = import.meta.env.VITE_BASE_URL;
         })
             .then(res => res.json())
             .then(res => {
-                console.log(res)
                 if(res.user.id){
 
                     const { user, token } = res

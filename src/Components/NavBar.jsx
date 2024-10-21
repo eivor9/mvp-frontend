@@ -1,14 +1,13 @@
 // Components/NavBar.jsx
 
 import React, { useState } from 'react';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import "../Styles/NavBar.css";
 import logo from "../assets/logo.png"
 import hands from "../assets/hands.png"
 
 
 const NavBar = ({ user, setUser, setToken }) => {
-  
 
   const [showingCategories, toggleCategories] = useState(false);
   const [showingDeveleopment, toggleDevelopemnt] = useState(false);
@@ -35,8 +34,12 @@ const NavBar = ({ user, setUser, setToken }) => {
   }
 
   const handleLogout = () => {
+
     setUser(null)
     setToken(null)
+    localStorage.removeItem('user');
+    localStorage.removeItem('token');
+
   }
 
   return(
