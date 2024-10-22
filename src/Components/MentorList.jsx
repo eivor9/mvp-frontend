@@ -93,7 +93,8 @@ function MentorList({ user, token, setShowMentorList, connections }) {
             {currentMentor.id ? 
                 <CurrentMentor user={user} token={token} currentMentor={currentMentor} setCurrentMentor={setCurrentMentor} currentSkillId={currentSkillId}/>
             : <>
-                <div className="mentor-list-header">Available Mentors</div>
+                <div className="mentor-list-header">{user.is_mentor ? "Pending Connections" : "Available Mentors"}</div>
+                {!user.is_mentor ?
                 <div className="mentor-list-skills">
                     Skills
                     <select name="skillId" id="" value={currentSkillId} onChange={(e)=>setCurrentSkillId(e.target.value)}>
@@ -106,14 +107,15 @@ function MentorList({ user, token, setShowMentorList, connections }) {
                         <option value={7}>Behavioral Interview Prep</option>
                     </select>
                 </div>
+                : null}
 
                 <div className="mentor-list">
-                    <div className="mentor-list-title">Mentors</div>
+                    <div className="mentor-list-title">{user.is_mentor ? "Mentees" : "Mentors"}</div>
                       {user.is_mentor ?
-                        mentees.filter(mentee => Number(mentee.skill_id) === Number(currentSkillId)).map(mentor => 
+                        mentees.map(mentor => 
                             <div key={mentor.id} className="mentor-list-mentor" onClick={() => setCurrentMentor(mentor)}>
                                 <div style={{background:mentor.background_color}} className="mentor-list-pic">{userInitials(mentor.name)}</div>
-                                <div className="mentor-list-info">{mentor.name}<span>{mentor.job_title}</span></div>
+                                <div className="mentor-list-info">{mentor.name}<span>{mentor.skill_name}</span></div>
                             </div>
                         )
                         :

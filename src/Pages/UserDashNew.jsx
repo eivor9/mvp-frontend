@@ -13,12 +13,6 @@ function UserDashNew({ user, token, setUser, setToken }) {
     const [connections, setConnections] = useState([])
     const [connectionDetails, setConnectionDetails] = useState([])
 
-    // const user = {
-    //     name: "Nasheed Jeremiah",
-    //     linkedin: "https://www.linkedin.com/in/nasheedjeremiah/",
-    //     bio: "I'm an aspiring web developer with a passion for crafting engaging and user-friendly web applications. Currently honing my skills in HTML, CSS, and JavaScript, I am eager to dive deeper into front-end development and responsive design. I thrive in collaborative environments and believe that effective communication and teamwork are essential to creating successful projects. As I learn and grow in this field, I enjoy participating in coding communities and contributing to open-source initiatives. My goal is to build innovative digital experiences that connect people and enhance their online interactions.",
-    //     backgroundColor: "linear-gradient(0deg,rgba(163,138,245,1)0%,rgba(163,138,245,0.6)100%)"
-    // }
     const navigate = useNavigate();
     const API = import.meta.env.VITE_BASE_URL;
 
@@ -162,7 +156,7 @@ function UserDashNew({ user, token, setUser, setToken }) {
 
     <div className="UserDashNew">
         <div className="dash-user-container">
-            <div className="profile-picture" style={{background:user.backgroundColor}}>{userInitials(user.name)}</div>
+            <div className="profile-picture" style={{background:user.background_color}}>{userInitials(user.name)}</div>
             <div className="user-info">
                 {`Welcome back, ${userFirstName()}`}
                 <Link to={user.linkedin} className="dash-user-linkedin"> Your LinkedIn Profile</Link>
@@ -171,31 +165,53 @@ function UserDashNew({ user, token, setUser, setToken }) {
 
         <div style={{background: firstCard ? "rgba(223, 200, 83, 0.4)" : "rgba(235, 252, 255, 1)"}} className="dash-assignments-container">
 
-            {/* For Mentee Dashboard */}
-            {/* 
-            <div className="dash-assignment-card">
-                <div className="dash-assignment-name">{assignment.name}</div>
-                <div className="dash-assignment-body">
-                    <div className="dash-assignment-body-container">{assignment.body}</div>
-                </div>
-                <Link>{assignment.skill}</Link>
-            </div> 
-            */}
-
-            {/* For Mentor Dashboard */}
-            {/* <div className="dash-network-card">
-                <div className="network-card-info">
-                    <div className="network-card-pic" style={{background:connections[1].mentor.backgroundColor}}>{userInitials(connections[1].mentor.name)}</div>
-                    <div className="network-card-text">
-                        {connections[1].mentor.name}
-                        <span>{connections[1].mentor.job_title}</span>
-                    </div>
-                </div>
-                <div className="network-card-bio">{connections[1].mentor.bio}</div>
-                <Link className="network-card-linkedin" target="_blank" to={connections[1].mentor.linkedin}>Connect</Link>
-            </div> */}
-
             
+            {user.is_mentor ? 
+                 /* For Mentor Dashboard */
+                firstCard ?  
+                    <div className="dash-network-card">
+                        <div className="network-card-info">
+                            <div className="network-card-pic" style={{background:"linear-gradient(0deg,rgba(112,205,248,1)0%,rgba(112,205,248,0.6)100%)"}}>{userInitials("Nathan Drake")}</div>
+                            <div className="network-card-text">
+                                {"Nathan Drake"}
+                                <span>{"Backend Developer"}</span>
+                            </div>
+                        </div>
+                        <div className="network-card-bio">{"I'm a dedicated backend developer passionate about building robust and scalable systems. With experience in the PERN stack, I excel at creating seamless data flows and optimizing server performance. My commitment to high-quality code has driven the success of projects, enhancing user experiences along the way."}</div>
+                        <Link className="network-card-linkedin" target="_blank" to={"https://linkedin.com"}>Connect</Link>
+                    </div> 
+                : 
+                    <div className="dash-network-card">
+                        <div className="network-card-info">
+                            <div className="network-card-pic" style={{background:"linear-gradient(0deg,rgba(252,201,59,1)0%,rgba(252,201,5,0.6)100%)"}}>{userInitials("Joel Miller")}</div>
+                            <div className="network-card-text">
+                                {"Joel Miller"}
+                                <span>{"Data Scientist"}</span>
+                            </div>
+                        </div>
+                        <div className="network-card-bio">{"I'm a dedicated data scientist with a passion for extracting insights from complex datasets. With experience in statistical analysis and machine learning, I excel at turning data into actionable solutions. My commitment to high-quality models and analyses has driven project success, enhancing decision-making and optimizing outcomes."}</div>
+                        <Link className="network-card-linkedin" target="_blank" to={"https://linkedin.com"}>Connect</Link>
+                    </div> 
+
+                /* For Mentee Dashboard */
+            : firstCard ?
+                <div className="dash-assignment-card">
+                    <div className="dash-assignment-name">{"Example Assignment"}</div>
+                    <div className="dash-assignment-body">
+                        <div className="dash-assignment-body-container">{"Completing coding challenges: https://replit.com/@njeremiah/SoreEllipticalLanguage"}</div>
+                    </div>
+                    <Link>{"JavaScript"}</Link>
+                </div>
+            :
+                <div className="dash-assignment-card">
+                    <div className="dash-assignment-name">{"Example Assignment 2"}</div>
+                    <div className="dash-assignment-body">
+                        <div className="dash-assignment-body-container">{"Watch this lecture and take notes: https://www.youtube.com/watch?v=vHYeChEf2lA"}</div>
+                    </div>
+                    <Link>{"SQL"}</Link>
+                </div>
+            }
+
 
             <div className="dash-assignment-picture">
                 <img src={firstCard ? assignment_photo : assignment_photo_2} alt="" />

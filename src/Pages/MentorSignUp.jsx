@@ -42,7 +42,7 @@ function MentorSignUp({ setToken, setUser }) {
             bio: document.getElementById("bio").value,
             email: document.getElementById("email").value,
             password_hash: document.getElementById("password_hash").value,
-            job_title: document.getElementById("job_title").value || "Open to new roles",
+            job_title: showJobInput ? document.getElementById("job_title").value || "Open to new roles" : "Open to new roles",
             skills: [
                 document.getElementById("js-checkbox").checked ? "JavaScript" : null,
                 document.getElementById("html-checkbox").checked ? "HTML" : null,

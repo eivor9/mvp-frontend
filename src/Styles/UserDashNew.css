@@ -224,6 +224,7 @@
         overflow-y: scroll;
         line-height: 22px;
         height: 110px;
+        padding-right: 10px;
     }
     .network-card-linkedin{
         color: white;
