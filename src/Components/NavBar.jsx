@@ -64,17 +64,3 @@ const NavBar = ({ user, setUser, setToken }) => {
 };
 
 export default NavBar;
-
-
-{/* Conditionally render login/logout based on user */}
-// {user ? (
-//   // Show 'Logout' button when user is logged in
-//   <button onClick={handleLogout} className="nav-logout-button">
-//     <i className="fa-solid fa-right-from-bracket"></i> Logout
-//   </button>
-// ) : (
-//   // Show 'Login' button when no user is logged in
-//   <Link to='/login' className="nav-login-button">
-//     <i className="fa-solid fa-right-to-bracket"></i> Login
-//   </Link>
-// )}
