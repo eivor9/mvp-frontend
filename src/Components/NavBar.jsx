@@ -49,10 +49,32 @@ const NavBar = ({ user, setUser, setToken }) => {
       <div className="nav-links">
         <Link to='/about' className="nav-about-button"><i className="fa-solid fa-circle-info"></i></Link>
         <Link to='/faq' className="nav-faq-button"><i className="fa-solid fa-circle-question"></i></Link>
-        <Link to='/login' className="nav-login-button"><i className="fa-solid fa-right-to-bracket"></i></Link>
+        {user ? (
+          <>
+          <Link to='/dashboard' className='nav-dashboard-button'><i className="fa-solid fa-people-arrows"></i></Link>
+          <Link to='/' onClick={handleLogout} className="nav-login-button"><i className="fa-solid fa-right-from-bracket"></i></Link>
+          </>
+        ) : (
+          <Link to='/login' className="nav-login-button"><i className="fa-solid fa-right-to-bracket"></i></Link>
+        )}
+        
       </div>
     </div>
   );
 };
 
 export default NavBar;
+
+
+{/* Conditionally render login/logout based on user */}
+// {user ? (
+//   // Show 'Logout' button when user is logged in
+//   <button onClick={handleLogout} className="nav-logout-button">
+//     <i className="fa-solid fa-right-from-bracket"></i> Logout
+//   </button>
+// ) : (
+//   // Show 'Login' button when no user is logged in
+//   <Link to='/login' className="nav-login-button">
+//     <i className="fa-solid fa-right-to-bracket"></i> Login
+//   </Link>
+// )}
