@@ -67,6 +67,7 @@ function App() {
                   isAuthenticated={!!user && !!token}
                   user={user}
                   token={token}
+                  setUser={setUser}
                 />
               } 
             />

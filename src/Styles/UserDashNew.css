@@ -234,3 +234,7 @@
         border-radius: 5px;
     }
 }
+.liknedin-form{
+    display: flex;
+    gap:5px;
+}

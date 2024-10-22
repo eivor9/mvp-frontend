@@ -8,6 +8,7 @@ function MentorList({ user, token, setShowMentorList, connections }) {
     const [currentSkillId, setCurrentSkillId] = useState(1);
     const [mentors, setMentors] = useState([]);
     const [mentees, setMentees] = useState([]);
+    const skills = { 1 : "JavaScript", 2 : "HTML", 3 : "CSS", 4 : "SQL", 5 : "Web Development", 6 : "Technnical Interview Prep", 7 : "Behavioral Interview Prep" };
 
   const API = import.meta.env.VITE_BASE_URL;
 
@@ -60,7 +61,6 @@ function MentorList({ user, token, setShowMentorList, connections }) {
         fetch(`${API}/users/${user.id}/mentees`)
         .then(res => res.json())
         .then(res =>{
-          console.log(res)
           setMentees(res)
         })
         .catch(err => {
@@ -112,10 +112,10 @@ function MentorList({ user, token, setShowMentorList, connections }) {
                 <div className="mentor-list">
                     <div className="mentor-list-title">{user.is_mentor ? "Mentees" : "Mentors"}</div>
                       {user.is_mentor ?
-                        mentees.map(mentor => 
+                        mentees.filter(x => x.status == "pending").map(mentor => 
                             <div key={mentor.id} className="mentor-list-mentor" onClick={() => setCurrentMentor(mentor)}>
                                 <div style={{background:mentor.background_color}} className="mentor-list-pic">{userInitials(mentor.name)}</div>
-                                <div className="mentor-list-info">{mentor.name}<span>{mentor.skill_name}</span></div>
+                                <div className="mentor-list-info">{mentor.name}<span>{skills[mentor.skill_id]}</span></div>
                             </div>
                         )
                         :

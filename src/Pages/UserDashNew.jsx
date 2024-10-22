@@ -11,7 +11,9 @@ function UserDashNew({ user, token, setUser, setToken }) {
     const [showMentorList, setShowMentorList] = useState(false);
     const [firstCard, setFirstCard] = useState(true);
     const [connections, setConnections] = useState([])
-    const [connectionDetails, setConnectionDetails] = useState([])
+    const [connectionDetails, setConnectionDetails] = useState([]);
+    const [linkedin, setLinkedin] = useState("");
+    const [addingLinkedin, setAddingLinkedin] = useState(user.linkedin)
 
     const navigate = useNavigate();
     const API = import.meta.env.VITE_BASE_URL;
@@ -51,7 +53,6 @@ function UserDashNew({ user, token, setUser, setToken }) {
     })
     .then(res => res.json())
     .then(res => {
-        console.log(res)
         setConnectionDetails(res)
     })
     .catch(err => {
@@ -149,8 +150,35 @@ function UserDashNew({ user, token, setUser, setToken }) {
         return names[0];
     }
 
-    // const dashAssignments = getTwoOpenAssignments();
-    // const assignment = firstCard ? dashAssignments[0] : dashAssignments[1];
+    const addLinkedIn = (e) => {
+        e.preventDefault();
+        console.log(linkedin);
+        console.log("user.id:", user.id)
+        console.log("user", user)
+        fetch(`${API}/users/${user.id}/`,{
+            "method": "PUT",
+            headers: {
+                "Content-Type": "application/json",
+                'Authorization': token
+            },
+            body:JSON.stringify({
+                ...user,
+                linkedin
+            })
+        })
+        .then(res => res.json())
+        .then(res => {
+            setAddingLinkedin(true);
+        })
+        .catch(err => console.error(err))
+    }
+
+    const reFetchUser = () => {
+        fetch(`${API}/users/${user.id}/`)
+            .then(res => res.json())
+            .then(res => setUser(res))
+            .catch(err => console.error(err))
+    }
 
   return (
 
@@ -159,7 +187,13 @@ function UserDashNew({ user, token, setUser, setToken }) {
             <div className="profile-picture" style={{background:user.background_color}}>{userInitials(user.name)}</div>
             <div className="user-info">
                 {`Welcome back, ${userFirstName()}`}
-                <Link to={user.linkedin} className="dash-user-linkedin"> Your LinkedIn Profile</Link>
+                {addingLinkedin ? 
+                    <Link to={user.linkedin || linkedin} target="_blank" className="dash-user-linkedin">Your LinkedIn Profile</Link>
+                :
+                    <form className="liknedin-form" onSubmit={addLinkedIn}>
+                        <input required type="url" placeholder="Your LinkedIn Profile" value={linkedin} onChange={(e) => setLinkedin(e.target.value)}/>
+                        <button type="submit">Add</button>
+                    </form>}   
             </div>
         </div>
 
@@ -232,7 +266,7 @@ function UserDashNew({ user, token, setUser, setToken }) {
             </div>
 
             <div className="dash-connections">
-                {connectionDetails.map(connection => 
+                {connectionDetails.filter(x => x.status == "active").map(connection => 
                     <div className="dash-connection" key={connection.connection_id}>
                         <div className="profile-picture" style={{background:connection.background_color}} >{userInitials(connection.name)}</div>
                         <div className="dash-connection-mentor">{connection.name}</div>
