@@ -1,0 +1,128 @@
+.TrackProgress{
+    .progress-banner{
+        box-sizing: border-box;
+        position: relative;
+        display: flex;
+        width: 1340px;
+        height: 400px;
+        padding: 80px 0 50px 80px;
+        margin: auto;
+        gap: 300px;
+        z-index: -99;
+        background: rgb(245, 246, 248);
+        .progress-banner-card{
+            background: white;
+            padding: 10px;
+            width: 400px;
+            height: 135px;
+            box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.3);
+            z-index:99px;
+            .progress-mentor-name{
+                color:rgba(0, 0, 0, 0.8);
+                font-weight: bold;
+                font-size: 26px;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                margin-bottom: 40px;
+                span{
+                    color:rgba(0, 0, 0, 0.5);
+                    font-size: 14px;
+                }
+            }
+            .progress-linkedin{
+                background: rgba(0, 0, 0, 0.8);
+                color: white;
+                width: fit-content;
+                padding: 10px;
+                font-size: 22px;
+                border-radius: 5px;
+                display: flex;
+                gap: 5px;
+                cursor: pointer;
+                font-weight: bold;
+                i{
+                    position: relative;
+                    top: 1px;
+                }
+            }
+        }
+        .progress-banner-img{
+            height: 310px;
+            align-self: center;
+            img{
+                height: 100%;
+            }
+        }
+    }
+    .progress-linkedin{
+        background: rgba(0, 0, 0, 0.8);
+        color: white;
+        width: fit-content;
+        padding: 10px;
+        font-size: 16px;
+        border-radius: 5px;
+        display: flex;
+        gap: 2px;
+        cursor: pointer;
+        font-weight: bold;
+        position: absolute;
+        margin: auto;
+        top: 210px;
+        left: 0;
+        right: 0;
+        right: 1040px;
+        i{
+            position: relative;
+            top: 1px;
+        }
+    }
+    .banner-prev-button, .banner-next-button{
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        background: rgba(0, 0, 0, 0.8);
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+        cursor: pointer;
+        position: absolute;
+        color: white;
+        z-index: 99;
+        display: flex;
+        margin: auto;
+        height: 40px;
+        width: 40px;
+        left: 0;
+        right: 0;
+        top: 230px;
+    }
+    .banner-prev-button{
+        cursor: pointer;
+        right:1250px;
+    }
+    .banner-next-button{
+        left:1250px;
+        cursor: pointer;
+    }
+}
+.progress-assignments-container{
+    margin-top: 50px;
+    .progress-assignments{
+        border-top: 1px solid black;
+        width: 1250px;
+        margin: auto;
+        padding: 20px;
+        .progress-assignment{
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.4);
+            width: 200px;
+            height: 110px;
+            border-radius: 5px;
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            .progress-assignment-name{
+                font-size: 22px;
+            }
+        }
+    }
+}

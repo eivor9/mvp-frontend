@@ -25,6 +25,7 @@ import MentorSignUp from "./Pages/MentorSignUp";
 import MenteeSignUp from "./Pages/MenteeSignUp";
 import UserDashNew from "./Pages/UserDashNew";
 import ProtectedRoute from "./Components/ProtectedRoute";
+import TrackProgress from "./Pages/TrackProgress";
 
 function App() {
 
@@ -69,6 +70,10 @@ function App() {
                 />
               } 
             />
+
+            <Route path="/progress/:skill_name" element={<TrackProgress/>} />
+
+
             <Route path="/signup" element={<SignUp setUser={setUser} setToken={setToken} />} />
             <Route path="/profile/:user_id" element={<Profile />} />
             <Route path="/about" element={<About />} />
@@ -77,7 +82,7 @@ function App() {
             <Route path="/categories/:category_id" element={<Category />} />
             
             <Route path="*" element={<FourOFour />} />
-            <Route path="/progress/:user_id/:connection_id" element={<ProgressTracking />} />
+            {/* <Route path="/progress/:user_id/:connection_id" element={<ProgressTracking />} /> */}
             <Route path="*" element={<FourOFour />} />
             <Route path= "/faq" element={<FAQ />} />
           </Routes>
