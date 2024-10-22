@@ -26,6 +26,7 @@
                 justify-content: space-between;
                 margin-bottom: 40px;
                 span{
+                    margin-top:5px;
                     color:rgba(0, 0, 0, 0.5);
                     font-size: 14px;
                 }
@@ -114,6 +115,7 @@
         display: flex;
         flex-wrap: wrap;
         gap: 50px;
+        min-height: 300px;
         .progress-assignment{
             box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
             width: 200px;
@@ -126,6 +128,10 @@
             cursor: pointer;
             .progress-assignment-name{
                 font-size: 22px;
+            }
+            .progress-assignment-date{
+                display: flex;
+                justify-content: space-between;
             }
         }
     }
@@ -193,6 +199,7 @@
           font-size: 20px; 
           width: 300px;
           border-radius: 5px;
+          outline: none;
         }
         input[type="date"]{
             width: 150px;
@@ -200,19 +207,23 @@
         textarea{
             height: 250px;
             border-radius: 5px;
-            resize: none;;
+            resize: none;
+            font-size: 16px;
+            padding-left: 2px;
+            padding-right: 10px;
+            outline: none;
         }
     }
     .create-assignment-button{
         position: absolute;
         right: 30px;
         top: 30px;
-        font-size: 36px;
+        font-size: 26px;
         width: 46px;
         height: 46px;
         border-radius: 50%;
         cursor: pointer;
-        border: 1px solid black;
+        border: 2px solid black;
         background: none;
         display: flex;
         justify-content: center;

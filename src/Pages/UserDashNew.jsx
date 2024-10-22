@@ -267,7 +267,7 @@ function UserDashNew({ user, token, setUser, setToken }) {
 
             <div className="dash-connections">
                 {connectionDetails.filter(x => x.status == "active").map(connection => 
-                    <div className="dash-connection" key={connection.connection_id}>
+                    <div className="dash-connection" key={connection.connection_id} onClick={() => navigate(`/progress/${connection.connection_id}`)}>
                         <div className="profile-picture" style={{background:connection.background_color}} >{userInitials(connection.name)}</div>
                         <div className="dash-connection-mentor">{connection.name}</div>
                         <div className="dash-connection-skill">{connection.skill_name}</div>

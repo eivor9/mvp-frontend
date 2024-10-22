@@ -72,6 +72,17 @@ function App() {
               } 
             />
 
+            <Route path="/progress/:connection_id" element={
+                <ProtectedRoute 
+                  element={TrackProgress}
+                  isAuthenticated={!!user && !!token}
+                  user={user}
+                  token={token}
+                  setUser={setUser}
+                />
+              } 
+            />
+
             <Route path="/progress/:skill_name" element={<TrackProgress/>} />
 
 
