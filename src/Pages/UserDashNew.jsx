@@ -13,7 +13,8 @@ function UserDashNew({ user, token, setUser, setToken }) {
     const [connections, setConnections] = useState([])
     const [connectionDetails, setConnectionDetails] = useState([]);
     const [linkedin, setLinkedin] = useState("");
-    const [addingLinkedin, setAddingLinkedin] = useState(user.linkedin)
+    const [addingLinkedin, setAddingLinkedin] = useState(user.linkedin);
+    const [assignments, setAssignments] = useState([])
 
     const navigate = useNavigate();
     const API = import.meta.env.VITE_BASE_URL;
@@ -22,11 +23,11 @@ function UserDashNew({ user, token, setUser, setToken }) {
         if (!user) {
           navigate('/login');
         }
-      }, [user, navigate]);
+    }, [user, navigate]);
     
-      if (!user) {
-        return null;
-      }
+    if (!user) {
+    return null;
+    }
 
    useEffect(()=> {
     fetch(`${API}/users/${user.id}/connections`,{
@@ -36,7 +37,6 @@ function UserDashNew({ user, token, setUser, setToken }) {
     })
     .then(res => res.json())
     .then(res => {
-        console.log(res)
         setConnections(res)
     })
     .catch(err => {
@@ -59,6 +59,18 @@ function UserDashNew({ user, token, setUser, setToken }) {
         console.error(err)
     })
    }, [user.id])
+
+   // Get all assignments
+   useEffect(() => {
+    fetch(`${API}/users/${user.id}/recent-assignments`,{
+        headers: {
+            "Authorization": token
+        }
+    })
+    .then(res => res.json())
+    .then(res => setAssignments(res))
+    .catch(err => console.error(err))
+   }, [])
 
 // HELPER FUNCTIONS
     const userInitials = (input) => {
@@ -152,9 +164,6 @@ function UserDashNew({ user, token, setUser, setToken }) {
 
     const addLinkedIn = (e) => {
         e.preventDefault();
-        console.log(linkedin);
-        console.log("user.id:", user.id)
-        console.log("user", user)
         fetch(`${API}/users/${user.id}/`,{
             "method": "PUT",
             headers: {
@@ -271,7 +280,7 @@ function UserDashNew({ user, token, setUser, setToken }) {
                         <div className="profile-picture" style={{background:connection.background_color}} >{userInitials(connection.name)}</div>
                         <div className="dash-connection-mentor">{connection.name}</div>
                         <div className="dash-connection-skill">{connection.skill_name}</div>
-                        <div className="dash-connection-completion">{0} assignments left</div>
+                        <div className="dash-connection-completion">{!assignments.length ? 0 : assignments.filter(x => x.connection_id == connection.connection_id).length} assignments left</div>
                     </div>
                 )}
             </div>

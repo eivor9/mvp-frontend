@@ -113,6 +113,7 @@
                 .right-input-container{
                     display: flex;
                     flex-direction: column;
+                    padding-left: 30px;
                     gap: 20px;
                     width: 100%;
                     border-left: 1px solid rgba(0, 0, 0, 0.2);
@@ -167,6 +168,7 @@
                 .mentee-profile-pic-container{
                     margin-bottom: 40px;
                     align-items: center;
+                    padding-left: 30px;
                     width: 400px;
                     display: flex;
                     gap: 20px;
