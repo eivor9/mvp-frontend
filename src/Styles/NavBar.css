@@ -68,3 +68,29 @@
         }
     }
 }
+
+.nav-dashboard-button {
+    position: relative; 
+    display: inline-flex; 
+    align-items: center;
+}
+
+.notification-badge {
+    display: inline-flex; 
+    justify-content: center; 
+    align-items: center; 
+    width: .75em; 
+    height: .75em;
+    border-radius: 50%;
+    background-color: #c75959; 
+    position: absolute; 
+    top: -1px; 
+    right: -1px; 
+    border: 1px solid white;
+}
+
+.notification-badge-number {
+    color:white; 
+    font-size: .4em; 
+    line-height: 24px; 
+}
