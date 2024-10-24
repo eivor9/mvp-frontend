@@ -3,7 +3,6 @@ import "../Styles/TrackProgress.css";
 import zoom from "../assets/zoom.png";
 import linkedin from "../assets/linkedin.png";
 import { Link, useParams } from 'react-router-dom';
-import { red } from '@mui/material/colors';
 
 function TrackProgress({ user, token }) {
     const { connection_id } = useParams();
@@ -24,7 +23,7 @@ function TrackProgress({ user, token }) {
     })
     const [currentAssignment, setCurrentAssignment] = useState({id:0});
     const [showAssingmentForm, setShowAssingmentForm] = useState(false);
-    const [connectionDetails, setConnectionDetails] = useState({linkedin: "https://linked.com"});
+    const [connectionDetails, setConnectionDetails] = useState({linkedin: "https://linkedin.com"});
 
     useEffect(() => {
         fetch(`${API}/users/${user.id}/connections/${connection_id}`,{
@@ -173,7 +172,7 @@ function TrackProgress({ user, token }) {
                     <div key={metric.name} onClick={() => { setCurrentMetric(metric); setNewAssignment({...newAssignment, metric_id: Number(metric.id)})}} style={currentMetric.id == metric.id ? {color: "black", borderBottom: "2px solid black"} : null} className="home-category-button">{metric.name}</div>
                 )}
             </div>
-
+n
             <div className="progress-assignments">
                 {user.is_mentor ? 
                     <div className="progress-assignment" onClick={() => setShowAssingmentForm(true)}>

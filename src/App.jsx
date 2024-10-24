@@ -7,9 +7,7 @@ import "./App.css";
 
 // PAGES
 import Home from "./Pages/Home";
-import SignUp from "./Pages/SignUp";
 import LoginDev from "./Pages/LoginDev";
-import Profile from "./Pages/Profile";
 import Category from "./Pages/Category";
 import FourOFour from "./Pages/FourOFour";
 import About from "./Pages/About";
@@ -84,15 +82,10 @@ function App() {
             />
 
             <Route path="/progress/:skill_name" element={<TrackProgress/>} />
-
-
-            <Route path="/signup" element={<SignUp setUser={setUser} setToken={setToken} />} />
-            <Route path="/profile/:user_id" element={<Profile />} />
             <Route path="/about" element={<About />} />
             <Route path="/categories/:category_id" element={<Category />} />
             <Route path="/categories/:category_id/subcategories/:subcategory_id" element={<Subcategory />} />
             <Route path="/categories/:category_id" element={<Category />} />
-            
             <Route path="*" element={<FourOFour />} />
             {/* <Route path="/progress/:user_id/:connection_id" element={<ProgressTracking />} /> */}
             <Route path="*" element={<FourOFour />} />

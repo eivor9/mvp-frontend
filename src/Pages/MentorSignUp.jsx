@@ -126,8 +126,13 @@ function MentorSignUp({ setToken, setUser }) {
                     <div className="mentee-profile-pic-container">
                         <div className="mentee-profile-pic" style={{background: backgroundColor}}>{userInitials(name)}</div>
                         <div className="profile-pic-options">
-                            {backgroundColors.map(color => 
-                                <div onClick={() => setBackgroundColor(color)} style={backgroundColor === color ? {background:color, border:"2px solid rgba(0,0,0,0.4)"} : {background:color}} className="profile-pic-option"></div>
+                            {backgroundColors.map((color, index) => 
+                                <div 
+                                    key={index} // Add a unique key prop
+                                    onClick={() => setBackgroundColor(color)} 
+                                    style={backgroundColor === color ? {background:color, border:"2px solid rgba(0,0,0,0.4)"} : {background:color}} 
+                                    className="profile-pic-option">
+                                </div>
                             )}
                         </div>
                     
