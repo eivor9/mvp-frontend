@@ -235,6 +235,19 @@
     }
 }
 .liknedin-form{
+    padding-left: 2px;
     display: flex;
-    gap:5px;
+    gap: 5px;
+    input{
+        padding: 2px;
+        font-size: 16px;
+    }
+    button{
+        padding: 2px 7px;
+        color: white;
+        background: rgba(0, 0, 0, 0.8);
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
 }

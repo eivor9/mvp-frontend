@@ -13,7 +13,6 @@ function UserDashNew({ user, token, setUser, setToken }) {
     const [connections, setConnections] = useState([])
     const [connectionDetails, setConnectionDetails] = useState([]);
     const [linkedin, setLinkedin] = useState("");
-    const [addingLinkedin, setAddingLinkedin] = useState(user.linkedin);
     const [assignments, setAssignments] = useState([])
 
     const navigate = useNavigate();
@@ -177,7 +176,7 @@ function UserDashNew({ user, token, setUser, setToken }) {
         })
         .then(res => res.json())
         .then(res => {
-            setAddingLinkedin(true);
+            setUser({...res, password_hash: null})
         })
         .catch(err => console.error(err))
     }
@@ -196,12 +195,12 @@ function UserDashNew({ user, token, setUser, setToken }) {
             <div className="profile-picture" style={{background:user.background_color}}>{userInitials(user.name)}</div>
             <div className="user-info">
                 {`Welcome back, ${userFirstName()}`}
-                {addingLinkedin ? 
-                    <Link to={user.linkedin || linkedin} target="_blank" className="dash-user-linkedin">Your LinkedIn Profile</Link>
+                {user.linkedin ? 
+                    <Link to={user.linkedin} target="_blank" className="dash-user-linkedin">Your LinkedIn Profile</Link>
                 :
                     <form className="liknedin-form" onSubmit={addLinkedIn}>
-                        <input required type="url" placeholder="Your LinkedIn Profile" value={linkedin} onChange={(e) => setLinkedin(e.target.value)}/>
-                        <button type="submit">Add</button>
+                        <input required type="url" placeholder="LinkedIn Profile Page" value={linkedin} onChange={(e) => setLinkedin(e.target.value)}/>
+                        <button type="submit">Add to profile</button>
                     </form>}   
             </div>
         </div>
@@ -221,7 +220,7 @@ function UserDashNew({ user, token, setUser, setToken }) {
                             </div>
                         </div>
                         <div className="network-card-bio">{"I'm a dedicated backend developer passionate about building robust and scalable systems. With experience in the PERN stack, I excel at creating seamless data flows and optimizing server performance. My commitment to high-quality code has driven the success of projects, enhancing user experiences along the way."}</div>
-                        <Link className="network-card-linkedin" target="_blank" to={"https://linkedin.com"}>Connect</Link>
+                        <Link className="network-card-linkedin" target="_blank" to={"https://linkedin.com"}>Connect on LinkedIn</Link>
                     </div> 
                 : 
                     <div className="dash-network-card">
@@ -233,7 +232,7 @@ function UserDashNew({ user, token, setUser, setToken }) {
                             </div>
                         </div>
                         <div className="network-card-bio">{"I'm a dedicated data scientist with a passion for extracting insights from complex datasets. With experience in statistical analysis and machine learning, I excel at turning data into actionable solutions. My commitment to high-quality models and analyses has driven project success, enhancing decision-making and optimizing outcomes."}</div>
-                        <Link className="network-card-linkedin" target="_blank" to={"https://linkedin.com"}>Connect</Link>
+                        <Link className="network-card-linkedin" target="_blank" to={"https://linkedin.com"}>Connect on LinkedIn</Link>
                     </div> 
 
                 /* For Mentee Dashboard */

@@ -9,12 +9,7 @@ function CSSDescription() {
       <div className='home-category-description'>
         <div className='home-why-header'>What is CSS?</div>
         <div className='home-why-content'>
-          CSS (Cascading Style Sheets) is a stylesheet language used
-          to control the presentation of web pages. It allows
-          developers to apply styles, such as colors, fonts, and
-          layouts, to HTML elements. CSS enhances the visual appeal of
-          websites and is essential for responsive design, ensuring
-          that web pages look good on various devices.
+        CSS, or Cascading Style Sheets, is a language for styling web pages, enhancing HTML content by defining layouts, colors, fonts, and spacing. It enables developers to design visually appealing and consistent interfaces, using classes, IDs, and media queries to create responsive designs that adapt to various devices and screen sizes. CSS is essential for crafting dynamic and accessible web experiences, allowing fine control over a website’s look and feel across all platforms.
         </div>
         <div className='home-how-header'>How do you learn CSS?</div>
         <div className='home-how-content'>

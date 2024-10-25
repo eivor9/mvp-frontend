@@ -52,14 +52,14 @@ function MenteeSignUp({ setToken, setUser }) {
 
       if (response.ok) {
         const data = await response.json();
-        console.log("Mentee created:", data);
-        console.log("Name:", data.user.name);
-        if(data.user.id){
+        if (data.error == "An account with this email already exists") {
+          alert("An account with this email already exists.\nPlease login instead.")
+        }else if(data.user.id){
             const { user, token } = data;
             setUser(user);
             setToken(token);
+            navigate("/dashboard", { state: { message: `Thanks for signing up, ${data.user.first_name}!` } });
         }
-        navigate("/dashboard", { state: { message: `Thanks for signing up, ${data.user.first_name}!` } });
       } else {
         const errorData = await response.json();
         console.error("Error creating mentee:", errorData);
@@ -88,7 +88,7 @@ function MenteeSignUp({ setToken, setUser }) {
 
         <div className="mentor-signup-header">
             <Link to="/"><img src={logo} alt="" /></Link>
-            Start your journey
+            Become a mentee
           </div>
           <div className="mentee-signup-container">
 
@@ -115,7 +115,7 @@ function MenteeSignUp({ setToken, setUser }) {
 
               <button type="submit">Sign Up</button>
 
-              <Link className="mentor-signup-link" to="/mentor-signup">Here to join the team?</Link>
+              <Link className="mentor-signup-link" to="/mentor-signup">Here to mentor instead?</Link>
             </div>
 
             <div className="mentee-profile-pic-container">

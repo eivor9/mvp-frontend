@@ -11,11 +11,7 @@ function WebDevDescription() {
           What is Web Developement?
         </div>
         <div className='home-why-content'>
-          Web development is the process of building and maintaining
-          websites. It involves various tasks, including web design,
-          coding, and content management. Web developers use languages
-          like HTML, CSS, and JavaScript to create interactive and
-          user-friendly web applications.
+        Web development involves creating and maintaining websites and web applications, combining technical and creative skills to build functional, user-friendly digital experiences. It includes frontend development, where HTML, CSS, and JavaScript structure and style the user interface, and backend development, which handles server logic, databases, and APIs. Effective web development results in responsive, accessible, and interactive platforms, enhancing user engagement across various devices and browsers.
         </div>
         <div className='home-how-header'>
           How do you learn Web Development?

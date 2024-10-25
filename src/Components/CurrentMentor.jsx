@@ -40,8 +40,6 @@ function CurrentMentor({ user, token, currentMentor, setCurrentMentor, currentSk
         })
         .then(res => res.json())
         .then(res => {
-            console.log(res)
-            setCurrentMentor("No mentor set")
             window.location.reload();
         })
         .catch(err => {
@@ -67,7 +65,6 @@ function CurrentMentor({ user, token, currentMentor, setCurrentMentor, currentSk
         })
         .then(res => res.json())
         .then(res => {
-            console.log(res)
             window.location.reload()
         })
         .catch(err => {

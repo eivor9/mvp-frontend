@@ -37,7 +37,7 @@ const Home = () => {
         <div className="home-welcome-container-left">
           <div className="home-welcome-header">
             {showingMentorWelcome ? (
-              <>Guide new developers - <br/><span>Get Connected</span></>
+              <>Guide new developers,<br/><span>Get Connected</span></>
             ) : (
               <>Free Guidance from<br/><span>Real Web Devs</span></>
             )}
@@ -51,9 +51,9 @@ const Home = () => {
           </div>
 
           {showingMentorWelcome ? 
-            <Link to='/mentor-signup' className="home-signup">Join the team</Link>
+            <Link to='/mentor-signup' className="home-signup">Become a mentor</Link>
           :
-            <Link to='/mentee-signup' className="home-signup">Start your journey</Link>
+            <Link to='/mentee-signup' className="home-signup">Become a mentee</Link>
           }
           
           <div className="home-welcome-buttons">

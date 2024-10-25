@@ -36,8 +36,7 @@ const API = import.meta.env.VITE_BASE_URL;
         })
             .then(res => res.json())
             .then(res => {
-                if(res.user.id){
-
+                if(res.user){
                     const { user, token } = res
                     setUser(user)
                     setToken(token)
@@ -50,7 +49,7 @@ const API = import.meta.env.VITE_BASE_URL;
                     }))
                     navigate(`/dashboard`);
                 } else {
-                    console.log(res)
+                    alert("Invalid email or password")
                 }
             })
             .catch(err => console.log(err))
@@ -78,8 +77,8 @@ const API = import.meta.env.VITE_BASE_URL;
         </div>
 
         <div className="signup-buttons">
-            <Link to="/mentee-signup">Start your journey</Link>
-            <Link to="/mentor-signup">Join the team</Link>
+            <Link to="/mentee-signup">Become a mentee</Link>
+            <Link to="/mentor-signup">Become a mentor</Link>
         </div>
     </div>
   )

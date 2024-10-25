@@ -68,7 +68,6 @@ function App() {
             (connection) => connection.status === 'pending'
           );
           setPendingConnections(pending); // Set pending connections
-          console.log('Pending connections fetched:', pending.length); // Log the number of pending connections
         })
         .catch((err) =>
           console.error('Error fetching connections:', err)
@@ -78,7 +77,6 @@ function App() {
 
   // Log pending connections length whenever it changes
   useEffect(() => {
-    console.log('Updated pending connections length:', pendingConnections.length);
   }, [pendingConnections]);
 
   if (loading) {

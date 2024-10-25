@@ -9,12 +9,7 @@ function JSDescription() {
       <div className='home-category-description'>
         <div className='home-why-header'>What is JavaScript?</div>
         <div className='home-why-content'>
-          JavaScript (JS) is a key programming language for web
-          development, enabling interactivity and dynamic content like
-          animations and real-time updates. It works alongside HTML
-          and CSS to enhance user experiences. JavaScript is also used
-          in server-side development with Node.js, making it essential
-          for anyone interested in modern web applications.
+          JavaScript is a versatile, high-level programming language primarily used to add interactivity to web pages. Running in web browsers, it enables dynamic content changes, animations, and form handling. JavaScript also powers servers via Node.js, supports asynchronous programming, and integrates well with HTML and CSS for full-stack web development.
         </div>
         <div className='home-how-header'>
           How do you learn JavaScript?

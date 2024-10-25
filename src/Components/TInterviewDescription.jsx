@@ -9,7 +9,7 @@ function TInterviewDescription() {
 
         <div className="home-category-description">
             <div className="home-why-header">What is a Technical Interview?</div>
-            <div className="home-why-content">A technical interview assesses a candidate's technical skills and problem-solving abilities, often involving coding challenges and algorithm questions. It is a common practice in the tech industry to evaluate proficiency in relevant programming languages and tools.</div>
+            <div className="home-why-content">Technical interviews evaluate a candidate’s coding skills, problem-solving abilities, and knowledge of algorithms and data structures. Often featuring live coding challenges, they assess a candidate’s logical thinking and communication under pressure. Preparation includes practicing key topics, understanding concepts, and articulating solutions clearly. These interviews help determine suitability for engineering roles, emphasizing both technical knowledge and analytical skills.</div>
             <div className="home-how-header">How do you Prepare?</div>
             <div className="home-how-content">
                 <Link className="home-how-answer" to="/mentee-signup">

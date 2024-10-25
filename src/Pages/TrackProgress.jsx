@@ -13,6 +13,7 @@ function TrackProgress({ user, token }) {
     const [firstBanner, setFirstBanner] = useState(true);
     const [currentMetric, setCurrentMetric] = useState({id:1});
     const [assignments, setAssignments] = useState([]);
+    const [zoomLink, setZoomLink] = useState("");
     const [newAssignment, setNewAssignment] = useState({
         name: "",
         body: "",
@@ -121,13 +122,42 @@ function TrackProgress({ user, token }) {
         const options = { day: 'numeric' };
         return new Date(dateString).toLocaleDateString(undefined, options);
     };
+
+    const addZoom = (e) => {
+        fetch(`${API}/users/${user.id}/connections/${connection_id}`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": token
+            },
+            body: JSON.stringify({
+                ...connection,
+                zoom: zoomLink
+            })
+        })
+        .then(res => res.json())
+        .then(res => {
+            console.log(res);
+            // window.location.reload()
+        })
+    }
+
+    const getMeetingID = (link) => {
+        const meetingID = `${link.substring(26,29)} ${link.substring(29,32)} ${link.substring(32,36)}`;
+        return meetingID || "999 999 9999"
+    }
     
 
   return (
     <div className="TrackProgress">
         <div onClick={() => setFirstBanner(!firstBanner)} className="banner-prev-button"><i className="fa-solid fa-chevron-left"></i></div>
         <div onClick={() => setFirstBanner(!firstBanner)} className="banner-next-button"><i className="fa-solid fa-chevron-right"></i></div>
-        <Link target='_blank' to={firstBanner ? connectionDetails.linkedin : connection.zoom || "https://zoom.com"} style={{right: firstBanner ? "1070px" : "1010px"}} className="progress-linkedin">{firstBanner ? <>Linked<i className="fa-brands fa-linkedin"></i></> : <>Join the meeting</>}</Link>
+        {firstBanner ? <Link target='_blank' to={connectionDetails.linkedin || "https://linkedin.com"} style={{right:"980px"}} className="progress-linkedin">Connect on Linked<i className="fa-brands fa-linkedin"></i></Link>
+        : connection.zoom ? 
+            <Link target='_blank' to={connection.zoom} style={{right:"1010px"}} className="progress-linkedin">Join the meeting</Link>
+            :
+            <form className='linkedin-form' onSubmit={addZoom} style={{right:"960px", background:"none"}}><input required value={zoomLink} onChange={(e) => setZoomLink(e.target.value)} placeholder="Paste zoom link" style={{padding:"2px", fontSize:"16px"}} type="url" /></form>
+    }
 
         {currentAssignment.id ? 
             <div className="MentorList">
@@ -161,7 +191,7 @@ function TrackProgress({ user, token }) {
 
         <div style={{background: firstBanner ? "rgb(245, 246, 248)" : "rgb(85, 148, 255)"}} className="progress-banner">
             <div className="progress-banner-card">
-                <div className="progress-mentor-name">{firstBanner ? <>{connectionDetails.name}<span>{connectionDetails.job_title || "New Developer"}</span></> : <>{connectionDetails.skill_name}<span>Meeting ID: 999 999 9999</span></>}</div>
+                <div className="progress-mentor-name">{firstBanner ? <>{connectionDetails.name}<span>{connectionDetails.job_title || "New Developer"}</span></> : <>{connectionDetails.skill_name}<span>Meeting ID: {connection.zoom ? getMeetingID(connection.zoom) : <><br/>Please paste zoom link below and press ENTER</>}</span></>}</div>
             </div>
             <div className="progress-banner-img"><img src={firstBanner ? linkedin : zoom} /></div>
         </div>
@@ -172,7 +202,7 @@ function TrackProgress({ user, token }) {
                     <div key={metric.name} onClick={() => { setCurrentMetric(metric); setNewAssignment({...newAssignment, metric_id: Number(metric.id)})}} style={currentMetric.id == metric.id ? {color: "black", borderBottom: "2px solid black"} : null} className="home-category-button">{metric.name}</div>
                 )}
             </div>
-n
+            
             <div className="progress-assignments">
                 {user.is_mentor ? 
                     <div className="progress-assignment" onClick={() => setShowAssingmentForm(true)}>

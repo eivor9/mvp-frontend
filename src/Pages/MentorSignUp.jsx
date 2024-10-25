@@ -7,6 +7,7 @@ function MentorSignUp({ setToken, setUser }) {
     const [showJobInput, setShowJobInput] = useState(false);
     const [name, setName] = useState("");
     const [backgroundColor, setBackgroundColor] = useState("linear-gradient(0deg,rgba(177,177,177,0.9)0%,rgba(180,180,180,0.4)100%)");
+    const [noSkills, setNoSkills] = useState(false);
     
     const navigate = useNavigate();
 
@@ -56,6 +57,11 @@ function MentorSignUp({ setToken, setUser }) {
             background_color: backgroundColor
         };
 
+        if(!newMentor.skills.length){
+            setNoSkills(true);
+            return;
+        }
+
         // Validate required fields
         if (!newMentor.name.trim() || !newMentor.email.trim() || !newMentor.password_hash.trim()) {
             console.error("Name, email, and password are required");
@@ -73,14 +79,15 @@ function MentorSignUp({ setToken, setUser }) {
 
             if (response.ok) {
                 const data = await response.json();
-                console.log("Mentor created:", data);
-                console.log("Name:", data.user.name);
-                if(data.user.id){
+                if (data.error == "An account with this email already exists") {
+                    alert("An account with this email already exists.\nPlease login instead.")
+                }
+                else if(data.user.id){
                     const { user, token } = data;
                     setUser(user);
                     setToken(token);
-                }
-                navigate("/dashboard", { state: { message: `Thanks for signing up, ${data.user.name}!` } });
+                    navigate("/dashboard", { state: { message: `Thanks for signing up, ${data.user.name}!` } });
+                } 
             } else {
                 const errorData = await response.json();
                 console.error("Error creating mentor:", errorData);
@@ -96,7 +103,7 @@ function MentorSignUp({ setToken, setUser }) {
             <form onSubmit={handleSubmit}>
                 <div className="mentor-signup-header">
                     <Link to="/"><img src={logo} alt="" /></Link>
-                    Join the team
+                    Become a mentor
                 </div>
                 <div className="mentor-signup">
                     <div className="mentor-signup-left">
@@ -110,7 +117,7 @@ function MentorSignUp({ setToken, setUser }) {
                             {showJobInput ? <label className="mentor-job-title-label" htmlFor="job_title"> Job Title <input placeholder="Full Stack Web Developer (Optional)" type="text" id="job_title" /></label> : null}
                         </div>
 
-                        <div className="mentor-signup-skills">
+                        <div style={noSkills ? {border: "2px solid rgba(255,0,0,0.7)", padding: "10px", borderRadius: "5px"} : {padding: "12px"}} className="mentor-signup-skills">
                             <div className="mentor-signup-skills-header">Skills</div>
                             <label htmlFor="js-checkbox"><input type="checkbox" id="js-checkbox" /> JavaScript </label>
                             <label htmlFor="html-checkbox"><input type="checkbox" id="html-checkbox" /> HTML </label>
@@ -142,7 +149,7 @@ function MentorSignUp({ setToken, setUser }) {
                             <label htmlFor="password_hash"> Password <input minLength="6" maxLength="255" required id="password_hash" type="password" placeholder="Don't forget this!" /> </label>
                             <button type="submit">Sign Up</button>
                         </div>
-                        <Link className="mentee-signup-link" to="/mentee-signup">Just starting your journey?</Link>
+                        <Link className="mentee-signup-link" to="/mentee-signup">Become a mentee instead</Link>
                     </div>
                     
                 </div>
