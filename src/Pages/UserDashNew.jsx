@@ -176,7 +176,10 @@ function UserDashNew({ user, token, setUser, setToken }) {
         })
         .then(res => res.json())
         .then(res => {
-            setUser({...res, password_hash: null})
+            const { user, token } = res;
+            setUser(user);
+            setToken(token);
+            window.location.reload();
         })
         .catch(err => console.error(err))
     }

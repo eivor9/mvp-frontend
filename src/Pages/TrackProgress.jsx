@@ -124,6 +124,7 @@ function TrackProgress({ user, token }) {
     };
 
     const addZoom = (e) => {
+        e.preventDefault();
         fetch(`${API}/users/${user.id}/connections/${connection_id}`, {
             method: "PUT",
             headers: {
@@ -137,8 +138,7 @@ function TrackProgress({ user, token }) {
         })
         .then(res => res.json())
         .then(res => {
-            console.log(res);
-            // window.location.reload()
+            window.location.reload()
         })
     }
 
