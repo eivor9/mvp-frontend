@@ -3,6 +3,7 @@ import "../Styles/TrackProgress.css";
 import zoom from "../assets/zoom.png";
 import linkedin from "../assets/linkedin.png";
 import { Link, useParams } from 'react-router-dom';
+import ChatBox from '../Components/ChatBox';
 
 function TrackProgress({ user, token }) {
     const { connection_id } = useParams();
@@ -70,7 +71,7 @@ function TrackProgress({ user, token }) {
         fetch(`${API}/users/${user.id}/connections/${connection_id}/assignments`)
         .then(res => res.json())
         .then(res => {
-            console.log(res)
+            // console.log(res)
             setAssignments(res);
         })
         .catch(err => console.error(err))
@@ -219,8 +220,15 @@ function TrackProgress({ user, token }) {
                 )}
             </div>
             
-        
         </div>
+        <ChatBox
+            user={user}
+            token={token}
+            connectionDetails={connectionDetails}
+            connection_id={connection_id}
+        />
+
+        
     </div>
   )
 }
