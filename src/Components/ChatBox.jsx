@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { io } from 'socket.io-client';
+import '../Styles/ChatBox.css';
 
-const ChatBox = ({ user, connection_id, token, connectionDetails }) => {
+const ChatBox = ({ user, connection_id, token, connectionDetails, setShowChat }) => {
     const [messages, setMessages] = useState([]);
     const [newMessage, setNewMessage] = useState('');
     const [socket, setSocket] = useState(null);
@@ -99,27 +100,27 @@ const ChatBox = ({ user, connection_id, token, connectionDetails }) => {
     
 
     return (
-        <div className="messaging">
-            <h2>Messages</h2>
-            <div className="messages-list">
-                {messages.map((message) => (
-                    <div key={message.id} className="message">
-                        <p className='message-body'>{message.body}</p>
-                        <span className='message-time'>{new Date(message.time_sent).toLocaleString()}</span>
-                    </div>
-                ))}
+            <div className="chat-box">
+                <h2>Messages <i onClick={() => setShowChat(false)} className="fa-solid fa-circle-xmark close-chat"></i></h2>
+                <div className="messages-list">
+                    {messages.map((message) => (
+                        <div key={message.id} className={message.sender_id === user.id ? "message outgoing" : "message incoming"}>
+                            <p className='message-body'>{message.body}</p>
+                            <span className='message-time'>{new Date(message.time_sent).toLocaleString()}</span>
+                        </div>
+                    ))}
+                </div>
+                <form onSubmit={handleSendMessage} className='message-input'>
+                    <input
+                        type="text"
+                        value={newMessage}
+                        onChange={(e) => setNewMessage(e.target.value)}
+                        placeholder="Type your message..."
+                        required
+                    />
+                    <button className='send-message-button' type="submit"><i className="fa-regular fa-paper-plane"></i></button>
+                </form>
             </div>
-            <form onSubmit={handleSendMessage} className='message-input'>
-                <input
-                    type="text"
-                    value={newMessage}
-                    onChange={(e) => setNewMessage(e.target.value)}
-                    placeholder="Type your message..."
-                    required
-                />
-                <button className='send-message-button' type="submit">Send</button>
-            </form>
-        </div>
     );
 };
 

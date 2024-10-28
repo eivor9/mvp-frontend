@@ -229,4 +229,16 @@
         justify-content: center;
         align-items: center;
     }
+
+    
+}
+
+.chat-icon {
+    position: fixed;
+    bottom: 30px;
+    right: 45px;
+.fa-comment-dots{
+        font-size: 30px;
+        color: blue;
+    }
 }

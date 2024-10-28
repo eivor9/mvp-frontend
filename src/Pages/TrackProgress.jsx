@@ -26,6 +26,7 @@ function TrackProgress({ user, token }) {
     const [currentAssignment, setCurrentAssignment] = useState({id:0});
     const [showAssingmentForm, setShowAssingmentForm] = useState(false);
     const [connectionDetails, setConnectionDetails] = useState({linkedin: "https://linkedin.com"});
+    const [showChat, setShowChat] = useState(false);
 
     useEffect(() => {
         fetch(`${API}/users/${user.id}/connections/${connection_id}`,{
@@ -221,14 +222,22 @@ function TrackProgress({ user, token }) {
             </div>
             
         </div>
-        <ChatBox
-            user={user}
-            token={token}
-            connectionDetails={connectionDetails}
-            connection_id={connection_id}
-        />
-
-        
+        <div className="messaging">
+            {showChat ? 
+                <ChatBox
+                    user={user}
+                    token={token}
+                    connectionDetails={connectionDetails}
+                    connection_id={connection_id}
+                    setShowChat={setShowChat}
+                />
+                :
+                <div onClick={() => setShowChat(true)} className="chat-icon">
+                    <i className="fa-regular fa-comment-dots"></i>
+                </div>
+            }
+        </div>
+            
     </div>
   )
 }

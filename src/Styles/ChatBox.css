@@ -1,0 +1,129 @@
+.chat-box {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 320px; 
+    max-width: 85vw;
+    height: 450px; 
+    background-color: #fafafa;
+    border-radius: 10px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    border: 1px solid #dcdcdc;
+    z-index: 1000;
+}
+
+.chat-box h2 {
+    background-color: #003366;
+    color: #f9f9f9;
+    font-size: 1em;
+    text-align: center;
+    margin: 0;
+    padding: 10px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    border-bottom: 1px solid #dcdcdc;
+}
+
+.messages-list {
+    flex: 1;
+    padding: 12px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    background-color: #f4f6f8;
+}
+
+.message {
+    padding: 8px 12px;
+    border-radius: 8px;
+    font-size: 0.85em;
+    line-height: 1.4;
+    max-width: 75%;
+    position: relative;
+    display: inline-block;
+}
+
+.incoming {
+    align-self: flex-start;
+    background-color: #d0d7dc; 
+    color: #2c3e50;
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.outgoing {
+    align-self: flex-end;
+    background-color: #2980b9;
+    color: #ffffff;
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.message-time {
+    font-size: 0.7em;
+    color: #95a5a6;
+    margin-top: 3px;
+    text-align: right;
+}
+
+.message-input {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    background-color: #fafafa;
+    border-top: 1px solid #dcdcdc;
+}
+
+.message-input input[type="text"] {
+    flex: 1;
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 0.85em;
+    margin-right: 6px;
+    outline: none;
+    background-color: #f9f9f9;
+    color: #2c3e50;
+    transition: all 0.2s ease;
+}
+
+.message-input input[type="text"]:focus {
+    border-color: #2980b9;
+}
+
+.send-message-button {
+    background-color: #222e50f1;
+    color: #ffffff;
+    border: none;
+    padding: 8px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.1em;
+    transition: background-color 0.2s ease;
+}
+
+.send-message-button:hover {
+    background-color: #1c6692;
+}
+
+.send-message-button i {
+    color: white;
+}
+
+.close-chat {
+    background: transparent;
+    border: none;
+    color: #d9d0d0; 
+    font-size: 1.5em;
+    cursor: pointer;
+    position: absolute;
+    right: 10px;
+    top: 10px; 
+    transition: color 0.2s ease;
+}
+
+.close-chat:hover {
+    color: #a89694;
+}
