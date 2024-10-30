@@ -52,7 +52,10 @@ const NavBar = ({ user, setUser, setToken, pendingConnections }) => {
           <Link to='/dashboard' className='nav-dashboard-button'>
             <i className="fa-solid fa-people-arrows"></i>
             {pendingConnections.length > 0 && (
-              <span className="notification-badge">
+              <span 
+                className="notification-badge" 
+                title={`${pendingConnections.length} pending connection${pendingConnections.length > 1 ? 's' : ''}`}
+              >
                 <span className="notification-badge-number">
                   {pendingConnections.length} {/* Display count */}
                 </span>

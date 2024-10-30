@@ -200,8 +200,8 @@ function TrackProgress({ user, token }) {
 
         <div className="CategoryDescriptions progress-assignments-container" id="CategoryDescriptions">
             <div className="home-category-buttons">
-                {metrics.map(metric => 
-                    <div key={metric.name} onClick={() => { setCurrentMetric(metric); setNewAssignment({...newAssignment, metric_id: Number(metric.id)})}} style={currentMetric.id == metric.id ? {color: "black", borderBottom: "2px solid black"} : null} className="home-category-button">{metric.name}</div>
+                {metrics.map((metric, index) => 
+                    <div key={metric.id || `metric-${index}`} onClick={() => { setCurrentMetric(metric); setNewAssignment({...newAssignment, metric_id: Number(metric.id)})}} style={currentMetric.id === metric.id ? {color: "black", borderBottom: "2px solid black"} : null} className="home-category-button">{metric.name}</div>
                 )}
             </div>
             
@@ -213,12 +213,14 @@ function TrackProgress({ user, token }) {
                     </div>
                 :null}
 
-                {assignments.filter(x => x.metric_id == currentMetric.id).sort((x, y) => x.due_date < y.due_date ? -1 : 1).map(x => 
-                    <div className="progress-assignment" onClick={() => setCurrentAssignment(x)}>
-                        <div className="progress-assignment-name">{x.name}</div>
-                        <div className="progress-assignment-date">{formatDate(x.due_date)}{x.is_completed ? <i className="fa-regular fa-circle-check"></i> : null}</div>
-                    </div>
-                )}
+                {assignments.filter(x => x.metric_id == currentMetric.id).sort((x, y) => x.due_date < y.due_date ? -1 : 1).map(x => {
+                    return (
+                        <div key={x.id} className="progress-assignment" onClick={() => setCurrentAssignment(x)}>
+                            <div className="progress-assignment-name">{x.name}</div>
+                            <div className="progress-assignment-date">{formatDate(x.due_date)}{x.is_completed ? <i className="fa-regular fa-circle-check"></i> : null}</div>
+                        </div>
+                    );
+                })}
             </div>
             
         </div>
