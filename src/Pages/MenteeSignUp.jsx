@@ -58,6 +58,8 @@ function MenteeSignUp({ setToken, setUser }) {
             const { user, token } = data;
             setUser(user);
             setToken(token);
+            localStorage.setItem('user', JSON.stringify(user));
+            localStorage.setItem('token', token);
             navigate("/dashboard", { state: { message: `Thanks for signing up, ${data.user.first_name}!` } });
         }
       } else {
