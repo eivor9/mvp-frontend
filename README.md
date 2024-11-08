@@ -1,8 +1,47 @@
-# React + Vite
+# MVP Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is the frontend for the Mentor Volunteer Program (MVP), a platform designed to connect mentors and mentees for personal and professional development.
 
-Currently, two official plugins are available:
+## Technologies Used
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- React
+- Vite
+- React Router
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js (v14 or higher)
+- npm (v6 or higher)
+
+### Installation
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/yourusername/mvp-frontend.git
+   cd mvp-frontend
+   ```
+
+2. Install the dependencies:
+   ```bash
+   npm install
+   ```
+
+### Running the Application
+
+To start the development server, run:
+```bash
+npm run dev
+```
+
+Open your browser and navigate to `http://localhost:3000` to view the application.
+
+## Features
+
+- User authentication (sign up, log in)
+- Mentor and mentee profiles
+- Mentor / mentee connections 
+- FAQ section
+- Resource links for skill development
+- Chat

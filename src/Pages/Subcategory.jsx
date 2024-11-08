@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import "../Styles/subcategory.css"
+import "../Styles/Subcategory.css"
 
 //components 
 import UserCard from '../Components/UserCard';

@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import logo from "../assets/logo.png";
 import mentee_signup from "../assets/mentee_signup.png";
-import "../Styles/MenteeSignUp.css";
+import "../Styles/MenteeSignup.css";
 
 function MenteeSignUp({ setToken, setUser }) {
   const [name, setName] = useState("");
@@ -58,6 +58,8 @@ function MenteeSignUp({ setToken, setUser }) {
             const { user, token } = data;
             setUser(user);
             setToken(token);
+            localStorage.setItem('user', JSON.stringify(user));
+            localStorage.setItem('token', token);
             navigate("/dashboard", { state: { message: `Thanks for signing up, ${data.user.first_name}!` } });
         }
       } else {

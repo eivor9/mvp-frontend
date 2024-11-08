@@ -207,15 +207,15 @@ function TrackProgress({ user, token }) {
             
             <div className="progress-assignments">
                 {user.is_mentor ? 
-                    <div className="progress-assignment" onClick={() => setShowAssingmentForm(true)}>
-                        {user.is_mentor ? <div className="progress-assignment-name">Create New Assignment</div> : null}
+                    <div className="progress-assignment-create" onClick={() => setShowAssingmentForm(true)}>
+                        <div className="progress-assignment-name">Create New Assignment</div>
                         <div className="progress-assignment-date"></div>
                     </div>
                 :null}
 
                 {assignments.filter(x => x.metric_id == currentMetric.id).sort((x, y) => x.due_date < y.due_date ? -1 : 1).map(x => {
                     return (
-                        <div key={x.id} className="progress-assignment" onClick={() => setCurrentAssignment(x)}>
+                        <div key={x.id} className="progress-assignment-new" onClick={() => setCurrentAssignment(x)}>
                             <div className="progress-assignment-name">{x.name}</div>
                             <div className="progress-assignment-date">{formatDate(x.due_date)}{x.is_completed ? <i className="fa-regular fa-circle-check"></i> : null}</div>
                         </div>
