@@ -2,7 +2,6 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import logo from "../assets/logo.png";
 import mentee_signup from "../assets/mentee_signup.png";
-import "../Styles/MenteeSignUp.css";
 
 function MenteeSignUp({ setToken, setUser }) {
   const [name, setName] = useState("");
