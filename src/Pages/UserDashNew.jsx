@@ -14,6 +14,7 @@ function UserDashNew({ user, token, setUser, setToken }) {
     const [connectionDetails, setConnectionDetails] = useState([]);
     const [linkedin, setLinkedin] = useState("");
     const [assignments, setAssignments] = useState([])
+    const [hasLinkedin, setHasLinkedin] = useState(user.linkedin);
 
     const navigate = useNavigate();
     const API = import.meta.env.VITE_BASE_URL;
@@ -176,10 +177,9 @@ function UserDashNew({ user, token, setUser, setToken }) {
         })
         .then(res => res.json())
         .then(res => {
-            const { user, token } = res;
-            setUser(user);
-            setToken(token);
-            window.location.reload();
+            setHasLinkedin(res.user.linkedin);
+            localStorage.setItem("user", JSON.stringify(res.user));
+            localStorage.setItem("token", JSON.stringify(res.token));
         })
         .catch(err => console.error(err))
     }
@@ -197,9 +197,9 @@ function UserDashNew({ user, token, setUser, setToken }) {
         <div className="dash-user-container">
             <div className="profile-picture" style={{background:user.background_color}}>{userInitials(user.name)}</div>
             <div className="user-info">
-                {`Welcome back, ${userFirstName()}`}
-                {user.linkedin ? 
-                    <Link to={user.linkedin} target="_blank" className="dash-user-linkedin">Your LinkedIn Profile</Link>
+                {`Welcome, ${userFirstName()}`}
+                {hasLinkedin ? 
+                    <Link to={hasLinkedin} target="_blank" className="dash-user-linkedin">Your LinkedIn Profile</Link>
                 :
                     <form className="liknedin-form" onSubmit={addLinkedIn}>
                         <input required type="url" placeholder="LinkedIn Profile Page" value={linkedin} onChange={(e) => setLinkedin(e.target.value)}/>
@@ -282,7 +282,7 @@ function UserDashNew({ user, token, setUser, setToken }) {
                         <div className="profile-picture" style={{background:connection.background_color}} >{userInitials(connection.name)}</div>
                         <div className="dash-connection-mentor">{connection.name}</div>
                         <div className="dash-connection-skill">{connection.skill_name}</div>
-                        <div className="dash-connection-completion">{!assignments.length ? 0 : assignments.filter(x => x.connection_id == connection.connection_id).length} assignments left</div>
+                        <div className="dash-connection-completion">{!assignments.length ? 0 : assignments.filter(x => x.connection_id == connection.connection_id && !x.is_completed).length} assignments left</div>
                     </div>
                 )}
             </div>

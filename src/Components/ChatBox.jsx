@@ -64,7 +64,7 @@ const ChatBox = ({ user, connection_id, token, connectionDetails, setShowChat })
             connection_id: Number(connection_id),
         };
     
-        console.log("Emitting sendMessage with data:", messageData);
+        //console.log("Emitting sendMessage with data:", messageData);
         socket.emit('sendMessage', messageData, (response) => { 
             
             if (response && response.status === 'success') {
@@ -87,7 +87,7 @@ const ChatBox = ({ user, connection_id, token, connectionDetails, setShowChat })
                     return res.json();
                 })
                 .then((savedMessage) => {
-                    console.log('Message saved successfully:', savedMessage);
+                    //console.log('Message saved successfully:', savedMessage);
                 })
                 .catch((err) => {
                     console.error('Error saving message:', err);
@@ -103,8 +103,8 @@ const ChatBox = ({ user, connection_id, token, connectionDetails, setShowChat })
             <div className="chat-box">
                 <h2>Messages <i onClick={() => setShowChat(false)} className="fa-solid fa-circle-xmark close-chat"></i></h2>
                 <div className="messages-list">
-                    {messages.map((message) => (
-                        <div key={message.id} className={message.sender_id === user.id ? "message outgoing" : "message incoming"}>
+                    {messages.map((message, index) => (
+                        <div key={index} className={message.sender_id === user.id ? "message outgoing" : "message incoming"}>
                             <p className='message-body'>{message.body}</p>
                             <span className='message-time'>{new Date(message.time_sent).toLocaleString()}</span>
                         </div>

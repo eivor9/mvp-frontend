@@ -208,7 +208,7 @@ function TrackProgress({ user, token }) {
             <div className="progress-assignments">
                 {user.is_mentor ? 
                     <div className="progress-assignment" onClick={() => setShowAssingmentForm(true)}>
-                        <div className="progress-assignment-name">Create New Assignment</div>
+                        {user.is_mentor ? <div className="progress-assignment-name">Create New Assignment</div> : null}
                         <div className="progress-assignment-date"></div>
                     </div>
                 :null}

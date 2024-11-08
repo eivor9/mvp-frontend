@@ -45,7 +45,6 @@ const NavBar = ({ user, setUser, setToken, pendingConnections }) => {
       <Link to='/' className="nav-logo"><img src={logo} alt="mvp logo"/></Link>
       {/* <div className="nav-logo-text">MVP</div> */}
       <div className="nav-links">
-        <Link to='/about' className="nav-about-button"><i className="fa-solid fa-circle-info"></i></Link>
         <Link to='/faq' className="nav-faq-button"><i className="fa-solid fa-circle-question"></i></Link>
         {user ? (
           <>
