@@ -44,9 +44,9 @@ const Home = () => {
           </div>
           <div className="home-welcome-statement">
             {showingMentorWelcome ? (
-              <>Volunteer to mentor aspiring web developers, guiding them into technology careers. Connect with like-minded individuals to share knowledge, resources, and foster a supportive tech community.</>
+              <>Volunteer to mentor aspiring web developers, guiding them into careers in technology. Connect with like-minded individuals to share knowledge, resources, and foster a supportive tech community.</>
             ) : (
-              <>Connect with professional web developers for free mentorship, offering guidance on skills, best practices, and insights to advance your career.</>
+              <>Connect with experienced web developers, including Pursuit alumni, for free mentorship. Gaining valuable guidance on skills, best practices, and insights to help you advance your learning.</>
             )}
           </div>
 
