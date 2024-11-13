@@ -216,14 +216,14 @@ function UserDashNew({ user, token, setUser, setToken }) {
                 firstCard ?  
                     <div className="dash-network-card">
                         <div className="network-card-info">
-                            <div className="network-card-pic" style={{background:"linear-gradient(0deg,rgba(112,205,248,1)0%,rgba(112,205,248,0.6)100%)"}}>{userInitials("Nathan Drake")}</div>
+                            <div className="network-card-pic" style={{background:"linear-gradient(0deg,rgba(112,205,248,1)0%,rgba(112,205,248,0.6)100%)"}}>{userInitials("Anicka Lewis")}</div>
                             <div className="network-card-text">
-                                {"Nathan Drake"}
-                                <span>{"Backend Developer"}</span>
+                                {"Anicka Lewis"}
+                                <span>{"Open to new roles"}</span>
                             </div>
                         </div>
-                        <div className="network-card-bio">{"I'm a dedicated backend developer passionate about building robust and scalable systems. With experience in the PERN stack, I excel at creating seamless data flows and optimizing server performance. My commitment to high-quality code has driven the success of projects, enhancing user experiences along the way."}</div>
-                        <Link className="network-card-linkedin" target="_blank" to={"https://linkedin.com"}>Connect on LinkedIn</Link>
+                        <div className="network-card-bio">{"Freelance Software Developer willing to help elevate junior development in their tech journey. With a strong foundation in HTML, CSS, and Javascript, I've built multiple full stack web applications with various technologies.  I bring a practical and engaging approach to coding. I am looking to help developers at a beginner and intermediate level to build their skills to the best of their abilities. I am excited to share my knowledge, insights and tips to those eager to excel."}</div>
+                        <Link className="network-card-linkedin" target="_blank" to={"https://www.linkedin.com/in/anickalewiss/"}>Connect on LinkedIn</Link>
                     </div> 
                 : 
                     <div className="dash-network-card">
