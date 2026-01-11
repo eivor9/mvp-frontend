@@ -228,14 +228,14 @@ function UserDashNew({ user, token, setUser, setToken }) {
                 : 
                     <div className="dash-network-card">
                         <div className="network-card-info">
-                            <div className="network-card-pic" style={{background:"linear-gradient(0deg,rgba(252,201,59,1)0%,rgba(252,201,5,0.6)100%)"}}>{userInitials("Joel Miller")}</div>
+                            <div className="network-card-pic" style={{background:"linear-gradient(0deg,rgba(252,201,59,1)0%,rgba(252,201,5,0.6)100%)"}}>{userInitials("Nasheed Jeremmiah")}</div>
                             <div className="network-card-text">
-                                {"Joel Miller"}
-                                <span>{"Data Scientist"}</span>
+                                {"Nasheed Jeremiah"}
+                                <span>{"FullStack Software Engineer"}</span>
                             </div>
                         </div>
-                        <div className="network-card-bio">{"I'm a dedicated data scientist with a passion for extracting insights from complex datasets. With experience in statistical analysis and machine learning, I excel at turning data into actionable solutions. My commitment to high-quality models and analyses has driven project success, enhancing decision-making and optimizing outcomes."}</div>
-                        <Link className="network-card-linkedin" target="_blank" to={"https://linkedin.com"}>Connect on LinkedIn</Link>
+                        <div className="network-card-bio">{"I build reliable, scalable apps from database to UI. A pragmatic problem-solver dedicated to clean code and exceptional user experiences."}</div>
+                        <Link className="network-card-linkedin" target="_blank" to={"https://linkedin.com/in/nasheedjeremiah"}>Connect on LinkedIn</Link>
                     </div> 
 
                 /* For Mentee Dashboard */
@@ -243,7 +243,7 @@ function UserDashNew({ user, token, setUser, setToken }) {
                 <div className="dash-assignment-card">
                     <div className="dash-assignment-name">{"Example Assignment"}</div>
                     <div className="dash-assignment-body">
-                        <div className="dash-assignment-body-container">{"Completing coding challenges: https://replit.com/@njeremiah/SoreEllipticalLanguage"}</div>
+                        <div className="dash-assignment-body-container">Completing coding challenge:<br/><Link target="_blank" to={"https://www.codewars.com/kata/5265326f5fda8eb1160004c8/train/javascript"}>codewars: Convert a Number to a String!</Link></div>
                     </div>
                     <Link>{"JavaScript"}</Link>
                 </div>
@@ -251,7 +251,8 @@ function UserDashNew({ user, token, setUser, setToken }) {
                 <div className="dash-assignment-card">
                     <div className="dash-assignment-name">{"Example Assignment 2"}</div>
                     <div className="dash-assignment-body">
-                        <div className="dash-assignment-body-container">{"Watch this lecture and take notes: https://www.youtube.com/watch?v=vHYeChEf2lA"}</div>
+                        <div className="dash-assignment-body-container">Watch this lecture and take notes:<br/><Link target="_blank" to={"https://www.youtube.com/watch?v=oqRU2So6Z2Y"}>
+CS50x 2026 - Lecture 7 - SQL</Link></div>
                     </div>
                     <Link>{"SQL"}</Link>
                 </div>

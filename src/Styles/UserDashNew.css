@@ -67,6 +67,13 @@
                     overflow-y: scroll;
                     line-height: 22px;
                     height: 100px;
+                    a{
+                        background: none;
+                        color: blue;
+                        padding: 0;
+                        text-decoration: underline;
+                        cursor: pointer;
+                    }
                 }
             }
             a{
@@ -76,9 +83,8 @@
                 margin-top: 10px;
                 color: white;
                 padding: 10px;
-                &:hover{
-                    background: rgba(0, 0, 0, 0.75);
-                }
+                cursor: default;
+                
             }
             
         }
